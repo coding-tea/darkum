@@ -22,7 +22,6 @@ return new class extends Migration
           $table->enum("role", ["admin", "user"])->default("user");
           $table->text('adresse');
           $table->string("retrievePassword");
-            
         });
     }
 

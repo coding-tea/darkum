@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('medias', function (Blueprint $table) {
             $table->id("idMedia");
             $table->string("url");
-            $table->enum("type",["image", "video"])->default("video");
+            $table->enum("type", ["image", "video"])->default("image");
             $table->foreignId("idPost")->constraide("posts");
         });
     }
