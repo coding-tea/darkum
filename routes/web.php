@@ -24,6 +24,7 @@ use Illuminate\Http\Request;
 //Exercice 1 :
 //-------Affichage des class controllers:
 
-  Route::view("/", "layout");
+Route::view("/", "layout");
+Route::view("/user", "user.layout");
 
 ?>
