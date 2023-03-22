@@ -25,8 +25,16 @@ use Illuminate\Http\Request;
 //Exercice 1 :
 //-------Affichage des class controllers:
 
+//static
 Route::view("/", "login");
-Route::view("/user", "user.index");
-Route::resource('/user/posts', PostController::class);
+
+Route::group(['prefix' => 'user'], function() {
+    Route::view("/", "user.index");
+    Route::resource('/posts', PostController::class);
+});
+
+Route::group(['prefix' => 'admin'] , function(){
+    //admin
+});
 
 ?>
