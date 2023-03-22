@@ -19,7 +19,7 @@ class commentairesTableSeeder extends Seeder
         $data = [];
         for($i=1; $i<10; $i++)
         {
-            array_push($data, ['commentaire' => Str::random(100), 'idUser' => $i, 'idPost' => $i]);
+            array_push($data, ['commentaire' => Str::random(10), 'idUser' => $i, 'idPost' => $i]);
         }
         DB::table('commentaires')->insert($data);
     }

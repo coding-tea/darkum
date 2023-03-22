@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href=" {{ route('posts.index') }} ">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -42,8 +42,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href=" {{route('posts.index')}} ">
+            <li class="nav-item {{(Request::is('user'))?'active':'' }}">
+                <a class="nav-link" href="/user">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -52,8 +52,8 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - posts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item {{(Request::is('posts'))?'active':'' }}">
+                <a class="nav-link" href=" {{ route('posts.index') }} ">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>posts</span></a>
             </li>

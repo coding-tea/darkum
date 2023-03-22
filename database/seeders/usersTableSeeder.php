@@ -22,11 +22,11 @@ class usersTableSeeder extends Seeder
                 $data,
                 [
                     'nomComplet' => Str::random(10),
-                    'email' => Str::random(30),
+                    'email' => Str::random(8),
                     'password' => Str::random(5),
                     'tel' => Str::random(10),
                     'adresse' => Str::random(20),
-                    'retrievePassword' => Str::random(20)
+                    'retrievePassword' => Str::random(8)
                 ]
             );
         }

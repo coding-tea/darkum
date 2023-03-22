@@ -21,8 +21,8 @@ class postsTableSeeder extends Seeder
             array_push(
                 $data,
                 [
-                    'title' => Str::random(50),
-                    'description' => Str::random(5000),
+                    'title' => Str::random(8),
+                    'description' => Str::random(8),
                     'prix' => 100,
                     'nbChambre' => $i,
                     'surface' => Str::random(10),
