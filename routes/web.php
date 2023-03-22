@@ -25,7 +25,8 @@ use Illuminate\Http\Request;
 //Exercice 1 :
 //-------Affichage des class controllers:
 
-Route::view("/", "user.login");
-Route::resource('/user', PostController::class);
+Route::view("/", "login");
+Route::view("/user", "user.index");
+Route::resource('/user/posts', PostController::class);
 
 ?>

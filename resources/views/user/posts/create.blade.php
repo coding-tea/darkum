@@ -1,4 +1,4 @@
-@extends('user/layout')
+@extends('userLayout')
 @section('title', 'posts')
 @section('content')
 <div class="card shadow mb-4">
@@ -8,7 +8,7 @@
     <div class="card-body">
         <div class="table-responsive">
 
-            <a href=" {{ route('user.create') }} " class="btn btn-success btn-icon-split mb-3">
+            <a href=" {{ route('posts.create') }} " class="btn btn-success btn-icon-split mb-3">
                 <span class="icon text-white-50">
                     <i class="fas fa-check"></i>
                 </span>
