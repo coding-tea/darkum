@@ -3,6 +3,7 @@
 use App\Http\Controllers\Afficherformulaire;
 use App\Http\Controllers\CalculatriceController;
 use App\Http\Controllers\Inscription;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
 use Illuminate\Contracts\View\View;
@@ -25,6 +26,6 @@ use Illuminate\Http\Request;
 //-------Affichage des class controllers:
 
 Route::view("/", "user.login");
-Route::view("/user", "user.index");
+Route::resource('/user', PostController::class);
 
 ?>
