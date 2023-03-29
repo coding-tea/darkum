@@ -52,21 +52,21 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - posts -->
-            <li class="nav-item {{(Request::is('posts'))?'active':'' }}">
+            <li class="nav-item {{(Request::is('user/posts'))?'active':'' }}">
                 <a class="nav-link" href=" {{ route('posts.index') }} ">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>posts</span></a>
             </li>
 
             <!-- Nav Item - reservation -->
-            <li class="nav-item">
+            <li class="nav-item" {{(Request::is('user/reservation'))?'active':'' }}">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>reservation</span></a>
             </li>
 
             <!-- Nav Item - Profile -->
-            <li class="nav-item">
+            <li class="nav-item" {{(Request::is('user/profile'))?'active':'' }}">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Profile</span></a>
