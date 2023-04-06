@@ -6,6 +6,7 @@ use App\Http\Controllers\Inscription;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ Route::view("/", "login");
 Route::group(['prefix' => 'user'], function() {
     Route::view("/", "user.index");
     Route::resource('/posts', PostController::class);
+    Route::resource('/profile', UserController::class);
 });
 
 Route::group(['prefix' => 'admin'] , function(){

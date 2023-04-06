@@ -1,5 +1,5 @@
-@extends('userLayout')
-@section('title', 'posts')
+@extends('user.userLayout')
+@section('title', 'profile')
 @section('content')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
