@@ -67,7 +67,7 @@
 
             <!-- Nav Item - Profile -->
             <li class="nav-item" {{(Request::is('user/profile'))?'active':'' }}">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('profile.index') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Profile</span></a>
             </li>
