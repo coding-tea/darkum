@@ -1,4 +1,4 @@
-@extends('user.userLayout')
+@extends('layouts.userLayout')
 @section('title', 'profile')
 @section('content')
 <!-- Page Heading -->

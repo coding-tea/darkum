@@ -30,7 +30,7 @@ use Illuminate\Http\Request;
 Route::view("/", "login");
 
 Route::group(['prefix' => 'user'], function() {
-    Route::view("/", "user.index");
+    Route::view("/", "pages.index");
     Route::resource('/posts', PostController::class);
     Route::resource('/profile', UserController::class);
 });
