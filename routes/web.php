@@ -28,6 +28,7 @@ use Illuminate\Http\Request;
 
 //static
 Route::view("/", "auth.login");
+Route::view("test", "layouts.landingPage");
 
 Route::group(['prefix' => 'user'], function() {
     Route::view("/", "pages.index");
