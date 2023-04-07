@@ -27,7 +27,7 @@ use Illuminate\Http\Request;
 //-------Affichage des class controllers:
 
 //static
-Route::view("/", "login");
+Route::view("/", "auth.login");
 
 Route::group(['prefix' => 'user'], function() {
     Route::view("/", "pages.index");

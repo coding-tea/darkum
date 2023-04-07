@@ -3,7 +3,7 @@
 @section('content')
 <div class="card shadow mb-4">
 
-    <x-section sectionTitle = 'announces' />
+    <x-section sectionTitle='Announces' />
 
     <a style="border-radius: 0; width: 100%" href="{{ route('posts.create') }}" class="btn btn-primary mt-1">create a new announce</a>
 
@@ -15,12 +15,12 @@
                 $description = $item->description;
             @endphp
             <x-card 
-                image = ''
-                :title = '$titre'
-                :description = '$description'
+                image=''
+                :title='$titre'
+                :description='$description'
             />
             @empty
-            
+            <p></p>
             @endforelse
         @endisset
     </div>
