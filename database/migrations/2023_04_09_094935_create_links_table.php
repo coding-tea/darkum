@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->string('url', 90);
+            $table->integer('dataId');
+            $table->foreign('dataId')->references('id')->on('datas');
             $table->timestamps();
         });
     }

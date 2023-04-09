@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('datas', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('fullName', 40);
+            $table->string('adresse', 70);
+            $table->string('tel', 70);
+            $table->integer('userId');
+            $table->foreign('userId')->references('id')->on('users');
             $table->timestamps();
         });
     }

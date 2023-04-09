@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id("idCom");
             $table->text("comment");
-            $table->foreignId("idUser")->constained("users");
-            $table->foreignId("idAnnounce")->constained("announces");
+            $table->integer('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->integer('idAnnounce');
+            $table->foreign('idAnnounce')->references('id')->on('announces');
         });
     }
 
