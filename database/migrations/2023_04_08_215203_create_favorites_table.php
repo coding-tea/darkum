@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
-            $table->id("idMedia");
-            $table->string("url");
-            $table->enum("type", ["image", "video"])->default("image");
-            $table->foreignId("idPost")->constraide("posts");
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->id("numFav");
+            $table->foreignId("idUser")->constrained("users");
+            $table->foreignId("idAnnounce")->constained("announces");
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medias');
+        Schema::dropIfExists('favorites');
     }
 };
