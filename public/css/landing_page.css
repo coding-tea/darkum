@@ -1,62 +1,366 @@
-.navbar, .interface{
-  padding: 20px 200px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #00AAFF;
+  color: white;
+}
+
+
+
+.navbar-links {
+  height: 100%;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  list-style: none;
+}
+
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  margin: 5px;
 }
 .nav-link{
-  color: #4A647F;
-  font-size: 18px;
+  color: #fff;
+  font-size: 17px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.nav-link:hover{
+  color: #0773A9;
+  font-size: 17px;
+}
+.fa{
+  color: #0773A9;
+  font-size: 24px;
+  text-align: center;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 1.20rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+.logoName{
+  color: #FFF;
+  font-size: 23px;
+}
+.logoImg{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.nav-link{
+  color: #fff;
+  font-size: 17px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .nav-link:hover{
-  color: white;
-  background-color: #4A647F;
-  font-size: 18px;
+  color: #0773A9;
+  font-size: 17px;
+}
+.fa{
+  color: #0773A9;
+  font-size: 24px;
+  text-align: center;
 }
 
+.login{
+  color: #0773A9;
+}
+.fa:hover, .login:hover {
+  color: #011f38;
+}
+
+.signUp{
+  text-decoration: none;
+  border:1px #FF5500 solid;
+  border-radius: 8px;
+}
+.signUp:hover{
+  text-decoration: none;
+  background-color:#FF5500 ;
+  border:1px #FF5500 solid;
+  border-radius: 10px;
+  color: white;
+}
+
+.nvAnnonce{
+  text-decoration: none;
+  background-color: #FFF;
+  border-radius: 20px;
+  color: #FF5500;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.nvAnnonce:hover{
+  text-decoration: none;
+  background-color: #FF5500;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+
+/* --------- Style Body ---------------- */
+
+.header-section{
+  width: 100%;
+  height:  30vh;
+  background-size:cover;
+  background-repeat:no-repeat ;
+  background-image:  url("../img/background/back3.jpg");
+}
+
+.publiciter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .title{
-  color:#4A647F;
+  color:#FFF;
   font-weight: 700;
   margin-top: 50px;
 }
 .pubTitre{
-  background-color: #D4DAE6;
-  color: #4A647F;
+  background-color: #ffffff;
+  color: #FF5500;
   font-size: 25px;
   font-weight: 400;
-  text-align: right;
+  text-align: center;
   padding: 10px;
   margin-top: 15px;
   width: 450px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 15px 15px 15px 15px;
 }
 .pubParagraphe{
-  color: #293D4E;
+  color: #fff;
+  font-size: 16px;
+  width: 460px;
+  margin-top: 5px;
+  text-align: center;
+}
+.filterRecherche{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  height: auto;
+  padding: 4px;
+  font-size: 13px;
+  background-color: #FFF;
+  border-radius: 20px;
+}
+.zone1, .zone2{
+  margin-right: 10px;
+  padding: 2px;
+  border-right: 1px solid rgb(160, 160, 160);
+}
+.btnInput {
+  display: none;
+}
+.btn-label {
+  display: inline-block;
+  background-color: #e9ecef;
+  color: #000;
+  padding: 1px 8px;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #d2f0fc;
+  background-color: #E6F8FF;
+}
+.btn-label:hover {
+  display: inline-block;
+  background-color: #e9ecef;
+  color: #000;
+  padding: 5px 8px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+  background-color: #def1f9;
+}
+
+.btnInput:checked + .btn-label {
+  background-color: #0084BC;
+  color: #fff;
+  border-color: #007bff;
+}
+.zone2 select {
+  width: 130px;
+  height: 100%;
+  padding: 3px;
+  border: 1px solid #cfcfcf;
+  background-color: #F2F2F2;
+  border-radius: 15px;
+  color: #00BEDC;
+
+}
+
+
+.zone3 input[type="text"] {
+  width: 70%;
+  padding: 4px;
+  border-radius: 15px;
+  border:none;
+  background-color: #F2F2F2;
+  color: #00BEDC;
+
+}
+.zone3 input[type="text"]:focus {
+  outline: none;
+  border:none;
+  
+}
+.btnRech{
+  text-decoration: none;
+  background-color: #FFF;
+  border-radius: 20px;
+  color: #FF5500;
+  border: none;
   font-size: 15px;
-  width: 455px;
-  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;  
 }
-.btn{
-  background-color: #4A647F;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 400;
+.btnRech:hover{
+  text-decoration: none;
+  background-color: #FF5500;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* STart media*/
+@media (max-width: 600px) {
+  .nvAnnonce{
+    display: none;
+  }
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  /* Now the hamburgur menu will be visible */
+  .toggle-button {
+      display: flex;
+  }
+
+  /* Now the links will disapper and */
+  .navbar-links {
+      display: none;
+      width: 100%;
+  }
+
+  .navbar-links ul {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .navbar-links ul li {
+      text-align: center;
+  }
+
+  .navbar-links ul li a {
+      padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+}
+
+@media (max-width: 725px) {
+  .nvAnnonce{
+    display: none;
+  }
 
 }
-.btn:hover{
-  background-color: #537E9F;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 400;
-}
-.signUp{
-  text-decoration: none;
-  border:1px #293D4E solid;
-  border-radius: 8px;
+@media (max-width: 1041px) {
+  .filterRecherche{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 0px;
+    font-size: 11px;
+    background-color: transparent;
+    border-radius: 20px;
+  }
+  .pubTitre{
+    display: none;
+  }
 
 }
-.signUp:hover{
-  text-decoration: none;
-  background-color:#293D4E ;
-  border:1px #293D4E solid;
-  border-radius: 10px;
-  color: white;
-}
+
+
+/*------------------------- FIN QUERY  ---------------------*/
