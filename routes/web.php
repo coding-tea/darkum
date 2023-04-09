@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ use Illuminate\Http\Request;
 |
 */
 
-/*==================TP3========================= */
-//Exercice 1 :
-//-------Affichage des class controllers:
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //static
 Route::view("/", "auth.login");
@@ -38,5 +39,7 @@ Route::group(['prefix' => 'user'], function() {
 Route::group(['prefix' => 'admin'] , function(){
     //admin
 });
+
+
 
 ?>

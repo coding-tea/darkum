@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
-          $table->id("numRes");
-          $table->date("dateR")->default(date('Y-m-d'));
-          $table->foreignId("user_id")->constrained("users");
+        Schema::create('links', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('links');
     }
 };

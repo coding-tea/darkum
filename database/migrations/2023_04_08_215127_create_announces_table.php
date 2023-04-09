@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('announces', function (Blueprint $table) {
             $table->id();
             $table->string("title", 100);
             $table->text("description");
-            $table->unsignedFloat("prix");
-            $table->unsignedInteger("nbChambre");
+            $table->unsignedFloat("price");
+            $table->unsignedInteger("nbRome");
             $table->string("surface", 20);
-            $table->string("ville", 50);
+            $table->string("city", 50);
             $table->boolean("state")->default(1);
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('announces');
     }
 };
