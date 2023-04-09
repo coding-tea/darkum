@@ -28,10 +28,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //static
-Route::view("/", "auth.login");
-Route::view("test", "layouts.landingPage");
+Route::view("/", "layouts.landingPage");
 
-Route::group(['prefix' => 'user'], function() {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::view("/", "pages.index");
     Route::resource('/posts', PostController::class);
     Route::resource('/profile', UserController::class);

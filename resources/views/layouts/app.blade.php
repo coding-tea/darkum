@@ -31,6 +31,7 @@
     }
     .bg2{
         background-color: #4A647F;
+        color: white;
     }
     .divider:after,
     .divider:before {
@@ -47,11 +48,24 @@
       height: 100%;
       }
     }
+    .card1{
+        border-bottom: none;
+    }
+    .card2{
+        border-top: none;
+    }
+    body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
   </style>
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<body class="d-flex justify-content-center vh-100">
+    <div id="app" style="width: 60%">
+        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -103,20 +117,11 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> --}}
 
-        <section class="d-flex flex-column">
-            <div class="vh-100 container-fluid h-custom">
-              <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-9 col-lg-6 col-xl-5">
-                  <img src="{{ asset('img/auth.jpg') }}" class="img-fluid w-90" alt="Sample image">
-                </div>
-                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    @yield('content')
-                </div>
-              </div>
-            </div>
-          </section>
+        <div  >
+            @yield('content')
+        </div>
 
     </div>
 
