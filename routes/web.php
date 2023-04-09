@@ -29,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //static
 Route::view("/", "auth.login");
+Route::view("test", "layouts.landingPage");
 
 Route::group(['prefix' => 'user'], function() {
     Route::view("/", "pages.index");
