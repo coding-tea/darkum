@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favoris', function (Blueprint $table) {
-            $table->id("numFav");
-            $table->foreignId("idUser")->constrained("users");
-            $table->foreignId("idPost")->constained("posts");
+        Schema::create('links', function (Blueprint $table) {
+            $table->id();
+            $table->string('url', 90);
+            $table->integer('dataId');
+            $table->foreign('dataId')->references('id')->on('datas');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favoris');
+        Schema::dropIfExists('links');
     }
 };

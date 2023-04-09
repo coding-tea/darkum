@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
-            $table->id("idMedia");
-            $table->string("url");
-            $table->enum("type", ["image", "video"])->default("image");
-            $table->foreignId("idPost")->constraide("posts");
+        Schema::create('datas', function (Blueprint $table) {
+            $table->id();
+            $table->string('fullName', 40);
+            $table->string('adresse', 70);
+            $table->string('tel', 70);
+            $table->integer('userId');
+            $table->foreign('userId')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medias');
+        Schema::dropIfExists('datas');
     }
 };

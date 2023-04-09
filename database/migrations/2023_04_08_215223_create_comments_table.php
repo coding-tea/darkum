@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
-          $table->id("numRes");
-          $table->date("dateR")->default(date('Y-m-d'));
-          $table->foreignId("user_id")->constrained("users");
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id("idCom");
+            $table->text("comment");
+            $table->integer('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->integer('idAnnounce');
+            $table->foreign('idAnnounce')->references('id')->on('announces');
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('comments');
     }
 };

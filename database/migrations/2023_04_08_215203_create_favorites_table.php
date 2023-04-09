@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('commentaires', function (Blueprint $table) {
-            $table->id("idCom");
-            $table->text("commentaire");
-            $table->foreignId("idUser")->constained("users");
-            $table->foreignId("idPost")->constained("posts");
+        Schema::create('favorites', function (Blueprint $table) {
+            $table->id("numFav");
+            $table->integer('idUser');
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->integer('idAnnounce');
+            $table->foreign('idAnnounce')->references('id')->on('announces');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commentaires');
+        Schema::dropIfExists('favorites');
     }
 };

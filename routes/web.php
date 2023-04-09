@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +23,15 @@ use Illuminate\Http\Request;
 |
 */
 
-/*==================TP3========================= */
-//Exercice 1 :
-//-------Affichage des class controllers:
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //static
-Route::view("/", "auth.login");
-Route::view("test", "layouts.landingPage");
+Route::view("/", "layouts.landingPage");
 
-Route::group(['prefix' => 'user'], function() {
-    Route::view("/", "pages.index");
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+    Route::view("/", "pages.index")->name('dashboard');
     Route::resource('/posts', PostController::class);
     Route::resource('/profile', UserController::class);
 });
@@ -39,5 +39,7 @@ Route::group(['prefix' => 'user'], function() {
 Route::group(['prefix' => 'admin'] , function(){
     //admin
 });
+
+
 
 ?>

@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -51,18 +51,18 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - posts -->
-            <li class="nav-item {{(Request::is('user/posts*'))?'active':'' }}">
+            <!-- Nav Item - announces -->
+            <li class="nav-item {{(Request::is('user/announces*'))?'active':'' }}">
                 <a class="nav-link" href=" {{ route('posts.index') }} ">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>posts</span></a>
+                    <span>announces</span></a>
             </li>
 
-            <!-- Nav Item - reservation -->
-            <li class="nav-item" {{(Request::is('user/reservation'))?'active':'' }}">
+            <!-- Nav Item - comments -->
+            <li class="nav-item" {{(Request::is('user/comments'))?'active':'' }}">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>reservation</span></a>
+                    <span>comments</span></a>
             </li>
 
             <!-- Nav Item - Profile -->
