@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view("/", "layouts.landingPage");
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::view("/", "pages.index");
+    Route::view("/", "pages.index")->name('dashboard');
     Route::resource('/posts', PostController::class);
     Route::resource('/profile', UserController::class);
 });
