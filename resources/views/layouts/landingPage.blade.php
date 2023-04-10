@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="brand-title">
       <img src="{{asset("img/logo.png")}}" alt="Logo" class="logoImg">
-      <span class="p-2 fw-semibold logoName"> Darkum</span>
+      <span class="fw-semibold logoName"> Darkum</span>
     </div>
 
     <!-- This is for responsive menu -->
@@ -45,7 +45,7 @@
           </li>
         </ul>
       </div>
-      <a class="btn nvAnnonce" href="#">PUBLIER UNE ANNONCE</a>
+      <a class="nvAnnonce" href="#">PUBLIER UNE ANNONCE</a>
 </nav>
   
   @section("content")
@@ -54,7 +54,8 @@
         
           <p class="pubTitre h1">Trouvez Votre logement de rêve.</p>
           <p class="pubParagraphe">
-            Vous cherchez un endroit à louer ? <br> Ne cherchez pas plus loin ! Notre site web est là pour vous aider.
+            {{-- Vous cherchez un endroit à louer ? <br> Ne cherchez pas plus loin ! Notre site web est là pour vous aider. --}}
+            Votre appartement idéal à portée de clic !
           </p>
       </div>    
         <div class="filterRecherche">
@@ -73,7 +74,9 @@
                 <input type="radio" class="btnInput" name="filter" value="option3">
                 <span class="btn-label" style="border-radius: 1px 15px 15px 1px">Immo neuf</span>
             </label>
+
           </div>
+          <span class="hr"></span>
           <div class="zone2">
             <select name="select">
               <option value="*">Tous</option>
@@ -84,9 +87,10 @@
             </select>
             <span style="margin-right: 10px"></span>
           </div>
+          <span class="hr"></span>
           <div class="zone3 d-flex">
-            <input type="text" name="searchVille" placeholder="Où cherchez-vous">
-            <button type="submit" class="btnRech">Rechercher</button>
+            <input type="text" name="searchVille" id="ville" placeholder="Où cherchez-vous">
+            <button type="submit" class="btnRech">rechercher</button>
           </div>
         </div>
       
