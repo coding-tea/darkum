@@ -28,7 +28,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //static
-Route::view("/", "layouts.landingPage");
+Route::view("/", "pages.landing_page.index");
+Route::view("/location", "pages.landing_page.location");
+Route::view("/about", "pages.landing_page.about");
+Route::view("/privacy", "pages.landing_page.condition");
+Route::view("/contact", "pages.landing_page.contact");
+Route::view("/home", "pages.landing_page.index");
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::view("/", "pages.index")->name('dashboard');

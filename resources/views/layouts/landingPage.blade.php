@@ -4,100 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{asset("css/landing_page/layout.css")}}">
+  @yield("links")
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{asset("css/landing_page.css")}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield("title")</title>
 </head>
 <body>
+  
   {{----------------------- HEADER ---------------------------}}
   
-  <nav class="navbar">
-    <div class="brand-title">
-      <img src="{{asset("img/logo.png")}}" alt="Logo" class="logoImg">
-      <span class="fw-semibold logoName"> Darkum</span>
+<nav class="menu">
+
+  <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
+  <a href="#" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+    <img src="{{asset("img/landing_page/logo.png")}}" alt="Logo" class="logoImg">
+    <span>Darkum</span>
+  </a>
+
+  <div class="main-navlinks">
+    <button type="button" class="forMedia"  aria-label="Toggle Navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <div class="navlinks-container">
+      <a href="/" aria-current="page">Home</a>
+      <a href="#">Vente</a>
+      <a href="#">Location</a>
+      <a href="contact">Contact</a>
+      <button class="nvAnnonce">Publier Une Annonce</button>
     </div>
+  </div>
 
-    <!-- This is for responsive menu -->
-    <a href="#" class="toggle-button">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+  <div class="nav-authentication">
+    <a href="#" class="user-toggler" aria-label="Sign in page">
+      <img src="{{asset("img/user.svg")}}" alt="user icon" />
     </a>
+    <div class="sign-btns">
+      <button type="button">Se connecter</button>
+      <button type="button">Sign Up</button>
+    </div>
+  </div>
+  
+</nav>
 
-    <!-- This is the link for the different pages -->
-    <div class="navbar-links">
+
+
+  
+  @yield("content")
+  
+  
+
+
+{{----------------------------- FOOTER ------------------------------------------}}
+
+<footer class="footer">
+  <div class="container">
+    {{-- <div class="row"> --}}
+      <div class="footer-col">
         <ul>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Vente</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Location</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link login" href="#"><i class="fa fa-user-circle-o"></i> se connecter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link signUp" href="#">s'inscrire</a>
-          </li>
+          <li class="footerLogo"><a href="#"><img src="{{asset("img/landing_page/logo.png")}}" width="80" height="100" alt="Logo"> <span>Darkum</span></a></li>
         </ul>
       </div>
-      <a class="nvAnnonce" href="#">PUBLIER UNE ANNONCE</a>
-</nav>
-  
-  @section("content")
-    <section class="header-section">
-      <div class="publiciter">
-        
-          <p class="pubTitre h1">Trouvez Votre logement de rêve.</p>
-          <p class="pubParagraphe">
-            {{-- Vous cherchez un endroit à louer ? <br> Ne cherchez pas plus loin ! Notre site web est là pour vous aider. --}}
-            Votre appartement idéal à portée de clic !
-          </p>
-      </div>    
-        <div class="filterRecherche">
-          <div class="zone1">
-            <label>
-              <input type="radio" class="btnInput" name="filter" value="option1" checked>
-              <span class="btn-label" style="border-radius: 15px 1px 1px 15px">Vente</span>
-            </label>
-          
-            <label>
-                <input type="radio" class="btnInput" name="filter" value="option2">
-                <span class="btn-label" style="border-radius: 1px">Location</span>
-            </label>
-          
-            <label style="margin-right: 10px">
-                <input type="radio" class="btnInput" name="filter" value="option3">
-                <span class="btn-label" style="border-radius: 1px 15px 15px 1px">Immo neuf</span>
-            </label>
-
-          </div>
-          <span class="hr"></span>
-          <div class="zone2">
-            <select name="select">
-              <option value="*">Tous</option>
-              <option value="maison">Maisons</option>
-              <option value="appartement">Appartements</option>
-              <option value="villa">Villas</option>
-              <option value="chambre">Chambres</option>
-            </select>
-            <span style="margin-right: 10px"></span>
-          </div>
-          <span class="hr"></span>
-          <div class="zone3 d-flex">
-            <input type="text" name="searchVille" id="ville" placeholder="Où cherchez-vous">
-            <button type="submit" class="btnRech">rechercher</button>
-          </div>
+      <div class="footer-col">
+        <ul>
+          <li><a href="#">Publier Une Annonce</a></li>
+          <li><a href="#">Inscrivez-vous</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <ul>
+          <li><a href="about">Qui sommes nous?</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="contact">Contactez-nous</a></li>
+          <li><a href="privacy">Conditions d'utilisation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
-      
-    </section>
-  @show
+      </div>
+    {{-- </div> --}}
+  </div>
+  <div class="bottom-details">
+    <div class="bottom_text">
+      <span class="copyright_text">Copyright © 2023 <a href="#"> Darkum. </a>Tous droits réservés</span>
+    </div>
+  </div>
+</footer>
 
-  <script src="{{asset("js/landing_page.js")}}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="{{asset("js/landing_page/index.js")}}"></script>
+  <script src="{{asset("js/landing_page/layout.js")}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
