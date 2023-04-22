@@ -6,6 +6,7 @@ use App\Models\Datas;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDatasRequest;
 use App\Http\Requests\UpdateDatasRequest;
+use App\Models\User;
 
 class DatasController extends Controller
 {
@@ -16,7 +17,8 @@ class DatasController extends Controller
      */
     public function index()
     {
-        //
+        $data = Datas::all();
+        $user = User::all();
     }
 
     /**

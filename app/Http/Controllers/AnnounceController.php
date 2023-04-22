@@ -16,7 +16,8 @@ class AnnounceController extends Controller
      */
     public function index()
     {
-        //
+        $announces = Announce::all();
+        return view('pages.user.announces.index', compact('announces'));
     }
 
     /**
@@ -26,7 +27,7 @@ class AnnounceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.user.announces.create');
     }
 
     /**
@@ -37,7 +38,15 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        //
+        Announce::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'nbRome' => $request->nbRome,
+            'surface' => $request->surface,
+            'city' => $request->city
+        ]);
+        return redirect()->route('announces.index');
     }
 
     /**
@@ -59,7 +68,7 @@ class AnnounceController extends Controller
      */
     public function edit(Announce $announce)
     {
-        //
+        return view('pages.user.announces.edit', compact('announce'));
     }
 
     /**
@@ -71,7 +80,15 @@ class AnnounceController extends Controller
      */
     public function update(UpdateAnnounceRequest $request, Announce $announce)
     {
-        //
+        $announce->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'nbRome' => $request->nbRome,
+            'surface' => $request->surface,
+            'city' => $request->city
+        ]);
+        return redirect()->route('announces.index');
     }
 
     /**
@@ -82,6 +99,7 @@ class AnnounceController extends Controller
      */
     public function destroy(Announce $announce)
     {
-        //
+        $announce->delete();
+        return redirect()->route('announces.index');
     }
 }

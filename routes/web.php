@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Afficherformulaire;
-use App\Http\Controllers\CalculatriceController;
+use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\Inscription;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\UserController;
@@ -31,8 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view("/", "layouts.landingPage");
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::view("/", "pages.index")->name('dashboard');
-    Route::resource('/posts', PostController::class);
+    Route::view("/", "pages.user.index")->name('dashboard');
+    Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
 });
 
