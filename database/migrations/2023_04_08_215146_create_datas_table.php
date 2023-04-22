@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('fullName', 40);
             $table->string('adresse', 70);
             $table->string('tel', 70);
-            $table->integer('userId');
-            $table->foreign('userId')->references('id')->on('users');
+            $table->foreignId("userId")->constraide("users");
             $table->timestamps();
         });
     }
