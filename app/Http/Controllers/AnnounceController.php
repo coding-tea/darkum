@@ -6,6 +6,11 @@ use App\Models\Announce;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
+use App\Models\Media;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AnnounceController extends Controller
 {
@@ -38,7 +43,7 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        Announce::create([
+        $announce = Announce::create([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
@@ -46,6 +51,18 @@ class AnnounceController extends Controller
             'surface' => $request->surface,
             'city' => $request->city
         ]);
+        $files = $request->file("images");
+        $uploaded = [];
+        if(isset($files)){
+            foreach($files as $file) {
+                $name = time() . '.' . $file->getClientOriginalExtension();
+                $uploaded[] = Storage::put('images/'. $name , file_get_contents($file->getRealPath()));
+                Media::create([
+                    'url' => $name,
+                    'idAnnounce' => $announce->id
+                ]);
+            }
+        }
         return redirect()->route('announces.index');
     }
 
@@ -57,7 +74,11 @@ class AnnounceController extends Controller
      */
     public function show(Announce $announce)
     {
-        //
+        $id = Auth::user()->id;
+        $email = Auth::user()->email;
+        $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
+        $data = (!empty($data)) ? $data[0] : [];
+        return view('pages.user.announces.show', compact('announce', 'data', 'email'));
     }
 
     /**
