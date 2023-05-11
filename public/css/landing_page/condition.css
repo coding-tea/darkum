@@ -1,0 +1,42 @@
+
+.card-text h1{
+  font-size: 24px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  text-align: center;
+  color: #FFF;
+  background-color: #00AFCA;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  padding: 15px 25px;
+}
+.ol-condition{
+  padding: 5px 60px;
+}
+
+ol{
+  list-style-type: none;
+  padding-left: 1.4em;
+  counter-reset: compteur;
+}
+ol li{
+  color: #000;
+}
+.ol-condition li{
+  font-size: 17px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: #00AFCA;
+  counter-increment: compteur;
+}
+ol li::before{
+  content: counters(compteur, ".") " ";
+}
+ol p{
+  font-size: 15px;
+}
+.ol-condition b{
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}

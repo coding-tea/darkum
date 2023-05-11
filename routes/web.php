@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Afficherformulaire;
-use App\Http\Controllers\CalculatriceController;
+use App\Http\Controllers\AnnounceController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Inscription;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\UserController;
@@ -28,17 +27,26 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //static
-Route::view("/", "layouts.landingPage");
+Route::view("/", "pages.landing_page.index");
+Route::view("/location", "pages.landing_page.location");
+Route::view("/about", "pages.landing_page.about");
+Route::view("/privacy", "pages.landing_page.condition");
+Route::view("/contact", "pages.landing_page.contact");
+Route::view("/home", "pages.landing_page.index");
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::view("/", "pages.index")->name('dashboard');
-    Route::resource('/posts', PostController::class);
+    Route::view("/", "pages.user.index")->name('dashboard');
+    Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
+    Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 });
 
 Route::group(['prefix' => 'admin'] , function(){
     //admin
 });
+
+Route::get("/location", [AnnounceController::class, "allAnnonces"])->name("location");
+Route::get("/vente", [AnnounceController::class, "allAnnonces"])->name("vente");
 
 
 

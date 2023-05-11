@@ -6,6 +6,12 @@ use App\Models\Announce;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
+use App\Models\Media;
+use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AnnounceController extends Controller
 {
@@ -16,7 +22,8 @@ class AnnounceController extends Controller
      */
     public function index()
     {
-        //
+        $announces = Announce::all();
+        return view('pages.user.announces.index', compact('announces'));
     }
 
     /**
@@ -26,7 +33,7 @@ class AnnounceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.user.announces.create');
     }
 
     /**
@@ -37,7 +44,27 @@ class AnnounceController extends Controller
      */
     public function store(StoreAnnounceRequest $request)
     {
-        //
+        $announce = Announce::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'nbRome' => $request->nbRome,
+            'surface' => $request->surface,
+            'city' => $request->city
+        ]);
+        $files = $request->image;
+        dd($files);
+        $uploaded = [];
+        if(isset($files)){
+            foreach($files as $file) {
+                $uploaded[] = Storage::put('images/'. $file , file_get_contents($file->getRealPath()));
+                Media::create([
+                    'url' => $file,
+                    'idAnnounce' => $announce->id
+                ]);
+            }
+        }
+        return redirect()->route('announces.index');
     }
 
     /**
@@ -48,7 +75,14 @@ class AnnounceController extends Controller
      */
     public function show(Announce $announce)
     {
-        //
+        $id = Auth::user()->id;
+        $email = Auth::user()->email;
+        $announce_id = $announce->id;
+        $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
+        $data = (!empty($data)) ? $data[0] : [];
+        $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
+        // dd($comments);
+        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments'));
     }
 
     /**
@@ -59,7 +93,7 @@ class AnnounceController extends Controller
      */
     public function edit(Announce $announce)
     {
-        //
+        return view('pages.user.announces.edit', compact('announce'));
     }
 
     /**
@@ -71,7 +105,15 @@ class AnnounceController extends Controller
      */
     public function update(UpdateAnnounceRequest $request, Announce $announce)
     {
-        //
+        $announce->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'nbRome' => $request->nbRome,
+            'surface' => $request->surface,
+            'city' => $request->city
+        ]);
+        return redirect()->route('announces.index');
     }
 
     /**
@@ -82,6 +124,26 @@ class AnnounceController extends Controller
      */
     public function destroy(Announce $announce)
     {
-        //
+        $announce->delete();
+        return redirect()->route('announces.index');
+    }
+    public function allAnnonces(Request $req)
+    {
+      if($req->is("location")){
+        $announces = Announce::where("type", 'location')->with('medias')->get();
+        $types = 'location';
+      }
+      else if($req->is("vente")){
+        $announces = Announce::where("type", 'vente')->with('medias')->get();
+        $types = 'vente';
+
+      }
+      else if($req->is("vacance")){
+        $announces = Announce::where("type", 'vacance')->with('medias')->get();
+        $types = 'vacances';
+
+      }
+
+        return view('pages.landing_page.location', compact("announces",'types'));
     }
 }

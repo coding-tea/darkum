@@ -3,7 +3,11 @@
   <div class="card-body">
     <h5 class="card-title">{{ $title }}</h5>
     <p class="card-text">{{ $description }}</p>
-    <a href="#" class="btn btn-primary">Edit annoce</a>
-    <a href="#" class="btn btn-danger">delete annoce</a>
+    <form method="post" onsubmit="return confirm('do you want to delete your announce?')" action="{{ route($routeDelete, $id) }}">
+      @csrf 
+      @method('DELETE')
+      <button class="btn btn-primary"><a href="{{ route($routeEdit, $id) }}">edit</a></button>
+      <button type="submit" class="btn btn-danger">delete</button>
+    </form>
   </div>
 </div>

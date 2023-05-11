@@ -1,0 +1,45 @@
+.card-about{
+  width:35vh
+}
+.card-text h1{
+  font-size: 22px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  text-align: center;
+  color: #FFF;
+  background-color: #00AFCA;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  padding: 15px 25px;
+}
+.card-text p{
+  padding: 0px 40px;
+  text-align: center;
+}
+.contact{
+  padding: 15px 10px 20px 10px;
+  text-align: center;
+}
+ .form-contact div{
+  padding: 5px;
+  margin-top: 10px;
+}
+
+#textarea{
+  resize: none;
+}
+#btn-contact{
+  margin-top: 40px;
+  padding: 8px;
+  width: 20vh;
+  border-radius: 20px;
+  background-color: #00AFCA;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+
+}
+#btn-contact:hover{
+  background-color: #104A7A;
+  transition: 1s;
+}

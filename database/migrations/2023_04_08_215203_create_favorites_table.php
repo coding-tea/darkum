@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id("numFav");
-            $table->integer('idUser');
-            $table->foreign('idUser')->references('id')->on('users');
-            $table->integer('idAnnounce');
-            $table->foreign('idAnnounce')->references('id')->on('announces');
+            $table->foreignId("userId")->constraide("users");
+            $table->foreignId("AnnounceId")->constraide("announces");
+            $table->timestamps();
         });
     }
 

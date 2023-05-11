@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.help{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: Montserrat, Arial, Helvetica, sans-serif; 
+}
+.container-card{
+  margin: 40px 0;
+  width: calc(100% - 33%);
+  display: flex;
+  justify-content: center;  
+  align-items: flex-start;
+}
+.card-about{
+  margin: 20px 10px;
+  border-radius: 15px;
+  background-color: #FFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  width: 100%;
+}
+.card-text{
+  margin: 20px 10px;
+  border-radius: 15px;
+  background-color: #FFF;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.card-menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding: 15px 10px 20px 10px;
+}
+
+.card-about h1{
+  font-size: 18px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  text-align: center;
+  color: #FFF;
+  background-color: #FF6600;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  padding: 15px 25px;
+}
+
+.card-menu a{
+  text-decoration: none ;
+  font-size: 15px;
+  padding: 3px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: #000;
+}
+.card-menu a:hover{
+  font-weight: 600;
+  color: #78080F;
+}
+.card-menu .active{
+  font-weight: 700;
+  color: #78080F;
+}
+
+
+@media(max-width: 1430px){
+  .card-menu{
+    width: 30vh;
+  }
+}
+@media(max-width: 900px){
+  .card-about{
+    width: 40vh;
+  }
+  .container-card{
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+}

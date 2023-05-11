@@ -1,0 +1,354 @@
+.location-section{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #EFF0F1;
+}
+.location-title{
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+.location-title span{
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.btnInput {
+  display: none;
+}
+
+.typeLogement{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn-label{
+  display: inline-block;
+  margin: 1px;
+  background-color: #0A829E;
+  color: #FFF;
+  padding: 7px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-label:hover {
+  background-color: #00AFCA;
+}
+
+.btnInput:checked+.btn-label {
+  background-color: #104A7A;
+}
+
+/* style FILTER BODY Start */
+
+
+.filterBody{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+/* style Sidebar Start */
+
+.sidebarFilter{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  max-width: 35vh;
+  margin-right: 10px;
+  background-color: #E9E9E9;
+  border: 1px solid #d4d4d4;
+  padding: 10px 5px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+.sidebarFilter div{
+  margin: 5px 2px;
+}
+
+
+/*------------------------- BUTTON CHECKBOX -------------------------------*/
+
+.nbChambre{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nbChambre div{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-checkbox{
+  display: inline-block;
+  background-color: #FFF;
+  color: #104A7A;
+  margin: 2px 1px;
+  padding:4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nbChambre .btn-checkbox{
+  margin: 1 0 0 0;
+  padding:3px 12px;
+
+}
+
+.btnInput:checked+.btn-checkbox{
+  background-color: #104A7A;
+  color: #FFF;
+}
+
+.btn-checkbox:hover {
+  background-color: #DAFAFF;
+  opacity: 0,5;
+}
+
+
+.labelFilter{
+  display: block;
+  font-size: 17px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+.sidebarFilter div select{
+  width: 100%;
+  font-size: 16px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  padding: 8px;
+  margin: 1px 0;
+  border: 1px solid #cfcfcf;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  color: #00BEDC;
+  overflow-y: auto;
+}
+
+.sidebarFilter div select:focus{
+  color: #666666;
+  outline: none;
+}
+
+/* -------------------------   STYLE CARD  -------------------------*/
+
+.container-appartement{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  max-width: 835px;
+}
+
+.card-appartement{
+  display: flex;
+  height: 225px;
+  margin-top: 30px;
+  margin-left: 10px;
+  background-color: #F7F7F7;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.card-appartement:hover{
+  cursor: pointer;
+}
+
+
+.favorite-button {
+  position: absolute;
+  top: -20px;
+  right: 93%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none ;
+  cursor: pointer;
+}
+
+.favorite-button i {
+  margin-top: 3px;
+  color: #000;
+  font-size: 28px;
+}
+.favorite-button i:hover {
+  color: rgb(250, 0, 0);
+}
+
+.card-price{
+  position: absolute;
+  background-color: #EFE000;
+  color: #000;
+  padding: 2px 9px 2px 9px;
+  font-size: 18px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  border-radius: 0 0 0 8px;
+  right: 1px;
+  top: 0;
+}
+
+.card-description{
+  border-radius: 0 9px 9px 0;
+  max-width: 65%;
+}
+.card-image{
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  max-width: 35%;
+  max-height: 100%;
+}
+
+/* --------- style d'image------------------ */
+.card-image img{
+  border-radius: 9px 0 0 9px;
+  max-width: 100%;
+  height: 100%;
+}
+
+.card-image #next, .card-image #back{
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(223, 227, 229,0.6);
+  padding: 3px 8px;
+  margin: 0 5px;
+  color: #000;
+}
+
+.card-image #next{
+  left: 87%;
+}
+
+/* --------- style description de card------------------ */
+
+.card-description {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  padding: 18px;
+}
+.card-description  h1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #FF6803;
+  font-size: 18px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  overflow-y: auto;
+}
+
+.card-description  span{
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+.card-description  h2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #07B1CB;
+  font-size: 15px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  overflow-y: auto;
+}
+.card-description div p{
+  overflow: hidden;
+  font-size: 15px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  max-height: 100px;
+}
+
+
+/*----------------------------------- Read MOre Button  ------------------------------------*/
+
+.cutoof-text{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow: hidden;
+  background: linear-gradient(to bottom, transparent, #F7F7F7);
+}
+.card-description a{
+  text-decoration: none;
+  background-color: #FF6600;
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  border-radius: 20px;
+  max-width: 150px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.card-description a:hover{
+  background-color: #FF6600;
+  color: #000; 
+  transition: 1s;
+}
+
+
+
+
+
+
+
+
+
+/* --------------------------- START MediaQuery  -----------------------*/
+
+
+/*                  CARD     */
+
+@media(min-width: 1169px) {
+  .sidebarFilter {
+    position: sticky;
+    top: 0;
+  }
+  
+}
+@media(max-width: 1168px) {
+  .sidebarFilter {
+    max-width: calc(100% - 35%);
+  }
+  .card-appartement{
+    max-width: calc(100% - 15%);
+  }
+  .filterBody{
+    max-width: 100%;
+  }
+}
+

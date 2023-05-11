@@ -1,0 +1,14 @@
+.card-text h1{
+  font-size: 22px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  border-radius: 15px 15px 0 0;
+  font-weight: 600;
+  text-align: center;
+  color: #FFF;
+  background-color: #00AFCA;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  padding: 15px 25px;
+}
+.card-text div{
+  padding: 15px 40px 20px 40px;
+}
