@@ -10,16 +10,16 @@
 @section("content")
 
   <div class="location-section">
-    <h3 class="location-title">Location appartement - Région Fès-Meknès <span>(165 résultats)</span></h3>
+    <h3 class="location-title">Vente appartement - Région Fès-Meknès <span>(165 résultats)</span></h3>
   </div>
   <div class="typeLogement">
     <label>
-      <input type="radio" class="btnInput" name="filter" value="option1">
+      <input type="radio" class="btnInput" name="filter" value="option1" checked>
       <span class="btn-label">Vente</span>
     </label>
   
     <label>
-        <input type="radio" class="btnInput" name="filter" value="option2" checked>
+        <input type="radio" class="btnInput" name="filter" value="option2">
         <span class="btn-label">Location</span>
     </label>
   

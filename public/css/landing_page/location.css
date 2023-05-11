@@ -54,8 +54,9 @@
 
 .filterBody{
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   margin: 20px;
 }
 
@@ -151,20 +152,66 @@
 
 /* -------------------------   STYLE CARD  -------------------------*/
 
-.card-appartement{
+.container-appartement{
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
   flex-grow: 2;
   max-width: 835px;
-  max-height: 270px;
-  margin-top: 10px;
+}
+
+.card-appartement{
+  display: flex;
+  height: 225px;
+  margin-top: 30px;
   margin-left: 10px;
   background-color: #F7F7F7;
-  /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
-  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 10px;
+  position: relative;
+}
+
+.card-appartement:hover{
+  cursor: pointer;
+}
+
+
+.favorite-button {
+  position: absolute;
+  top: -20px;
+  right: 93%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FFF;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none ;
+  cursor: pointer;
+}
+
+.favorite-button i {
+  margin-top: 3px;
+  color: #000;
+  font-size: 28px;
+}
+.favorite-button i:hover {
+  color: rgb(250, 0, 0);
+}
+
+.card-price{
+  position: absolute;
+  background-color: #EFE000;
+  color: #000;
+  padding: 2px 9px 2px 9px;
+  font-size: 18px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  border-radius: 0 0 0 8px;
+  right: 1px;
+  top: 0;
 }
 
 .card-description{
@@ -202,15 +249,14 @@
 
 /* --------- style description de card------------------ */
 
-.card-description div{
+.card-description {
   display: flex;
   overflow: hidden;
   position: relative;
   flex-direction: column;
-  justify-content: center;
   padding: 18px;
 }
-.card-description div h1{
+.card-description  h1{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -221,12 +267,12 @@
   overflow-y: auto;
 }
 
-.card-description div span{
+.card-description  span{
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 13px;
   font-weight: 500;
 }
-.card-description div h2{
+.card-description  h2{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -243,4 +289,66 @@
   max-height: 100px;
 }
 
+
+/*----------------------------------- Read MOre Button  ------------------------------------*/
+
+.cutoof-text{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow: hidden;
+  background: linear-gradient(to bottom, transparent, #F7F7F7);
+}
+.card-description a{
+  text-decoration: none;
+  background-color: #FF6600;
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  border-radius: 20px;
+  max-width: 150px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.card-description a:hover{
+  background-color: #FF6600;
+  color: #000; 
+  transition: 1s;
+}
+
+
+
+
+
+
+
+
+
+/* --------------------------- START MediaQuery  -----------------------*/
+
+
+/*                  CARD     */
+
+@media(min-width: 1169px) {
+  .sidebarFilter {
+    position: sticky;
+    top: 0;
+  }
+  
+}
+@media(max-width: 1168px) {
+  .sidebarFilter {
+    max-width: calc(100% - 35%);
+  }
+  .card-appartement{
+    max-width: calc(100% - 15%);
+  }
+  .filterBody{
+    max-width: 100%;
+  }
+}
 
