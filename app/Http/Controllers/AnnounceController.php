@@ -51,14 +51,14 @@ class AnnounceController extends Controller
             'surface' => $request->surface,
             'city' => $request->city
         ]);
-        $files = $request->file("images");
+        $files = $request->image;
+        dd($files);
         $uploaded = [];
         if(isset($files)){
             foreach($files as $file) {
-                $name = time() . '.' . $file->getClientOriginalExtension();
-                $uploaded[] = Storage::put('images/'. $name , file_get_contents($file->getRealPath()));
+                $uploaded[] = Storage::put('images/'. $file , file_get_contents($file->getRealPath()));
                 Media::create([
-                    'url' => $name,
+                    'url' => $file,
                     'idAnnounce' => $announce->id
                 ]);
             }

@@ -41,16 +41,32 @@
       padding: 20px;
       letter-spacing: 1px;
     }
-    .contactInfo{
-      background-color: #09375D;
-      color: #fff;
-      border-radius: 10px;
-      padding: 10px;
-      letter-spacing: 1px;
-    }
 
     .heading, .announceDescription,.table{
       margin-bottom: 15px;
+    }
+
+    .ctaContainer{
+      padding: 30px;
+      text-align: center;
+    }
+
+    .cta{
+      padding: 10px 20px;
+      background-color: #09375D;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      margin: 10px auto;
+      transition: .4s ease;
+      text-decoration: none;
+      color: #f6f3fe;
+    }
+    .cta:hover{
+      background-color: #f6f3fe;
+      border: 2px solid #09375D;
+      color: #09375D;
+      font-weight: 500;
     }
   </style>
 
