@@ -4,9 +4,6 @@
 @isset($user)
 <div class="card shadow mb-4">
     <x-section sectionTitle='Profile info' />
-    @php
-        
-    @endphp
     <form class="p-3" method="post" action="{{ route('profile.update',Auth::user()->id) }}">
       @csrf
       @method('PUT')

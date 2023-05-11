@@ -15,6 +15,61 @@
   
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield("title")</title>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <style>
+    .announceContainer{
+      width: 100%;
+      padding: 40px 200px;
+      background-color: #f6f3fe;
+    }
+    .announce{
+      width: 100%;
+      padding: 30px 20px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+    .heading{
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .announceDescription{
+      background-color: #f6f3fe;
+      border-radius: 10px;
+      padding: 20px;
+      letter-spacing: 1px;
+    }
+
+    .heading, .announceDescription,.table{
+      margin-bottom: 15px;
+    }
+
+    .ctaContainer{
+      padding: 30px;
+      text-align: center;
+    }
+
+    .cta{
+      padding: 10px 20px;
+      background-color: #09375D;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 2px;
+      margin: 10px auto;
+      transition: .4s ease;
+      text-decoration: none;
+      color: #f6f3fe;
+    }
+    .cta:hover{
+      background-color: #f6f3fe;
+      border: 2px solid #09375D;
+      color: #09375D;
+      font-weight: 500;
+    }
+  </style>
+
 </head>
 <body>
   
