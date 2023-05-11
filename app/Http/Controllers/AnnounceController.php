@@ -76,9 +76,12 @@ class AnnounceController extends Controller
     {
         $id = Auth::user()->id;
         $email = Auth::user()->email;
+        $announce_id = $announce->id;
         $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
         $data = (!empty($data)) ? $data[0] : [];
-        return view('pages.user.announces.show', compact('announce', 'data', 'email'));
+        $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
+        // dd($comments);
+        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments'));
     }
 
     /**

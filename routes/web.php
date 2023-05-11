@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnounceController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Inscription;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::view("/", "pages.user.index")->name('dashboard');
     Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
+    Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 });
 
 Route::group(['prefix' => 'admin'] , function(){

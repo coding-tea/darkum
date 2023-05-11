@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text("comment");
             $table->foreignId("userId")->constraide("users");
             $table->foreignId("AnnounceId")->constraide("announces");
+            $table->timestamps();
         });
     }
 
