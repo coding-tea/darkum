@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id("idMedia");
             $table->string("url");
             $table->foreignId("idAnnounce")->constraide("announces");
+            $table->timestamps();
         });
     }
 

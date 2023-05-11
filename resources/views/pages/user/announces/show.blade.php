@@ -40,41 +40,40 @@
 
         <section style="background-color: #fff;" class="comments">
             <div class="container my-5 py-5">
-              <div class="row d-flex justify-content-center">
+              <div class="row w-100">
                 <div class="col">
-                  <div class="card">
+                  <div class="card w-100">
                     
-                    <div class="card-body">
-                      <div class="d-flex flex-start align-items-center">
-                        <img class="rounded-circle shadow-1-strong me-3"
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp" alt="avatar" width="60"
-                          height="60" />
-                        <div>
-                          <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>
-                          <p class="text-muted small mb-0">
-                            Shared publicly - Jan 2020
+                    @isset($comments)
+                    @foreach ($comments as $item)
+                        <div class="card-body w-100 mb-2">
+                          <div class="d-flex flex-start align-items-center w-100">
+                            <div>
+                              <h6 class="fw-bold text-primary"> {{ Auth()->user()->name }} </h6>
+                            </div>
+                          </div>
+              
+                          <p class="mt-1 mb-4 pb-2">
+                            {{ $item->comment }}
                           </p>
                         </div>
-                      </div>
-          
-                      <p class="mt-3 mb-4 pb-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip consequat.
-                      </p>
-                    </div>
+                    @endforeach
+                    @endisset
+                    
 
-                    <form action="">
+                    <form action="{{ route('comment') }}" method="post" class="form w-100">
+                      @csrf
                       <div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
                         <div class="d-flex flex-start w-100">
                           <div class="form-outline w-100">
-                            <textarea class="form-control" id="textAreaExample" rows="4"
+                            <textarea class="form-control" name="comment" id="textAreaExample" rows="4"
                               style="background: #fff;"></textarea>
                             <label class="form-label" for="textAreaExample">Message</label>
                           </div>
                         </div>
+                        <input type="hidden" name="AnnounceId" value="{{ ($announce_id)?$announce_id:"" }}">
                         <div class="float-end mt-2 pt-1">
-                          <button type="button" class="btn btn-primary btn-sm">Post comment</button>
+                          <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
                         </div>
                       </div>
                     </form>

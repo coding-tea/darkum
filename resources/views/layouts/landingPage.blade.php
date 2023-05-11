@@ -73,9 +73,16 @@
       width: 100%;
     }
 
-    .comments .container, .comments .card, .comments .card-body{
+    .comments .container, .comments .card, .comments .card-body,.comments .form{
       width: 100%;
       border: none;
+    }
+
+    .comments .card-body{
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
     }
   </style>
 

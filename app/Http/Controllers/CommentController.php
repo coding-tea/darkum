@@ -6,6 +6,8 @@ use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -16,7 +18,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth()->id();
+        $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
+        
     }
 
     /**
@@ -37,7 +41,13 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+        $userId = auth()->id();
+        $comment = Comment::create([
+            'comment' => $request->comment,
+            'userId' => $userId,
+            'AnnounceId' => $request->AnnounceId
+        ]);
+        return redirect()->back();
     }
 
     /**
