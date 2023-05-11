@@ -14,12 +14,12 @@
   </div>
   <div class="typeLogement">
     <label>
-      <input type="radio" class="btnInput" name="filter" value="option1" checked>
+      <input type="radio" class="btnInput" name="filter" value="option1">
       <span class="btn-label">Vente</span>
     </label>
   
     <label>
-        <input type="radio" class="btnInput" name="filter" value="option2">
+        <input type="radio" class="btnInput" name="filter" value="option2" checked>
         <span class="btn-label">Location</span>
     </label>
   
@@ -205,46 +205,80 @@
 
 
 
-      <!-- CARD Appartement START -->
+      <!-- CONTAINER CARD Appartement START -->
+
+
+
+
+      <main class="container-appartement">
+        <!-- CARD Appartement START -->
 
         <div class="card-appartement">
-            <div class="card-image">
-              <button class="btn btn-link" id="back" aria-label="Précédent">
-                <span class="fa fa-chevron-left"></span>
-              </button>          
 
-              <img src="{{asset("img/landing_page/background/back3.jpg")}}" alt="image">
 
-              <button class="btn btn-link" id="next" aria-label="Suivant">
-                <span class="fa fa-chevron-right"></span>
-              </button>
+            
+
+          <div class="card-image">
+            <button class="btn btn-link" id="back" aria-label="Précédent">
+              <span class="fa fa-chevron-left"></span>
+            </button>          
+
+            <img src="{{asset("img/landing_page/background/back3.jpg")}}" alt="image">
+
+            <button class="btn btn-link" id="next" aria-label="Suivant">
+              <span class="fa fa-chevron-right"></span>
+            </button>
+            <div class="card-price">
+              2 045 DH
             </div>
+          </div>
 
-            <div class="card-description">
-              <div>
-
-
-                <h1>Juste magnifique Apprtement à louer belvédère HAY NASIM</h1>
-                <span>2 chambres, 85 m²</span>
-                <h2>Centre Ville Fes</h2>
-                <p>
-                  Abdelmoumem 
-                </p>
-
-                
+          <div class="card-description">
 
 
-              </div>
-            </div>
-        </div>
+              <h1>Juste magnifique Apprtement à louer belvédère HAY NASIM</h1>
+              <span>2 chambres, 85 m²</span>
+              <h2>Centre Ville Fes</h2>
+              <p class="cutoof-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, et.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, et.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, et.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, et.
+              </p>
+              <a href="#" class="btn">En savoir plus </a>
+
+              
 
 
-        <!-- Filter Appartement End -->
+          </div>
+
+
+
+          <div class="favorite-button">
+            <i class="fa-sharp fa-regular fa-heart"></i>
+          </div>
+
+          
+
+      </div>
+
+  
+
+
+      <!-- CARD Appartement End -->
+      </main>
+
+      
         
+        <!-- CONTAINER CARD Appartement START -->
+
         
     </section>
 
 
+@endsection
 
+@section("script")
+  <script src="{{asset("js/landing_page/location.js")}}"></script>
 @endsection
 
