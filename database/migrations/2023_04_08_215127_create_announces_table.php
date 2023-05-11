@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string("surface", 20);
             $table->string("city", 50);
             $table->foreignId("userId")->constraide("users");
-            $table->
             $table->timestamps();
         });
     }
