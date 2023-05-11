@@ -8,6 +8,7 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
 
 class CommentController extends Controller
 {
@@ -20,7 +21,7 @@ class CommentController extends Controller
     {
         $id = Auth()->id();
         $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
-        return view('pages.user.comments.index');
+        return view('pages.user.comments.index', compact('comments'));
 
     }
 
@@ -46,14 +47,9 @@ class CommentController extends Controller
         return view('pages.user.comments.index', compact('comments'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        $comment = Comment::destroy($id);
+        return redirect()->back();
     }
 }

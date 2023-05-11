@@ -1,6 +1,9 @@
 @extends('layouts.userLayout')
 @section('title', 'comments')
 @section('content')
+<div class="card shadow mb-4">
+
+    <x-section sectionTitle='Comments' />
 
     <section style="background-color: #fff;" class="comments">
         <div class="container my-5 py-5">
@@ -20,6 +23,10 @@
                     <p class="mt-1 mb-4 pb-2">
                         {{ $item->comment }}
                     </p>
+                    <form action="{{ route('deleteC', $item->idCom) }}" method="post">
+                        @csrf
+                        <button type='submit' class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                     </div>
                 @endforeach
                 @endisset
@@ -29,5 +36,5 @@
         </div>
         </div>
     </section>
-
+</div>
 @endsection

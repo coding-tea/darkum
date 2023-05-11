@@ -11,13 +11,14 @@
         @isset($announces)
             @forelse ($announces as $item)
                 <tr class="annonce">
-                    <td> <h4 class="title"> {{ $item->title }} </h4> </td>
+                    <td>{{ $item->id }}</td>
+                    <td class="title"> {{ $item->title }} </td>
                     <td>
                         <form action='{{ route('announces.destroy', $item->id) }}' class="butthons" method='post'>
                             @method('DELETE')
                             @csrf
                             <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                            <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-eye"></i> </a>
+                            <a href="{{ route('announces.show', $item->id) }}"> <i class="fa-solid fa-eye"></i> </a>
                             <a href="{{ route('comments', $item->id) }}"> <i class="fa-solid fa-comment"></i> </a>
                             <button type='submit'> <i class="fa-solid fa-trash"></i> </button>
                             </ul>
@@ -25,7 +26,9 @@
                     </td>
                 </tr>
             @empty
-            <p></p>
+            <tr>
+                <td> there is no annonce yet! </td>
+            </tr>
             @endforelse
         @endisset
     </table>
