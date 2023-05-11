@@ -34,20 +34,18 @@ Route::view("/privacy", "pages.landing_page.condition");
 Route::view("/contact", "pages.landing_page.contact");
 Route::view("/home", "pages.landing_page.index");
 
+//dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::view("/", "pages.user.index")->name('dashboard');
     Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
     Route::post('/comment', [CommentController::class, 'store'])->name('comment');
+    Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');
+    Route::post('/comments/delete/{id}', [CommentController::class, 'destroy'])->name('deleteC');
 });
 
-Route::group(['prefix' => 'admin'] , function(){
-    //admin
-});
-
+//landing Page
 Route::get("/location", [AnnounceController::class, "allAnnonces"])->name("location");
 Route::get("/vente", [AnnounceController::class, "allAnnonces"])->name("vente");
-
-
 
 ?>

@@ -9,4 +9,9 @@ class Comment extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table = 'comments';
+    public $primaryKey = 'idCom';
+    public $incrementing = true;
+    protected $keyType = 'int';
+    public $timestamps = true;
 }

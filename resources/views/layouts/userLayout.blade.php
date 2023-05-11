@@ -24,6 +24,30 @@
         .active{
             color: black;
         }
+        .butthons button{
+            outline: none;
+            border: none;
+            color: #2e59d9;
+            background: none;
+        }
+        .butthons a{
+            margin-right: 10px;
+            color: #2e59d9;
+        }
+
+        .table tr .title{
+            letter-spacing: 1px;
+            color: #2e59d9;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .table .annonce{
+            padding: 10px 20px;
+        }
+
+        .table{
+            padding: 10px 20px;
+        }
     </style>
 
     {{-- cdnjs font-awesome --}}
@@ -62,13 +86,6 @@
                                 <a class="nav-link" href=" {{ route('announces.index') }} ">
                                     <i class="fas fa-fw fa-folder"></i>
                                     <span>announces</span></a>
-                            </li>
-
-                            <!-- Nav Item - comments -->
-                            <li class="nav-item" {{(Request::is('user/comments'))?'active':'' }}">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-fw fa-chart-area"></i>
-                                    <span>comments</span></a>
                             </li>
 
                             <!-- Nav Item - Profile -->
