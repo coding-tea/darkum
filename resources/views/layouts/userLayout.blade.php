@@ -64,13 +64,6 @@
                                     <span>announces</span></a>
                             </li>
 
-                            <!-- Nav Item - comments -->
-                            <li class="nav-item" {{(Request::is('user/comments'))?'active':'' }}">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-fw fa-chart-area"></i>
-                                    <span>comments</span></a>
-                            </li>
-
                             <!-- Nav Item - Profile -->
                             <li class="nav-item" {{(Request::is('user/profile*'))?'active':'' }}">
                                 <a class="nav-link" href="{{ route('profile.index') }}">

@@ -39,6 +39,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
     Route::post('/comment', [CommentController::class, 'store'])->name('comment');
+    Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');
 });
 
 Route::group(['prefix' => 'admin'] , function(){
