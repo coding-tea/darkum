@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string("title", 100);
             $table->text("description");
+            $table->enum('typeL', ['location', 'vente', 'vacance'])->default('location');
+            $table->enum('type', ['Appartement', 'Maison', 'Villa', "Chambres", "Terrains", "Fermes"])->default('Appartement');
             $table->unsignedFloat("price");
             $table->unsignedInteger("nbRome");
             $table->string("surface", 20);
             $table->string("city", 50);
+            $table->
             $table->timestamps();
         });
     }
