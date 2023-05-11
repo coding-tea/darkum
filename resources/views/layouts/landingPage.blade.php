@@ -91,8 +91,8 @@
     </button>
     <div class="navlinks-container">
       <a href="/" aria-current="page">Home</a>
-      <a href="/vente">Vente</a>
-      <a href="/location">Location</a>
+      <a href="{{route("vente")}}">Vente</a>
+      <a href="{{route("location")}}">Location</a>
       <a href="contact">Contact</a>
       <button class="nvAnnonce">Publier Une Annonce</button>
     </div>

@@ -9,4 +9,9 @@ class Announce extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function medias()
+    {
+      return $this->hasMany(Media::class, 'idAnnounce', 'id');
+
+    }
 }

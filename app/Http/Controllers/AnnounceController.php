@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Media;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -122,5 +123,24 @@ class AnnounceController extends Controller
     {
         $announce->delete();
         return redirect()->route('announces.index');
+    }
+    public function allAnnonces(Request $req)
+    {
+      if($req->is("location")){
+        $announces = Announce::where("type", 'location')->with('medias')->get();
+        $types = 'location';
+      }
+      else if($req->is("vente")){
+        $announces = Announce::where("type", 'vente')->with('medias')->get();
+        $types = 'vente';
+
+      }
+      else if($req->is("vacance")){
+        $announces = Announce::where("type", 'vacance')->with('medias')->get();
+        $types = 'vacances';
+
+      }
+
+        return view('pages.landing_page.location', compact("announces",'types'));
     }
 }
