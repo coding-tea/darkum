@@ -6,6 +6,7 @@ use App\Models\Announce;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
+use App\Models\Datas;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
@@ -53,19 +54,10 @@ class AnnounceController extends Controller
             'city' => $request->city,
             'userId' => Auth()->id()
         ]);
-        // $files = $request->image;
-        // dd($files);
-        // $uploaded = [];
-        // if(isset($files)){
-        //     foreach($files as $file) {
-        //         $uploaded[] = Storage::put('images/'. $file , file_get_contents($file->getRealPath()));
-        //         Media::create([
-        //             'url' => $file,
-        //             'idAnnounce' => $announce->id
-        //         ]);
-        //     }
-        // }
-        return redirect()->route('announces.index');
+
+        //announceimage
+
+        // return redirect()->route('announces.index');
     }
 
     /**
@@ -130,21 +122,17 @@ class AnnounceController extends Controller
     }
     public function allAnnonces(Request $req)
     {
-      if($req->is("location")){
-        $announces = Announce::where("type", 'location')->with('medias')->get();
-        $types = 'location';
-      }
-      else if($req->is("vente")){
-        $announces = Announce::where("type", 'vente')->with('medias')->get();
-        $types = 'vente';
+        if ($req->is("location")) {
+            $announces = Announce::where("type", 'location')->with('medias')->get();
+            $types = 'location';
+        } else if ($req->is("vente")) {
+            $announces = Announce::where("type", 'vente')->with('medias')->get();
+            $types = 'vente';
+        } else if ($req->is("vacance")) {
+            $announces = Announce::where("type", 'vacance')->with('medias')->get();
+            $types = 'vacances';
+        }
 
-      }
-      else if($req->is("vacance")){
-        $announces = Announce::where("type", 'vacance')->with('medias')->get();
-        $types = 'vacances';
-
-      }
-
-        return view('pages.landing_page.location', compact("announces",'types'));
+        return view('pages.landing_page.location', compact("announces", 'types'));
     }
 }

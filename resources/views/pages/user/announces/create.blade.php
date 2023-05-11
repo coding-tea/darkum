@@ -11,7 +11,13 @@
         <x-form-input title='Rom Number' name='nbRome' type='number' />
         <x-form-input title='surface' name='surface' type='number' />
         <x-form-input title='city' name='city' placeholder="your city" />
-        <x-form-input title='image' name='image[]' type='file' />
+
+        <div class="mt-3">
+          <label class="form-label" for="Title">
+            images
+          </label>
+          <input type="file" class="form-control" placeholder="Choose Announce Images" id="images" name="files" >
+        </div>
 
         <input type="hidden" name="state" value="0">
         <div class="md:flex md:items-center">
