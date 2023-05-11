@@ -68,6 +68,15 @@
       color: #09375D;
       font-weight: 500;
     }
+
+    .comments{
+      width: 100%;
+    }
+
+    .comments .container, .comments .card, .comments .card-body{
+      width: 100%;
+      border: none;
+    }
   </style>
 
 </head>
