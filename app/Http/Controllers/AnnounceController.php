@@ -56,8 +56,19 @@ class AnnounceController extends Controller
         ]);
 
         //announceimage
+        if($request->hasFile('image')){
+            foreach($request->file('image') as $key => $image)
+            {
+                $ImageName = time().'.'.$image->extension();
+                $image->storeAs('images', $ImageName);
+                Media::create([
+                    'url' => $ImageName,
+                    'idAnnounce' => $announce->id
+                ]);
+            }
+        }
 
-        // return redirect()->route('announces.index');
+        return redirect()->route('announces.index');
     }
 
     /**
