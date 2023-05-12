@@ -13,7 +13,6 @@
         <x-form-input title='Rom Number' name='nbRome' :value="$announce->nbRome" type='number' />
         <x-form-input title='surface' name='surface' :value="$announce->surface" type='number' />
         <x-form-input title='city' name='city' :value="$announce->city" placeholder="your city" />
-        <x-form-input title='image' name='image'  type='file' />
 
         <input type="hidden" name="state" value="0">
         <div class="md:flex md:items-center">
