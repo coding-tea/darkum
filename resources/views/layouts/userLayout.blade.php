@@ -22,8 +22,46 @@
 
     <style>
         .active{
-            color: black;
+            color: white;
         }
+        .butthons button{
+            outline: none;
+            border: none;
+            color: #2e59d9;
+            background: none;
+        }
+        .butthons a{
+            margin-right: 10px;
+            color: #2e59d9;
+        }
+
+        .table tr .title{
+            letter-spacing: 1px;
+            color: #2e59d9;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .table .annonce{
+            padding: 10px 20px;
+        }
+
+        .table{
+            padding: 10px 20px;
+        }
+        .nav-link{
+            color: none;
+            /* #d1d3e2 */
+        }
+        
+        .topbar.navbar-light .navbar-nav .nav-item .nav-link {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .section-text{
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
     </style>
 
     {{-- cdnjs font-awesome --}}
@@ -51,29 +89,22 @@
                         {{-- navbar links --}}
                         <ul class="navbar-nav mr-auto">
                             <!-- Nav Item - Dashboard -->
-                            <li class="nav-item {{(Request::is('user'))?'active':'' }}">
-                                <a class="nav-link" href="/user">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
                                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                                    <span>Dashboard</span></a>
+                                    <span>home</span></a>
                             </li>
 
                             <!-- Nav Item - announces -->
-                            <li class="nav-item {{(Request::is('user/announces*'))?'active':'' }}">
-                                <a class="nav-link" href=" {{ route('announces.index') }} ">
+                            <li class="nav-item">
+                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
                                     <i class="fas fa-fw fa-folder"></i>
                                     <span>announces</span></a>
                             </li>
 
-                            <!-- Nav Item - comments -->
-                            <li class="nav-item" {{(Request::is('user/comments'))?'active':'' }}">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-fw fa-chart-area"></i>
-                                    <span>comments</span></a>
-                            </li>
-
                             <!-- Nav Item - Profile -->
-                            <li class="nav-item" {{(Request::is('user/profile*'))?'active':'' }}">
-                                <a class="nav-link" href="{{ route('profile.index') }}">
+                            <li class="nav-item">
+                                <a class="nav-link {{(Request::is('user/profile*'))?'active':'' }}" href="{{ route('profile.index') }}">
                                     <i class="fas fa-fw fa-cog"></i>
                                     <span>Profile</span></a>
                                 </li>

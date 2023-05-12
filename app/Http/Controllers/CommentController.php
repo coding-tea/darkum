@@ -6,8 +6,10 @@ use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;
 
 class CommentController extends Controller
 {
@@ -20,17 +22,8 @@ class CommentController extends Controller
     {
         $id = Auth()->id();
         $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
-        
-    }
+        return view('pages.user.comments.index', compact('comments'));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -50,48 +43,14 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
+    public function show($announce_id){
+        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
+        return view('pages.user.comments.index', compact('comments'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCommentRequest  $request
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCommentRequest $request, Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comment $comment)
-    {
-        //
+        $comment = Comment::destroy($id);
+        return redirect()->back();
     }
 }

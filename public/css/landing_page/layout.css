@@ -102,14 +102,14 @@ nav {
   cursor: pointer;
 }
 
-.nvAnnonce:hover {
+/* .nvAnnonce:hover {
   text-decoration: none;
   background-color: #FF5500;
   border-radius: 20px;
   color: #FFF;
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 .nav-authentication {
   margin-left: auto;
