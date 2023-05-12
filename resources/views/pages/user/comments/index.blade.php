@@ -16,7 +16,7 @@
                     <div class="card-body w-100 mb-2">
                     <div class="d-flex flex-start align-items-center w-100">
                         <div>
-                        <h6 class="fw-bold text-primary"> {{ Auth()->user()->name }} </h6>
+                        <h6 class="fw-bold text-primary"> comment from annonce {{ $item->AnnounceId }} </h6>
                         </div>
                     </div>
         

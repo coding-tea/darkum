@@ -55,7 +55,7 @@
   line-height: 35px;
   position: absolute;
   font-size: 18px;
-  background-color: #FF5500;
+  background-color: #4e73de;
   color: #FFF;
   font-weight: bold;
   border-radius: 50%;
@@ -153,10 +153,7 @@
   cursor: pointer;
 }
 
-.btnRech:hover {
-  background-color: #FF5500;
-  color: #FFF;
-}
+
 
 
 /* --------------------------- FIN STYLE HEADER SECTION -----------------------*/

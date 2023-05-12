@@ -84,8 +84,129 @@
       border-radius: 5px;
       box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
     }
-  </style>
 
+    body{
+      overflow-x: hidden;
+    }
+
+    .menu{
+      padding: 7px 150px;
+      background-color: #fff;
+      color: rgba(0, 0, 0, 0.5);
+      box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu a, .main-navlinks .navlinks-container a{
+      color: rgba(0, 0, 0, 0.5);
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .sign a{
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 0;
+      color: #fff;
+    }
+
+    .sign .signA{
+      padding: 0;
+      margin-right: 10px;
+      color: #4e73de;
+    }
+
+    .nvAnnonce{
+      background-color: #fff;
+      border: 2px solid #4e73de;
+      color: #4e73de;
+      padding: 7px 10px;
+      border-radius: 3px;
+      transition: .4s ease;
+    }
+
+    .loginBtn{
+      background-color: #4e73de;
+      color: #fff;
+      padding: 7px 10px;
+      border-radius: 3px;
+      transition: .4s ease;
+      border: none;
+      border-radius: 5ùpx;
+    }
+
+    .nvAnnonce:hover{
+      border-radius: 20px;
+    }
+    .loginBtn:hover{
+      background-color: #fff;
+      border: 2px solid #4e73de;
+      color: #4e73de;
+      border-radius: 20px;
+    }
+    .signB:hover a{
+      color: #4e73de;
+    }
+    .header-section{
+      background: linear-gradient(#4e73de, #36b9cc);
+      color: white;
+      height: 100vh;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      clip-path: polygon(100% 0, 100% 100%, 74% 93%, 44% 100%, 22% 93%, 0 100%, 0 0);
+    }
+    .publiciter{
+      margin-bottom: 50px;
+    }
+    .publiciter .h1{
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: none;
+      font-size: 60px;
+      /* text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5); */
+    }
+    .publiciter .pubParagraphe{
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: none;
+      font-size: 20px;
+      /* text-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5); */
+    }
+    .filterRecherche{
+      width: 60%;
+      padding: 20px 10px;
+      border-radius: 5px;
+    }
+    .bottom_text{
+      background-color: #36b9cc;
+      border: none;
+    }
+    .footer{
+      background: linear-gradient(#4e73de, #36b9cc);
+    }
+    .darkum{
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btnRech{
+      background-color: #4e73de;
+      color: #fff;
+      padding: 7px 20px;
+      transition: .4s ease;
+    }
+    .btnRech:hover{
+      background-color: #fff;
+      border: 2px solid #4e73de;
+      color: #4e73de;
+    }
+    </style>
 </head>
 <body>
   
@@ -106,10 +227,10 @@
         <span></span>
     </button>
     <div class="navlinks-container">
-      <a href="/" aria-current="page">Home</a>
-      <a href="{{route("vente")}}">Vente</a>
-      <a href="{{route("location")}}">Location</a>
-      <a href="contact">Contact</a>
+      <a href="/" aria-current="page" class="btn">Home</a>
+      <a href="{{route("vente")}}" class="btn">Vente</a>
+      <a href="{{route("location")}}" class="btn">Location</a>
+      <a href="contact" class="btn">Contact</a>
       <button class="nvAnnonce">Publier Une Annonce</button>
     </div>
   </div>
@@ -118,9 +239,14 @@
     <a href="#" class="user-toggler" aria-label="Sign in page">
       <img src="{{asset("img/user.svg")}}" alt="user icon" />
     </a>
-    <div class="sign-btns">
-      <button type="button">Sign in</button>
-      <button type="button">Sign up</button>
+    <div class="sign">
+      @guest
+      <a href="{{ route('login') }}" class="signA">Sign in</a>
+      <button type="button" class="loginBtn signB"><a href="{{ route('register') }}">Sign up</a></button>
+      @endguest
+      @auth
+      <button type="button" class="loginBtn signB"><a href="/user">Dashboard</a></button>
+      @endauth
     </div>
   </div>
   
@@ -170,26 +296,10 @@
   </div>
   <div class="bottom-details">
     <div class="bottom_text">
-      <span class="copyright_text">Copyright © 2023 <a href="#"> Darkum. </a>Tous droits réservés</span>
+      <span class="copyright_text">Copyright © 2023 <a href="/" class="darkum"> Darkum. </a>Tous droits réservés</span>
     </div>
   </div>
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <script src="{{asset("js/landing_page/index.js")}}"></script>
   <script src="{{asset("js/landing_page/layout.js")}}"></script>

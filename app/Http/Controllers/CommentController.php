@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Lexer\TokenEmulator\CoaleseEqualTokenEmulator;

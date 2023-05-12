@@ -36,7 +36,7 @@ Route::view("/home", "pages.landing_page.index");
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
-    Route::view("/", "pages.user.index")->name('dashboard');
+    Route::get("/", [AnnounceController::class, 'index']);
     Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
     Route::post('/comment', [CommentController::class, 'store'])->name('comment');
