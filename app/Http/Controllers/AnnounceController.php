@@ -56,10 +56,9 @@ class AnnounceController extends Controller
         ]);
 
         //announceimage
-        if($request->hasFile('image')){
-            foreach($request->file('image') as $key => $image)
-            {
-                $ImageName = time().'.'.$image->extension();
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $key => $image) {
+                $ImageName = time() . '.' . $image->extension();
                 $image->storeAs('images', $ImageName);
                 Media::create([
                     'url' => $ImageName,
@@ -84,7 +83,7 @@ class AnnounceController extends Controller
         $announce_id = $announce->id;
         $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
         $data = (!empty($data)) ? $data[0] : [];
-        $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
+        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
         // dd($comments);
         return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments'));
     }

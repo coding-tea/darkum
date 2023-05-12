@@ -93,7 +93,7 @@
       padding: 7px 150px;
       background-color: #fff;
       color: rgba(0, 0, 0, 0.5);
-      box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.1);
     }
 
     .menu a, .main-navlinks .navlinks-container a{
