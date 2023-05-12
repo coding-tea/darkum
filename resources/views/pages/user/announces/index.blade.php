@@ -18,7 +18,7 @@
                             @method('DELETE')
                             @csrf
                             <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                            <a href="{{ route('announces.show', $item->id) }}"> <i class="fa-solid fa-eye"></i> </a>
+                            <a href="{{ route('show', $item->id) }}"> <i class="fa-solid fa-eye"></i> </a>
                             <a href="{{ route('comments', $item->id) }}"> <i class="fa-solid fa-comment"></i> </a>
                             <button type='submit'> <i class="fa-solid fa-trash"></i> </button>
                             </ul>
