@@ -131,19 +131,69 @@ class AnnounceController extends Controller
         $announce->delete();
         return redirect()->route('announces.index');
     }
+
+    //Get All Annconce BY TYPE
+
     public function allAnnonces(Request $req)
     {
-        if ($req->is("location")) {
-            $announces = Announce::where("type", 'location')->with('medias')->get();
+        $path = $req->path();
+        if ($path == "location") {
+            $announces = Announce::where("typeL", 'location')->with('medias')->get();
             $types = 'location';
-        } else if ($req->is("vente")) {
-            $announces = Announce::where("type", 'vente')->with('medias')->get();
+        } else if ($path == "vente") {
+            $announces = Announce::where("typeL", 'vente')->with('medias')->get();
             $types = 'vente';
-        } else if ($req->is("vacance")) {
-            $announces = Announce::where("type", 'vacance')->with('medias')->get();
+        } else if ($path == "vacance") {
+            $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
             $types = 'vacances';
         }
-
-        return view('pages.landing_page.location', compact("announces", 'types'));
+        return view('pages.landing_page.location', compact("announces", 'path'));
     }
+
+    public function filterSearch(Request $request)
+  {
+    // get the type of route (location | vente | vacance)
+    $path = $request->path();
+    
+    //get all ville to fill the region select 
+    $villes = DB::table('announces')->distinct()->pluck('city');
+    //type de bien selectionner par user (Appartement | Maison | Villas ...)
+    $typesBien = $request->input('typeBien');
+    // la ville rechercher  selectionner par user
+    $ville = $request->regionFilter;
+    // le buget minimal et maximal selectionner par le user :
+    $minBudget = $request->budgetMin;
+    $maxBudget = $request->budgetMax;
+    // get all annonces by type of route (location | vente | vacance)
+    $announces = Announce::where("typeL", $path)->with('medias');
+
+    //get  annonces filtred by type de bien (Appartement | Maison | Villas ...):
+
+    if(!empty($typesBien)){
+      $announces = Announce::where("typeL", $path)->wherein("type", $typesBien);
+
+    // get les annonces filtrer by ville selectionner par user:
+    if(!empty($ville)){
+      $announces = Announce::where("city", "like", "%".$ville."%");
+    }
+
+    // get les annonces filtrer by budget selectionner par user:
+    if(!empty($minBudget) || !empty($maxBudget)){
+      $announces = Announce::whereBetween("price", [$minBudget, $maxBudget]);
+    }
+
+
+    $announces = $announces->with('medias')->get();
+  }
+
+  
+    return view("pages.landing_page.location", compact("announces", 'path', "villes"));
+  }
+  
 }
+
+
+
+
+
+
