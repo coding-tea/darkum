@@ -79,6 +79,33 @@
 }
 
 
+/*------------------------- BUTTON Filtrer -------------------------------*/
+
+#btnFilter{
+  text-align: center;
+  margin-top: 15px;
+}
+.btnFiltrer{
+  /* display: block; */
+  text-decoration: none;
+  background-color: #00AFCA;
+  color: #FFF;
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  border-radius: 20px;
+  max-width: 200px;
+
+}
+.btnFiltrer:hover{
+  background-color: #104A7A;
+  color: #FFF; 
+  transition: 1s;
+}
+
+
 /*------------------------- BUTTON CHECKBOX -------------------------------*/
 
 .nbChambre{

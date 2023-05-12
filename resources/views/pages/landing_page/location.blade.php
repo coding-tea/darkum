@@ -8,10 +8,9 @@
 @endsection
 
 @section("content")
-  @if(isset($types) && isset($announces))
-
+  @if(isset($typesL) && isset($announces))
   <div class="location-section">
-    <h3 class="location-title">{{$types}} appartement - Région Fès-Meknès <span>(165 résultats)</span></h3>
+    <h3 class="location-title">{{$typesL}} appartement - Région Fès-Meknès <span>(165 résultats)</span></h3>
   </div>
   <div class="typeLogement">
     <label>
@@ -34,15 +33,18 @@
 
     <section class="filterBody">
       <!-- Filter Sidebar Start -->
-      <main class="sidebarFilter">
+      <form class="sidebarFilter" action="{{ route('filterAnnonce') }}" method="POST">
+        @csrf
         <!-- Filter  By Region -->
         <div class="region">
             <label for="regionFilter" class="labelFilter mb-1">Régions</label>
             <select name="regionFilter" id="regionFilter">
               <option selected disabled>Choosir un region</option>
-              <option value="Option1">Option1</option>
-              <option value="Option2">Option2</option>
-              <option value="Option3">Option3</option>      
+              @isset($villes)
+                @foreach ($villes as $ville)
+                    <option value="{{$ville}}"> {{$ville}} </option>
+                @endforeach
+              @endisset
             </select>
 
             
@@ -57,32 +59,32 @@
             <label for="regionFilter" class="labelFilter mb-1">type de bien</label>
           
             <label>
-              <input type="checkbox" class="btnInput" name="typeBien" value="option1" checked>
+              <input type="checkbox" class="btnInput" name="typeBien[]" value="Appartement" checked>
               <span class="btn-checkbox">Appartement</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="typeBien" value="option2">
+                <input type="checkbox" class="btnInput" name="typeBien[]" value="Maison">
                 <span class="btn-checkbox">Maison</span>
             </label>
           
             <label style="margin-right: 10px">
-                <input type="checkbox" class="btnInput" name="typeBien" value="option3">
+                <input type="checkbox" class="btnInput" name="typeBien[]" value="Villa">
                 <span class="btn-checkbox">Villa</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="typeBien" value="option2">
+                <input type="checkbox" class="btnInput" name="typeBien[]" value="Chambres">
                 <span class="btn-checkbox">Chambres</span>
             </label>
           
             <label style="margin-right: 10px">
-                <input type="checkbox" class="btnInput" name="typeBien" value="option3">
+                <input type="checkbox" class="btnInput" name="typeBien[]" value="Terrains">
                 <span class="btn-checkbox">Terrains</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="typeBien" value="option2">
+                <input type="checkbox" class="btnInput" name="typeBien[]" value="Fermes">
                 <span class="btn-checkbox">Fermes</span>
             </label>
           
@@ -199,9 +201,12 @@
         </label>
       
         
-
-    </div>
-      </main>
+        
+      </div>
+      <div id="btnFilter">
+        <button type="submit" class="btnFiltrer">Filtrer </button>
+      </div>
+      </form>
     <!-- Filter Sidebar End -->
 
 
@@ -233,7 +238,7 @@
               <span class="fa fa-chevron-right"></span>
             </button>
             <div class="card-price">
-              {{$annonce->price}}
+              {{$annonce->price}} DH
             </div>
           </div>
 
@@ -281,25 +286,7 @@
 
     @endif
 
-    <script>
-      $('input[name="typeBien"]').change(function() {
-  var types = [];
-  $('input[name="typeBien"]:checked').each(function() {
-    types.push($(this).val());
-  });
-  $.ajax({
-    type: "POST",
-    url: "/filter",
-    data: { types: types },
-    success: function(response) {
-      // Mettre à jour le contenu de la page avec les annonces filtrées
-    },
-    error: function(xhr) {
-      console.log(xhr.responseText);
-    }
-  });
-});
-    </script>
+    
 @endsection
 
 @section("script")

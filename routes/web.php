@@ -47,7 +47,6 @@ Route::group(['prefix' => 'admin'] , function(){
 
 Route::get("/location", [AnnounceController::class, "allAnnonces"])->name("location");
 Route::get("/vente", [AnnounceController::class, "allAnnonces"])->name("vente");
-
-
+Route::post("/location", [AnnounceController::class, "filterSearch"])->name("filterAnnonce");
 
 ?>
