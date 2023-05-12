@@ -254,7 +254,7 @@
               <p class="cutoof-text">
                 {{$annonce->description}}
               </p>
-              <a href="{{ route('announces.show', $annonce->id) }}" class="btn">En savoir plus </a>
+              <a href="{{ route('show', $annonce->id) }}" class="btn">En savoir plus </a>
 
               
 
