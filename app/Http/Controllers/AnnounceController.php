@@ -129,7 +129,8 @@ class AnnounceController extends Controller
     {
         $announce->delete();
         return redirect()->route('announces.index');
-    }
+    } 
+
     public function allAnnonces(Request $req)
     {
         if ($req->is("location")) {
