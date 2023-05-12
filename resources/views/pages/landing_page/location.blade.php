@@ -107,7 +107,7 @@
             <option value="30000">30000</option>
             <option value="40000">40000</option>
             <option value="50000">50000</option>
-            <option value="6000">6000</option>
+            <option value="60000">60000</option>
           </select>
         </div>
 
