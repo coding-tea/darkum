@@ -213,27 +213,27 @@
         <label for="regionFilter" class="labelFilter mb-1">Caractéristiques</label>
       
         <label>
-          <input type="checkbox" class="btnInput" name="caracteristique" value="option1" checked>
+          <input type="checkbox" class="btnInput" name="caracteristique[]" value="ascenseur" checked>
           <span class="btn-checkbox">Ascenseur</span>
         </label>
       
         <label>
-            <input type="checkbox" class="btnInput" name="caracteristique" value="option2">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="garage">
             <span class="btn-checkbox">Garage</span>
         </label>
       
         <label style="margin-right: 10px">
-            <input type="checkbox" class="btnInput" name="caracteristique" value="option3">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="jardin">
             <span class="btn-checkbox">Jardin</span>
         </label>
       
         <label>
-            <input type="checkbox" class="btnInput" name="caracteristique" value="option2">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="piscine">
             <span class="btn-checkbox">Piscine</span>
         </label>
       
         <label style="margin-right: 10px">
-            <input type="checkbox" class="btnInput" name="caracteristique" value="option3">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="terrasse">
             <span class="btn-checkbox">Terrasse</span>
         </label>
       
