@@ -35,6 +35,7 @@ class AnnounceController extends Controller
      */
     public function create()
     {
+        dd('hello world');
         return view('pages.user.announces.create');
     }
 
@@ -83,11 +84,10 @@ class AnnounceController extends Controller
         $data = null;
         $email = '';
         if(auth()->check()){
-            $id = Auth::user()->id; 
             $email = Auth::user()->email;
-            $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
-            $data = (!empty($data)) ? $data[0] : [];
         }
+        $data = DB::table('datas')->where('userId', $announce->userId)->limit(1)->get()->toArray();
+        $data = (!empty($data)) ? $data[0] : [];
         $announce_id = $announce->id;
         $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
         $names = [];
@@ -95,7 +95,8 @@ class AnnounceController extends Controller
             $name = User::find($comment->userId)->name;
             array_push($names, $name);
         }
-        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names'));
+        $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
+        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias'));
     }
 
     /**
@@ -179,11 +180,11 @@ class AnnounceController extends Controller
     //get  annonces filtred by type de bien (Appartement | Maison | Villas ...):
 
     if(!empty($typesBien)){
-      $announces = Announce::where("typeL", $path)->wherein("type", $typesBien);
+      $announces->where("typeL", $path)->wherein("type", $typesBien);
 
     // get les annonces filtrer by ville selectionner par user:
     if(!empty($ville)){
-      $announces = Announce::where("city", "like", "%".$ville."%");
+      $announces->where("city", "like", "%".$ville."%");
     }
 
     // get les annonces filtrer by budget selectionner par user:
