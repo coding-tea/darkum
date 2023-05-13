@@ -693,6 +693,7 @@ class ComposerStaticInita038c882dcce919dbca1d340a28bebf3
         'Database\\Seeders\\FavoriteSeeder' => __DIR__ . '/../..' . '/database/seeders/FavoriteSeeder.php',
         'Database\\Seeders\\FavoritesSeeder' => __DIR__ . '/../..' . '/database/seeders/FavoritesSeeder.php',
         'Database\\Seeders\\LinkSeeder' => __DIR__ . '/../..' . '/database/seeders/LinkSeeder.php',
+        'Database\\Seeders\\MediaSeeder' => __DIR__ . '/../..' . '/database/seeders/MediaSeeder.php',
         'Database\\Seeders\\commentairesTableSeeder' => __DIR__ . '/../..' . '/database/seeders/commentairesTableSeeder.php',
         'Database\\Seeders\\favorisTableSeeder' => __DIR__ . '/../..' . '/database/seeders/favorisTableSeeder.php',
         'Database\\Seeders\\postsTableSeeder' => __DIR__ . '/../..' . '/database/seeders/postsTableSeeder.php',

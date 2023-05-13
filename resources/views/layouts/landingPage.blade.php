@@ -43,7 +43,7 @@
     }
 
     .heading, .announceDescription,.table{
-      margin-bottom: 15px;
+      margin-bottom: 40px;
     }
 
     .ctaContainer{
@@ -53,20 +53,17 @@
 
     .cta{
       padding: 10px 20px;
-      background-color: #09375D;
+      background-color: #29a160;
       text-transform: uppercase;
       letter-spacing: 1px;
       border-radius: 2px;
       margin: 10px auto;
-      transition: .4s ease;
       text-decoration: none;
       color: #f6f3fe;
+      transition:all 1s ease;
     }
     .cta:hover{
-      background-color: #f6f3fe;
-      border: 2px solid #09375D;
-      color: #09375D;
-      font-weight: 500;
+      border-radius: 30px;
     }
 
     .comments{
@@ -199,6 +196,41 @@
       border: 2px solid #4e73de;
       color: #4e73de;
     }
+    .footer{
+      margin-top: 0;
+    }
+
+    .logoImg{
+      width: 160px;
+    }
+
+    .footerDarkum{
+      width: 200px;
+    }
+
+    .help{
+      background-color: #eaeaea;
+    }
+
+    .help .card-about h1{
+      border-radius: 5px;
+      background-color: #4e73de;
+      text-shadow: none;
+      font-size: 15px;
+    }
+
+    .help .card-text h1{
+      border-radius: 5px;
+      background-color: #4e73de;
+      text-shadow: none;
+      font-size: 15px;
+    }
+
+    .help .contact #btn-contact{
+      background-color: #29a160;
+      padding: 7px 20px;
+      border-radius: 5px;
+    }
     </style>
 </head>
 <body>
@@ -208,9 +240,9 @@
 <nav class="menu">
 
   <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
-  <a href="{{route("home")}}" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
-    <img src="{{asset("img/landing_page/logo.png")}}" alt="Logo" class="logoImg">
-    <span>Darkum</span>
+  <a href="#" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+    <img src="{{asset("img/darkum-blue.png")}}" alt="Logo" class="logoImg">
+    {{-- <span>Darkum</span> --}}
   </a>
 
   <div class="main-navlinks">
@@ -261,7 +293,7 @@
     {{-- <div class="row"> --}}
       <div class="footer-col">
         <ul>
-          <li class="footerLogo"><a href="#"><img src="{{asset("img/landing_page/logo.png")}}" width="80" height="100" alt="Logo"> <span>Darkum</span></a></li>
+          <li class="footerLogo"><a href="#"><img src="{{asset("img/darkum-white.png")}}" width="80" height="100" alt="Logo" class="footerDarkum"></a></li>
         </ul>
       </div>
       <div class="footer-col">

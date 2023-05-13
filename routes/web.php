@@ -32,6 +32,7 @@ Route::view("/privacy", "pages.landing_page.condition");
 Route::view("/contact", "pages.landing_page.contact");
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
+Route::view('/create', 'pages.user.announces.create')->name('announces.create')->middleware('auth');
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
@@ -40,11 +41,15 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
 
     Route::group(['prefix' => 'announces'], function(){
         Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
-        Route::post('user/announces', [AnnounceController::class, 'store'])->name('announces.store');
-        Route::post('user/announces/create', [AnnounceController::class, 'create'])->name('announces.create');
-        Route::get('user/announces/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
-        Route::put('user/announces/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
-        Route::delete('user/announces/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
+
+        
+        // Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create');
+        Route::post('/', [AnnounceController::class, 'store'])->name('announces.store');
+
+        Route::get('/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
+        Route::put('/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
+
+        Route::delete('/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
     });
     
     // Route::resource('/announces', AnnounceController::class);
@@ -59,5 +64,3 @@ Route::get("/location", [AnnounceController::class, "allAnnonces"])->name("locat
 Route::get("/vente", [AnnounceController::class, "allAnnonces"])->name("vente");
 Route::get("/vacance", [AnnounceController::class, "allAnnonces"])->name("vacance");
 Route::post("/location", [AnnounceController::class, "filterSearch"])->name("filterAnnonce");
-
-?>
