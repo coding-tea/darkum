@@ -33,7 +33,7 @@ Route::view("/contact", "pages.landing_page.contact");
 Route::view("/home", "pages.landing_page.index");
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
-Route::view('/create', 'pages.user.announces.create')->name('announces.create');
+Route::view('/create', 'pages.user.announces.create')->name('announces.create')->middleware('auth');
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {

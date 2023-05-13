@@ -214,6 +214,30 @@
     .footerDarkum{
       width: 200px;
     }
+
+    .help{
+      background-color: #eaeaea;
+    }
+
+    .help .card-about h1{
+      border-radius: 5px;
+      background-color: #4e73de;
+      text-shadow: none;
+      font-size: 15px;
+    }
+
+    .help .card-text h1{
+      border-radius: 5px;
+      background-color: #4e73de;
+      text-shadow: none;
+      font-size: 15px;
+    }
+
+    .help .contact #btn-contact{
+      background-color: #29a160;
+      padding: 7px 20px;
+      border-radius: 5px;
+    }
     </style>
 </head>
 <body>
