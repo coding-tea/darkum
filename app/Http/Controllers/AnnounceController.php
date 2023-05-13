@@ -204,6 +204,10 @@ class AnnounceController extends Controller
     // nombre de chambre choisie par user
     $nbChambre = $request->input('nbChambre');
 
+    //get caracteristique choisie par user :
+    $caracteristique = $request->input('caracteristique');
+
+
     // get all annonces by type of route (location | vente | vacance)
     $announces = Announce::where("typeL", $path);
 
@@ -241,6 +245,12 @@ class AnnounceController extends Controller
           $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=" , 6);
         }
         else $announces = $announces->wherein("nbRome", $nbChambre);
+      }
+
+      if(!empty($caracteristique)){
+        foreach ($caracteristique as $caract) {
+          $announces = $announces->where("description", "like", "%".$caract."%");
+        }
       }
 
       // calculer le nombre des annonces pour le afficher
