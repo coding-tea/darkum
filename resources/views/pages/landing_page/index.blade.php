@@ -21,24 +21,24 @@
       <div class="circle3">3</div>
       <div class="zone1">
         <label>
-          <input type="radio" class="btnInput" name="filter" value="option1" checked>
+          <input type="radio" class="btnInput" name="filter" value="vente" checked>
           <span class="btn-label" style="border-radius: 15px 1px 1px 15px">Vente</span>
         </label>
       
         <label>
-            <input type="radio" class="btnInput" name="filter" value="option2">
+            <input type="radio" class="btnInput" name="filter" value="location">
             <span class="btn-label" style="border-radius: 1px">Location</span>
         </label>
       
         <label style="margin-right: 10px">
-            <input type="radio" class="btnInput" name="filter" value="option3">
-            <span class="btn-label" style="border-radius: 1px 15px 15px 1px">Immo neuf</span>
+            <input type="radio" class="btnInput" name="filter" value="vacance">
+            <span class="btn-label" style="border-radius: 1px 15px 15px 1px">Vacance</span>
         </label>
 
       </div>
       <span class="hr"></span>
       <div class="zone2">
-        <select name="select">
+        <select name="typeBien">
           <option value="*">Tous</option>
           <option value="maison">Maisons</option>
           <option value="appartement">Appartements</option>

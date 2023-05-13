@@ -10,4 +10,7 @@ if (mediaQuery.matches) {
       sidebarFilter.classList.remove('fixed');
     }
   });
+
+
+
 }

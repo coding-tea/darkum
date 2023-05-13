@@ -61,7 +61,7 @@ nav {
   margin-left: 80px;
 }
 
-.navlinks-container a {
+.navlinks-container a:not(.nvAnnonce) {
   margin: 0 10px;
   font-size: 18px;
   font-family: Montserrat, Helvetica, sans-serif;
@@ -91,15 +91,15 @@ nav {
 
 .nvAnnonce {
   text-decoration: none;
-  background-color: #FFF;
-  border-radius: 20px;
-  color: #FF5500;
   margin-left: 30px;
-  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 4px;
-  border: none;
   cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #4e73de;
+  padding: 7px 10px;
+  border-radius: 3px;
+  transition: .4s ease;
 }
 
 /* .nvAnnonce:hover {
@@ -170,7 +170,7 @@ nav {
   margin: auto;
 }
 
-.container{
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -182,6 +182,7 @@ nav {
   font-size: 28px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 ul {
   list-style: none;
 }
@@ -196,6 +197,7 @@ ul {
   width: 25%;
   padding: 0 15px;
 }
+
 .footer-col ul li:not(:last-child) {
   margin-bottom: 10px;
 }
@@ -287,6 +289,7 @@ ul {
   .nvAnnonce {
     display: block;
   }
+
   nav {
     padding: 5px 20px;
     position: relative;
@@ -298,7 +301,7 @@ ul {
     margin: 0 auto;
   }
 
-  .nav-icon span{
+  .nav-icon span {
     margin-right: 180px;
     font-size: 22px;
   }
@@ -429,7 +432,8 @@ ul {
     text-align: center;
     margin-bottom: auto;
   }
-  .social-links{
+
+  .social-links {
     margin-left: 50px;
   }
 }
