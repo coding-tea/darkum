@@ -247,11 +247,13 @@ class AnnounceController extends Controller
         else $announces = $announces->wherein("nbRome", $nbChambre);
       }
 
+      $c = "%";
       if(!empty($caracteristique)){
         foreach ($caracteristique as $caract) {
-          $announces = $announces->where("description", "like", "%".$caract."%");
+          $c .= $caract . "%";
         }
       }
+      $announces = $announces->where("description", "like", $c);
 
       // calculer le nombre des annonces pour le afficher
       $nbAnnonces = $announces->count();

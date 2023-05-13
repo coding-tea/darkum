@@ -84,6 +84,7 @@
 
     body{
       overflow-x: hidden;
+      background-color: #eaeaea;
     }
 
     .menu{
@@ -230,6 +231,10 @@
       background-color: #29a160;
       padding: 7px 20px;
       border-radius: 5px;
+    }
+
+    .filterBody, .location-section{
+      background-color: #eaeaea;
     }
     </style>
 </head>
