@@ -18,12 +18,15 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($announce_id)
     {
-        $id = Auth()->id();
-        $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
-        return view('pages.user.comments.index', compact('comments'));
-
+        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
+        $names = [];
+        foreach($comments as $comment){
+            $name = User::find($comment->userId)->name;
+            array_push($names, $name);
+        }
+        return view('pages.user.comments.index', compact('comments', 'names'));
     }
 
     /**
@@ -41,11 +44,6 @@ class CommentController extends Controller
             'AnnounceId' => $request->AnnounceId
         ]);
         return redirect()->back();
-    }
-
-    public function show($announce_id){
-        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
-        return view('pages.user.comments.index', compact('comments'));
     }
 
     public function destroy($id)

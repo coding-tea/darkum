@@ -23,10 +23,6 @@
                     <td> {{ $announce->surface }}m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td> nbRome </td>
-                    <td> {{ $announce->nbRome }}</td>
-                </tr>
-                <tr>
                     <td> rom number </td>
                     <td> {{ $announce->nbRome }} </td>
                 </tr>
@@ -45,11 +41,11 @@
                   <div class="card w-100">
                     
                     @isset($comments)
-                    @foreach ($comments as $item)
+                    @foreach ($comments as $key => $item)
                         <div class="card-body w-100 mb-2">
                           <div class="d-flex flex-start align-items-center w-100">
                             <div>
-                              <h6 class="fw-bold text-primary"> {{ Auth()->user()->name }} </h6>
+                              <h6 class="fw-bold text-primary"> {{ $names[$key] }} </h6>
                             </div>
                           </div>
               

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreAnnounceRequest;
 use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Datas;
 use App\Models\Media;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Auth;
@@ -72,23 +73,31 @@ class AnnounceController extends Controller
     return redirect()->route('announces.index');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\Announce  $announce
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Announce $announce)
-  {
-    $id = Auth::user()->id;
-    $email = Auth::user()->email;
-    $announce_id = $announce->id;
-    $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
-    $data = (!empty($data)) ? $data[0] : [];
-    $comments = DB::table('comments')->where('userId', $id)->get()->toArray();
-    // dd($comments);
-    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments'));
-  }
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Announce  $announce
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Announce $announce)
+    {
+        $data = null;
+        $email = '';
+        if(auth()->check()){
+            $id = Auth::user()->id; 
+            $email = Auth::user()->email;
+            $data = DB::table('datas')->where('userId', $id)->limit(1)->get()->toArray();
+            $data = (!empty($data)) ? $data[0] : [];
+        }
+        $announce_id = $announce->id;
+        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
+        $names = [];
+        foreach($comments as $comment){
+            $name = User::find($comment->userId)->name;
+            array_push($names, $name);
+        }
+        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names'));
+    }
 
   /**
    * Show the form for editing the specified resource.

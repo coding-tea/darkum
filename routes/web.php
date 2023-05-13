@@ -21,10 +21,8 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 //static
 Route::view("/", "pages.landing_page.index")->name("home");
@@ -33,10 +31,23 @@ Route::view("/about", "pages.landing_page.about");
 Route::view("/privacy", "pages.landing_page.condition");
 Route::view("/contact", "pages.landing_page.contact");
 
+Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
+
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+
     Route::get("/", [AnnounceController::class, 'index']);
-    Route::resource('/announces', AnnounceController::class);
+
+    Route::group(['prefix' => 'announces'], function(){
+        Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
+        Route::post('user/announces', [AnnounceController::class, 'store'])->name('announces.store');
+        Route::post('user/announces/create', [AnnounceController::class, 'create'])->name('announces.create');
+        Route::get('user/announces/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
+        Route::put('user/announces/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
+        Route::delete('user/announces/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
+    });
+    
+    // Route::resource('/announces', AnnounceController::class);
     Route::resource('/profile', UserController::class);
     Route::post('/comment', [CommentController::class, 'store'])->name('comment');
     Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');
