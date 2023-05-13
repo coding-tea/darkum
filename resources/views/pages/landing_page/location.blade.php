@@ -9,7 +9,7 @@
 
 @section("content")
   <div class="location-section">
-    <h3 class="location-title">@isset($path){{$path}} @endisset Appartement - Région Fès-Meknès <span>(165 résultats)</span></h3>
+    <h3 class="location-title">@isset($path){{$path}} @endisset Appartement - @if(isset($region)) Région {{$region}} @else Toutes les Régions @endif <span>(@isset($nbAnnonces) {{$nbAnnonces}} @endisset résultats)</span></h3>
   </div>
   {{-- <div class="typeLogement">
     <label>
@@ -90,24 +90,39 @@
             
 
         </div>
-
+        @error('typeBien')
+          <div class="alert alert-danger"> Veuillez sélectionner au moins un choix</div>
+        @enderror
                 <!-- Filter  By Budget -->
 
         <div class="Budget">
           <label for="budgetFilter" class="labelFilter mb-1">Budget</label>
           <select name="budgetMin" id="budgetFilter">
             <option value="0" selected disabled>Minimun</option>
-            <option value="1000">1000 DH</option>
-            <option value="2000">2000 DH</option>
-            <option value="4000">4000 DH</option>
-            <option value="6000">6000 DH</option>
+            @isset($budgetMin)
+            <option value="{{$budgetMin}}">{{$budgetMin}} DH</option>
+            <option value="{{$budgetMin + 1000}}">{{$budgetMin + 1000}} DH</option>
+            <option value="{{$budgetMin + 2000}}">{{$budgetMin + 2000}} DH</option>
+            <option value="{{$budgetMin + 3000}}">{{$budgetMin + 3000}} DH</option>  
+            <option value="{{$budgetMin + 4000}}">{{$budgetMin + 4000}} DH</option>  
+            <option value="{{$budgetMin + 5000}}">{{$budgetMin + 5000}} DH</option>  
+            <option value="{{$budgetMin + 6000}}">{{$budgetMin + 6000}} DH</option>  
+            <option value="{{$budgetMin + 7000}}">{{$budgetMin + 7000}} DH</option>  
+            @endisset
           </select>
           <select name="budgetMax" id="budgetFilter">
             <option value="Option1" selected disabled>Maximun</option>
-            <option value="30000">30000</option>
-            <option value="40000">40000</option>
-            <option value="50000">50000</option>
-            <option value="60000">60000</option>
+            @isset($budgetMin)
+            <option value="{{$budgetMin + 1000}}">{{$budgetMin + 1000}} DH</option>
+            <option value="{{$budgetMin + 2000}}">{{$budgetMin + 2000}} DH</option>
+            <option value="{{$budgetMin + 3000}}">{{$budgetMin + 3000}} DH</option>
+            <option value="{{$budgetMin + 4000}}">{{$budgetMin + 4000}} DH</option>
+            <option value="{{$budgetMin + 5000}}">{{$budgetMin + 5000}} DH</option>
+            <option value="{{$budgetMin + 6000}}">{{$budgetMin + 6000}} DH</option>
+            <option value="{{$budgetMin + 7000}}">{{$budgetMin + 7000}} DH</option>
+            <option value="{{$budgetMin + 8000}}">{{$budgetMin + 8000}} DH</option>
+
+            @endisset
           </select>
         </div>
 
@@ -116,15 +131,34 @@
 
         <div class="surface">
             <label for="surfaceFilter" class="labelFilter mb-1">Surface</label>
-            <select name="budgetMin" id="surfaceFilter">
+            <select name="SurfaceMin" id="surfaceFilter">
               <option value="Option1" selected disabled>Minimun</option>
-              <option value="Option2">Option2</option>
-              <option value="Option3">Option3</option>
+              @isset($surfaceMin)
+              <option value="{{$surfaceMin}}">{{$surfaceMin}} m²</option>
+              <option value="{{$surfaceMin + 10}}">{{$surfaceMin + 10}} m²</option>
+              <option value="{{$surfaceMin + 20}}">{{$surfaceMin + 20}} m²</option>
+              <option value="{{$surfaceMin + 30}}">{{$surfaceMin + 30}} m²</option>  
+              <option value="{{$surfaceMin + 40}}">{{$surfaceMin + 40}} m²</option>  
+              <option value="{{$surfaceMin + 100}}">{{$surfaceMin + 100}} m²</option>  
+              <option value="{{$surfaceMin + 200}}">{{$surfaceMin + 200}} m²</option>  
+              <option value="{{$surfaceMin + 300}}">{{$surfaceMin + 300}} m²</option>  
+              <option value="{{$surfaceMin + 400}}">{{$surfaceMin + 400}} m²</option>  
+              <option value="{{$surfaceMin + 500}}">{{$surfaceMin + 500}} m²</option>  
+              @endisset
             </select>
             <select name="surfaceMax" id="surfaceFilter">
               <option value="Option1" selected disabled>Maximun</option>
-              <option value="Option2">Option2</option>
-              <option value="Option3">Option3</option>
+              @isset($surfaceMin)
+              <option value="{{$surfaceMin + 10}}">{{$surfaceMin + 10}} m²</option>
+              <option value="{{$surfaceMin + 20}}">{{$surfaceMin + 20}} m²</option>
+              <option value="{{$surfaceMin + 30}}">{{$surfaceMin + 30}} m²</option>  
+              <option value="{{$surfaceMin + 40}}">{{$surfaceMin + 40}} m²</option>  
+              <option value="{{$surfaceMin + 100}}">{{$surfaceMin + 100}} m²</option>  
+              <option value="{{$surfaceMin + 200}}">{{$surfaceMin + 200}} m²</option>  
+              <option value="{{$surfaceMin + 300}}">{{$surfaceMin + 300}} m²</option>  
+              <option value="{{$surfaceMin + 400}}">{{$surfaceMin + 400}} m²</option>  
+              <option value="{{$surfaceMin + 500}}">{{$surfaceMin + 500}} m²</option>  
+              @endisset
             </select>
         </div>
 
@@ -137,32 +171,32 @@
         
           <div>
             <label>
-              <input type="checkbox" class="btnInput" name="nbChambre" value="option1" checked>
+              <input type="checkbox" class="btnInput" name="nbChambre[]" value="1" checked>
               <span class="btn-checkbox">1</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="nbChambre" value="option2">
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="2">
                 <span class="btn-checkbox">2</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="nbChambre" value="option3">
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="3">
                 <span class="btn-checkbox">3</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="nbChambre" value="option2">
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="4">
                 <span class="btn-checkbox">4</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="nbChambre" value="option3">
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="5">
                 <span class="btn-checkbox">5</span>
             </label>
           
             <label>
-                <input type="checkbox" class="btnInput" name="nbChambre" value="option2">
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="6">
                 <span class="btn-checkbox">+6</span>
             </label>
           </div>
@@ -249,7 +283,7 @@
 
 
               <h1>{{$annonce->title}}</h1>
-              <span>{{$annonce->nbRome}} chambres, {{$annonce->surface}} m²</span>
+              <span>{{$annonce->type}}, {{$annonce->nbRome}} chambres, {{$annonce->surface}} m²</span>
               <h2>{{$annonce->city}}</h2>
               <p class="cutoof-text">
                 {{$annonce->description}}

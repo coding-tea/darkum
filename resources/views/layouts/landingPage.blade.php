@@ -118,14 +118,7 @@
       color: #4e73de;
     }
 
-    .nvAnnonce{
-      background-color: #fff;
-      border: 2px solid #4e73de;
-      color: #4e73de;
-      padding: 7px 10px;
-      border-radius: 3px;
-      transition: .4s ease;
-    }
+
 
     .loginBtn{
       background-color: #4e73de;
@@ -215,7 +208,7 @@
 <nav class="menu">
 
   <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
-  <a href="#" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+  <a href="{{route("home")}}" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
     <img src="{{asset("img/landing_page/logo.png")}}" alt="Logo" class="logoImg">
     <span>Darkum</span>
   </a>
@@ -230,8 +223,9 @@
       <a href="/" aria-current="page" class="btn">Home</a>
       <a href="{{route("vente")}}" class="btn">Vente</a>
       <a href="{{route("location")}}" class="btn">Location</a>
+      <a href="{{route("vacance")}}" class="btn">vacances</a>
       <a href="contact" class="btn">Contact</a>
-      <button class="nvAnnonce">Publier Une Annonce</button>
+      <a href="#" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
     </div>
   </div>
 
