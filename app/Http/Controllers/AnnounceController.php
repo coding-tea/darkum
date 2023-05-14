@@ -148,16 +148,18 @@ class AnnounceController extends Controller
   {
     $villes = DB::table('announces')->distinct()->pluck('city');
     $path = $req->path();
-    if ($path == "location") {
-      $announces = Announce::where("typeL", 'location')->with('medias')->get();
-      $types = 'location';
-    } else if ($path == "vente") {
-      $announces = Announce::where("typeL", 'vente')->with('medias')->get();
-      $types = 'vente';
-    } else if ($path == "vacance") {
-      $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
-      $types = 'vacances';
-    }
+    // if ($path == "location") {
+    //   $announces = Announce::where("typeL", 'location')->with('medias')->get();
+    //   $types = 'location';
+    // } else if ($path == "vente") {
+    //   $announces = Announce::where("typeL", 'vente')->with('medias')->get();
+    //   $types = 'vente';
+    // } else if ($path == "vacance") {
+    //   $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
+    //   $types = 'vacances';
+    // }
+     $announces = Announce::where("typeL", $path)->with('medias')->get();
+
     $nbAnnonces = $announces->count();
 
     $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
@@ -174,7 +176,7 @@ class AnnounceController extends Controller
 
 
 
-    return view('pages.landing_page.location', compact("announces", "pageInfo"));
+    return view('pages.landing_page.'.$path, compact("announces", "pageInfo"));
   }
 
   public function filterSearch(Request $request)
@@ -299,7 +301,7 @@ class AnnounceController extends Controller
       'region' => $region
     ];
 
-    return view("pages.landing_page.location", compact("announces", "pageInfo", "old_choices"));
+    return view("pages.landing_page.".$path, compact("announces", "pageInfo", "old_choices"));
     // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
   }
 }
