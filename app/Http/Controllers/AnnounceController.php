@@ -73,31 +73,31 @@ class AnnounceController extends Controller
     return redirect()->route('announces.index');
   }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Announce  $announce
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Announce $announce)
-    {
-        $data = null;
-        $email = '';
-        if(auth()->check()){
-            $email = Auth::user()->email;
-        }
-        $data = DB::table('datas')->where('userId', $announce->userId)->limit(1)->get()->toArray();
-        $data = (!empty($data)) ? $data[0] : [];
-        $announce_id = $announce->id;
-        $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
-        $names = [];
-        foreach($comments as $comment){
-            $name = User::find($comment->userId)->name;
-            array_push($names, $name);
-        }
-        $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
-        return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias'));
+  /**
+   * Display the specified resource.
+   *
+   * @param  \App\Models\Announce  $announce
+   * @return \Illuminate\Http\Response
+   */
+  public function show(Announce $announce)
+  {
+    $data = null;
+    $email = '';
+    if (auth()->check()) {
+      $email = Auth::user()->email;
     }
+    $data = DB::table('datas')->where('userId', $announce->userId)->limit(1)->get()->toArray();
+    $data = (!empty($data)) ? $data[0] : [];
+    $announce_id = $announce->id;
+    $comments = DB::table('comments')->where('AnnounceId', $announce_id)->get()->toArray();
+    $names = [];
+    foreach ($comments as $comment) {
+      $name = User::find($comment->userId)->name;
+      array_push($names, $name);
+    }
+    $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
+    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias'));
+  }
 
   /**
    * Show the form for editing the specified resource.
@@ -163,8 +163,18 @@ class AnnounceController extends Controller
     $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
     $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
     $path = ucfirst($path);
+    $pageInfo = [
+      'nbAnnonces' => $nbAnnonces,
+      'path' => $path,
+      'villes' => $villes,
+      'budgetMin' => $budgetMin,
+      'surfaceMin' => $surfaceMin
+    ];
 
-    return view('pages.landing_page.location', compact("announces", 'path', "villes", "nbAnnonces", "budgetMin", "surfaceMin"));
+
+
+
+    return view('pages.landing_page.location', compact("announces", "pageInfo"));
   }
 
   public function filterSearch(Request $request)
@@ -205,7 +215,7 @@ class AnnounceController extends Controller
     $nbChambre = $request->input('nbChambre');
 
     //get caracteristique choisie par user :
-    $caracteristique = $request->input('caracteristique');
+    $caracteristiques = $request->input('caracteristique');
 
 
     // get all annonces by type of route (location | vente | vacance)
@@ -242,17 +252,21 @@ class AnnounceController extends Controller
         $index = array_search(6, $nbChambre);
         if ($index !== false) {
           unset($nbChambre[$index]);
-          $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=" , 6);
-        }
-        else $announces = $announces->wherein("nbRome", $nbChambre);
+          $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=", 6);
+          // rajouter la valeur au tableau pour reselectionner sur le view (si le user choisie +6)
+          array_push($nbChambre, "+6");
+
+        } else $announces = $announces->wherein("nbRome", $nbChambre);
       }
 
-      if(!empty($caracteristique)){
-        foreach ($caracteristique as $caract) {
-          $announces = $announces->where("description", "like", "%".$caract."%");
-        }
-      }
 
+      if (!empty($caracteristiques)) {
+        $announces = $announces->where(function ($query) use ($caracteristiques) {
+          foreach ($caracteristiques as $caracteristique) {
+            $query->orWhere('description', 'like', '%' . $caracteristique . '%');
+          }
+        });
+      }
       // calculer le nombre des annonces pour le afficher
       $nbAnnonces = $announces->count();
 
@@ -266,6 +280,26 @@ class AnnounceController extends Controller
       $announces = $announces->with('medias')->get();
     }
     $path = ucfirst($path);
-    return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
+    $pageInfo = [
+      'nbAnnonces' => $nbAnnonces,
+      'path' => $path,
+      'villes' => $villes,
+      'budgetMin' => $budgetMin,
+      'surfaceMin' => $surfaceMin
+    ];
+
+    $old_choices = [
+      'caracteristiques' => $caracteristiques,
+      'nbChambre' => $nbChambre,
+      'minSurface' => $minSurface,
+      'maxSurface' => $maxSurface,
+      'minBudget' => $minBudget,
+      'maxBudget' => $maxBudget,
+      'typesBien' => $typesBien,
+      'region' => $region
+    ];
+
+    return view("pages.landing_page.location", compact("announces", "pageInfo", "old_choices"));
+    // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
   }
 }
