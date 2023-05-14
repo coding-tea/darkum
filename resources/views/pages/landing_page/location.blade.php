@@ -9,7 +9,7 @@
 
 @section("content")
   <div class="location-section">
-    <h3 class="location-title">@isset($pageInfopa["path"]){{$pageInfo["path"]}} @endisset Appartement - @if(isset($pageInfo["region"])) Région {{$pageInfo["region"]}} @else Toutes les Régions @endif <span>(@isset($pageInfo["nbAnnonces"]) {{$pageInfo["nbAnnonces"]}} @endisset résultats)</span></h3>
+    <h3 class="location-title">@isset($pageInfo["path"]){{$pageInfo["path"]}} @endisset Appartement - @if(isset($old_choices["region"])) Région {{$old_choices["region"]}} @else Toutes les Régions @endif <span>(@isset($pageInfo["nbAnnonces"]) {{$pageInfo["nbAnnonces"]}} @endisset résultats)</span></h3>
   </div>
   {{-- <div class="typeLogement">
     <label>
