@@ -56,23 +56,55 @@
 </section>
 
 <p style="text-align: center" class="mt-5">Vous cherchez un endroit à louer ? <br> Ne cherchez pas plus loin ! Notre site web est là pour vous aider.</p>
-<section class="filter-section">
-  <a href="" class="filter-href">
-    <div class="filter-card card1">
-      <h2>VENTE</h2>
+
+
+<div class="container-Type">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="image-container">
+          <img src="{{asset("img/landing_page/location.jpg")}}" alt="article" />
+        </div>
+        <div class="card-footer">
+          <h3>LOCATION</h3>
+          <p>
+            Trouvez le logement idéal pour votre prochaine location.
+          </p>
+          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+        </div>
+      </div>
     </div>
-  </a>
-  <a href="" class="filter-href">
-    <div class="filter-card card2">
-      <h2>Location</h2>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="image-container">
+          <img src="{{asset("img/landing_page/vente.jpg")}}" alt="article" />
+        </div>
+        <div class="card-footer">
+          <h3>VENTE</h3>
+          <p>
+            Découvrez les meilleurs appartements à vendre dans votre région.
+          </p>
+          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+        </div>
+      </div>
     </div>
-  </a>
-  <a href="" class="filter-href">
-    <div class="filter-card card3">
-      <h2>Location Vacances</h2>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="image-container">
+          <img src="{{asset("img/landing_page/vacance.jpg")}}" alt="article" />
+        </div>
+        <div class="card-footer">
+          <h3>VACANCE</h3>
+          <p>
+            Évadez-vous avec nos locations de vacances pour des moments inoubliables.
+          </p>
+          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+        </div>
+      </div>
     </div>
-  </a>
-</section>
+  </div>
+
+</div>
 
 @endsection
 
