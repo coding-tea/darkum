@@ -9,7 +9,7 @@
 
 @section("content")
   <div class="location-section">
-    <h3 class="location-title">@isset($path){{$path}} @endisset Appartement - @if(isset($region)) Région {{$region}} @else Toutes les Régions @endif <span>(@isset($nbAnnonces) {{$nbAnnonces}} @endisset résultats)</span></h3>
+    <h3 class="location-title">@isset($pageInfo["path"]){{$pageInfo["path"]}} @endisset Appartement - @if(isset($old_choices["region"])) Région {{$old_choices["region"]}} @else Toutes les Régions @endif <span>(@isset($pageInfo["nbAnnonces"]) {{$pageInfo["nbAnnonces"]}} @endisset résultats)</span></h3>
   </div>
   {{-- <div class="typeLogement">
     <label>
@@ -39,9 +39,9 @@
             <label for="regionFilter" class="labelFilter mb-1">Régions</label>
             <select name="regionFilter" id="regionFilter">
               <option selected disabled>Choosir un region</option>
-              @isset($villes)
-                @foreach ($villes as $ville)
-                    <option value="{{$ville}}"> {{$ville}} </option>
+              @isset($pageInfo["villes"])
+                @foreach ($pageInfo["villes"] as $ville)
+                    <option value="{{$ville}}" @isset($old_choices["region"]){{$old_choices["region"] == $ville ? "selected" : ""}}@endisset> {{$ville}} </option>
                 @endforeach
               @endisset
             </select>
@@ -57,110 +57,80 @@
         <div class="typeBien">
             <label for="regionFilter" class="labelFilter mb-1">type de bien</label>
           
-            <label>
-              <input type="checkbox" class="btnInput" name="typeBien[]" value="Appartement" checked>
-              <span class="btn-checkbox">Appartement</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="typeBien[]" value="Maison">
-                <span class="btn-checkbox">Maison</span>
-            </label>
-          
-            <label style="margin-right: 10px">
-                <input type="checkbox" class="btnInput" name="typeBien[]" value="Villa">
-                <span class="btn-checkbox">Villa</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="typeBien[]" value="Chambres">
-                <span class="btn-checkbox">Chambres</span>
-            </label>
-          
-            <label style="margin-right: 10px">
-                <input type="checkbox" class="btnInput" name="typeBien[]" value="Terrains">
-                <span class="btn-checkbox">Terrains</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="typeBien[]" value="Fermes">
-                <span class="btn-checkbox">Fermes</span>
-            </label>
+            @php
+            $types_bien = ['Appartement', 'Maison', 'Villa', 'Chambres', 'Terrains', 'Fermes'];
+            @endphp
+            
+            @foreach ($types_bien as $type)
+                @php
+                    $checked = '';
+                    if (isset($old_choices['typesBien']) && in_array($type, $old_choices['typesBien'])) {
+                        $checked = 'checked';
+                    } elseif ($type === 'Appartement' && empty($old_choices['typesBien'])) {
+                        $checked = 'checked';
+                    }
+                @endphp
+            
+                <label>
+                    <input type="checkbox" class="btnInput" name="typeBien[]" value="{{ $type }}" {{ $checked }}>
+                    <span class="btn-checkbox">{{ $type }}</span>
+                </label>
+            @endforeach
           
             
 
         </div>
         @error('typeBien')
-          <div class="alert alert-danger"> Veuillez sélectionner au moins un choix</div>
+          <div class="alert alert-danger" style=" padding : 7px"> sélectionner  un choix</div>
         @enderror
                 <!-- Filter  By Budget -->
 
+    @isset($pageInfo["budgetMin"])
         <div class="Budget">
           <label for="budgetFilter" class="labelFilter mb-1">Budget</label>
           <select name="budgetMin" id="budgetFilter">
             <option value="0" selected disabled>Minimun</option>
-            @isset($budgetMin)
-            <option value="{{$budgetMin}}">{{$budgetMin}} DH</option>
-            <option value="{{$budgetMin + 1000}}">{{$budgetMin + 1000}} DH</option>
-            <option value="{{$budgetMin + 2000}}">{{$budgetMin + 2000}} DH</option>
-            <option value="{{$budgetMin + 3000}}">{{$budgetMin + 3000}} DH</option>  
-            <option value="{{$budgetMin + 4000}}">{{$budgetMin + 4000}} DH</option>  
-            <option value="{{$budgetMin + 5000}}">{{$budgetMin + 5000}} DH</option>  
-            <option value="{{$budgetMin + 6000}}">{{$budgetMin + 6000}} DH</option>  
-            <option value="{{$budgetMin + 7000}}">{{$budgetMin + 7000}} DH</option>  
-            @endisset
+              @for($i = 0; $i < 7; $i++)
+                <option value="{{$pageInfo['budgetMin'] + ($i * 1000)}}" @isset($old_choices["minBudget"]){{$old_choices["minBudget"] == $pageInfo['budgetMin'] + ($i * 1000) ? "selected" : ""}}@endisset>{{$pageInfo['budgetMin'] + ($i * 1000)}} DH</option>
+              @endfor
+            
           </select>
           <select name="budgetMax" id="budgetFilter">
             <option value="Option1" selected disabled>Maximun</option>
-            @isset($budgetMin)
-            <option value="{{$budgetMin + 1000}}">{{$budgetMin + 1000}} DH</option>
-            <option value="{{$budgetMin + 2000}}">{{$budgetMin + 2000}} DH</option>
-            <option value="{{$budgetMin + 3000}}">{{$budgetMin + 3000}} DH</option>
-            <option value="{{$budgetMin + 4000}}">{{$budgetMin + 4000}} DH</option>
-            <option value="{{$budgetMin + 5000}}">{{$budgetMin + 5000}} DH</option>
-            <option value="{{$budgetMin + 6000}}">{{$budgetMin + 6000}} DH</option>
-            <option value="{{$budgetMin + 7000}}">{{$budgetMin + 7000}} DH</option>
-            <option value="{{$budgetMin + 8000}}">{{$budgetMin + 8000}} DH</option>
+            @for($i = 1; $i <= 7; $i++)
+                <option value="{{$pageInfo['budgetMin'] + ($i * 1000)}}" @isset($old_choices["maxBudget"]){{$old_choices["maxBudget"] == $pageInfo['budgetMin'] + ($i * 1000) ? "selected" : ""}}@endisset>{{$pageInfo['budgetMin'] + ($i * 1000)}} DH</option>
+              @endfor
 
-            @endisset
           </select>
         </div>
+    @endisset
 
 
         <!-- Filter  By Surcafe -->
 
+    @isset($pageInfo["surfaceMin"])
         <div class="surface">
             <label for="surfaceFilter" class="labelFilter mb-1">Surface</label>
             <select name="SurfaceMin" id="surfaceFilter">
               <option value="Option1" selected disabled>Minimun</option>
-              @isset($surfaceMin)
-              <option value="{{$surfaceMin}}">{{$surfaceMin}} m²</option>
-              <option value="{{$surfaceMin + 10}}">{{$surfaceMin + 10}} m²</option>
-              <option value="{{$surfaceMin + 20}}">{{$surfaceMin + 20}} m²</option>
-              <option value="{{$surfaceMin + 30}}">{{$surfaceMin + 30}} m²</option>  
-              <option value="{{$surfaceMin + 40}}">{{$surfaceMin + 40}} m²</option>  
-              <option value="{{$surfaceMin + 100}}">{{$surfaceMin + 100}} m²</option>  
-              <option value="{{$surfaceMin + 200}}">{{$surfaceMin + 200}} m²</option>  
-              <option value="{{$surfaceMin + 300}}">{{$surfaceMin + 300}} m²</option>  
-              <option value="{{$surfaceMin + 400}}">{{$surfaceMin + 400}} m²</option>  
-              <option value="{{$surfaceMin + 500}}">{{$surfaceMin + 500}} m²</option>  
-              @endisset
+              @for ($i = 0; $i <= 5; $i++)
+                <option value="{{ $pageInfo['surfaceMin'] + $i * 10 }}" @isset($old_choices["minSurface"]){{$old_choices["minSurface"] == $pageInfo['surfaceMin'] + ($i * 10) ? "selected" : ""}}@endisset>{{ $pageInfo['surfaceMin'] + $i * 10 }} m²</option>
+              @endfor
+              @for ($i = 1; $i <= 5; $i++)
+                <option value="{{ $pageInfo['surfaceMin'] + $i * 100 }}" @isset($old_choices["minSurface"]){{$old_choices["minSurface"] == $pageInfo['surfaceMin'] + ($i * 100) ? "selected" : ""}}@endisset>{{ $pageInfo['surfaceMin'] + $i * 100 }} m²</option>
+              @endfor 
             </select>
             <select name="surfaceMax" id="surfaceFilter">
               <option value="Option1" selected disabled>Maximun</option>
-              @isset($surfaceMin)
-              <option value="{{$surfaceMin + 10}}">{{$surfaceMin + 10}} m²</option>
-              <option value="{{$surfaceMin + 20}}">{{$surfaceMin + 20}} m²</option>
-              <option value="{{$surfaceMin + 30}}">{{$surfaceMin + 30}} m²</option>  
-              <option value="{{$surfaceMin + 40}}">{{$surfaceMin + 40}} m²</option>  
-              <option value="{{$surfaceMin + 100}}">{{$surfaceMin + 100}} m²</option>  
-              <option value="{{$surfaceMin + 200}}">{{$surfaceMin + 200}} m²</option>  
-              <option value="{{$surfaceMin + 300}}">{{$surfaceMin + 300}} m²</option>  
-              <option value="{{$surfaceMin + 400}}">{{$surfaceMin + 400}} m²</option>  
-              <option value="{{$surfaceMin + 500}}">{{$surfaceMin + 500}} m²</option>  
-              @endisset
+              @for ($i = 1; $i <= 6; $i++)
+              <option value="{{ $pageInfo['surfaceMin'] + $i * 10 }}" @isset($old_choices["maxSurface"]){{$old_choices["maxSurface"] == $pageInfo['surfaceMin'] + ($i * 10) ? "selected" : ""}}@endisset>{{ $pageInfo['surfaceMin'] + $i * 10 }} m²</option>
+            @endfor
+            @for ($i = 1; $i <= 5; $i++)
+              <option value="{{ $pageInfo['surfaceMin'] + $i * 100 }}" @isset($old_choices["maxSurface"]){{$old_choices["maxSurface"] == $pageInfo['surfaceMin'] + ($i * 100) ? "selected" : ""}}@endisset>{{ $pageInfo['surfaceMin'] + $i * 100 }} m²</option>
+            @endfor 
             </select>
-        </div>
+          </div>
+      @endisset
 
 
         <!-- Filter  By Chambres -->
@@ -170,35 +140,16 @@
           <label for="regionFilter" class="labelFilter mb-1">Chambres</label>
         
           <div>
-            <label>
-              <input type="checkbox" class="btnInput" name="nbChambre[]" value="1" checked>
-              <span class="btn-checkbox">1</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="nbChambre[]" value="2">
-                <span class="btn-checkbox">2</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="nbChambre[]" value="3">
-                <span class="btn-checkbox">3</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="nbChambre[]" value="4">
-                <span class="btn-checkbox">4</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="nbChambre[]" value="5">
-                <span class="btn-checkbox">5</span>
-            </label>
-          
-            <label>
-                <input type="checkbox" class="btnInput" name="nbChambre[]" value="6">
-                <span class="btn-checkbox">+6</span>
-            </label>
+            @php
+              $chambres = ["1", "2", "3", "4", "5", "+6"];
+            @endphp
+
+            @foreach($chambres as $chambre)
+              <label>
+                <input type="checkbox" class="btnInput" name="nbChambre[]" value="{{ $chambre }}" @isset($old_choices["nbChambre"]){{ in_array($chambre, $old_choices["nbChambre"]) ? "checked" : "" }}@else{{ $chambre == "1" ? "checked" : "" }}@endisset>
+                <span class="btn-checkbox">{{ $chambre }}</span>
+              </label>
+@endforeach
           </div>
           
 
@@ -213,27 +164,27 @@
         <label for="regionFilter" class="labelFilter mb-1">Caractéristiques</label>
       
         <label>
-          <input type="checkbox" class="btnInput" name="caracteristique[]" value="ascenseur" checked>
+          <input type="checkbox" class="btnInput" name="caracteristique[]" value="ascenseur" @isset($old_choices["caracteristiques"]){{ in_array("ascenseur", $old_choices["caracteristiques"]) ? "checked" : "" }} @else {{"checked"}} @endisset>
           <span class="btn-checkbox">Ascenseur</span>
         </label>
       
         <label>
-            <input type="checkbox" class="btnInput" name="caracteristique[]" value="garage">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="garage" @isset($old_choices["caracteristiques"]){{ in_array("garage", $old_choices["caracteristiques"]) ? "checked" : "" }}@endisset>
             <span class="btn-checkbox">Garage</span>
         </label>
       
         <label style="margin-right: 10px">
-            <input type="checkbox" class="btnInput" name="caracteristique[]" value="jardin">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="jardin" @isset($old_choices["caracteristiques"]){{ in_array("jardin", $old_choices["caracteristiques"]) ? "checked" : "" }}@endisset>
             <span class="btn-checkbox">Jardin</span>
         </label>
       
         <label>
-            <input type="checkbox" class="btnInput" name="caracteristique[]" value="piscine">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="piscine" @isset($old_choices["caracteristiques"]){{ in_array("piscine", $old_choices["caracteristiques"]) ? "checked" : "" }}@endisset>
             <span class="btn-checkbox">Piscine</span>
         </label>
       
         <label style="margin-right: 10px">
-            <input type="checkbox" class="btnInput" name="caracteristique[]" value="terrasse">
+            <input type="checkbox" class="btnInput" name="caracteristique[]" value="terrasse" @isset($old_choices["caracteristiques"]){{ in_array("terrasse", $old_choices["caracteristiques"]) ? "checked" : "" }}@endisset>
             <span class="btn-checkbox">Terrasse</span>
         </label>
       
@@ -306,7 +257,7 @@
       </div>
 
         @empty
-            <h1>empty Posts</h1>
+            <h1>aucune annonce ne correspond à ce filtrage</h1>
         @endforelse
 
 
