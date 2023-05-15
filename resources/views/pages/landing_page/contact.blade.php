@@ -40,8 +40,7 @@
             <input type="tel" class="form-control" name="tel" placeholder="Téléphone *">
           </div>
           <div class="col">
-            <textarea id="textarea" class="form-control" name="message" placeholder="Votre Message ... *" rows="4">
-            </textarea>
+            <textarea id="textarea" class="form-control" name="message" placeholder="Votre Message ... *" rows="4"></textarea>
           </div>
         </div>
         <button class="btn btn-primary" id="btn-contact">Envoyer</button>

@@ -151,17 +151,8 @@ class AnnounceController extends Controller
   {
     $villes = DB::table('announces')->distinct()->pluck('city');
     $path = $req->path();
-    // if ($path == "location") {
-    //   $announces = Announce::where("typeL", 'location')->with('medias')->get();
-    //   $types = 'location';
-    // } else if ($path == "vente") {
-    //   $announces = Announce::where("typeL", 'vente')->with('medias')->get();
-    //   $types = 'vente';
-    // } else if ($path == "vacance") {
-    //   $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
-    //   $types = 'vacances';
-    // }
-     $announces = Announce::where("typeL", $path)->with('medias')->get();
+
+    $announces = Announce::where("typeL", $path)->with('medias')->get();
 
     $nbAnnonces = $announces->count();
 
@@ -176,10 +167,7 @@ class AnnounceController extends Controller
       'surfaceMin' => $surfaceMin
     ];
 
-
-
-
-    return view('pages.landing_page.'.$path, compact("announces", "pageInfo"));
+    return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
   }
 
   public function filterSearch(Request $request)
@@ -260,7 +248,6 @@ class AnnounceController extends Controller
           $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=", 6);
           // rajouter la valeur au tableau pour reselectionner sur le view (si le user choisie +6)
           array_push($nbChambre, "+6");
-
         } else $announces = $announces->wherein("nbRome", $nbChambre);
       }
 
@@ -304,7 +291,7 @@ class AnnounceController extends Controller
       'region' => $region
     ];
 
-    return view("pages.landing_page.".strtolower($path), compact("announces", "pageInfo", "old_choices"));
+    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
     // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
   }
 }
