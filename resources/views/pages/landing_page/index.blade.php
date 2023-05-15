@@ -70,7 +70,7 @@
           <p>
             Trouvez le logement idéal pour votre prochaine location.
           </p>
-          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+          <a href="{{route("location")}}" class="read-more">Read More <span>&rarr;</span> </a>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@
           <p>
             Découvrez les meilleurs appartements à vendre dans votre région.
           </p>
-          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+          <a href="{{route("vente")}}" class="read-more">Read More <span>&rarr;</span> </a>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
           <p>
             Évadez-vous avec nos locations de vacances pour des moments inoubliables.
           </p>
-          <a href="#" class="read-more">Read More <span>&rarr;</span> </a>
+          <a href="{{route("vacance")}}" class="read-more">Read More <span>&rarr;</span> </a>
         </div>
       </div>
     </div>

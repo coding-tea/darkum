@@ -151,16 +151,7 @@ class AnnounceController extends Controller
   {
     $villes = DB::table('announces')->distinct()->pluck('city');
     $path = $req->path();
-    // if ($path == "location") {
-    //   $announces = Announce::where("typeL", 'location')->with('medias')->get();
-    //   $types = 'location';
-    // } else if ($path == "vente") {
-    //   $announces = Announce::where("typeL", 'vente')->with('medias')->get();
-    //   $types = 'vente';
-    // } else if ($path == "vacance") {
-    //   $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
-    //   $types = 'vacances';
-    // }
+    
      $announces = Announce::where("typeL", $path)->with('medias')->get();
 
     $nbAnnonces = $announces->count();
