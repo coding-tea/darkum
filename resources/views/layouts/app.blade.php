@@ -24,15 +24,23 @@
         color: #EEF1F6;
     }
     .color2{
-        color: #4A647F;
+        color: #4e73de;
     }
     .bg1{
       background-color: #EEF1F6;
     }
     .bg2{
-        background-color: #4A647F;
+        background-color: #4e73de;
         color: white;
     }
+
+    input['type'='submit']{
+        background-color: #4e73de;
+        color: white;
+        border-radius: 5px;
+        padding: 7px 20px;
+    }
+
     .divider:after,
     .divider:before {
     content: "";

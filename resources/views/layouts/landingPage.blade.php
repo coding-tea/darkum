@@ -97,8 +97,8 @@
 
     .menu a, .main-navlinks .navlinks-container a{
       color: rgba(0, 0, 0, 0.5);
-      margin-right: 10px;
       font-size: 18px;
+      outline: none;
     }
 
     .sign a{
@@ -242,6 +242,7 @@
       background-color: #4e73de;
       color: #fff;
       padding: 20px;
+      box-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
     }
 
     .btn-checkbox{
@@ -291,6 +292,10 @@
       color: #4e73de;
       border: 1px solid #4e73de;
     }
+
+    .card-appartement{
+      box-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
+    }
     </style>
 </head>
 <body>
@@ -317,7 +322,7 @@
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>
       <a href="contact" class="btn">Contact</a>
-      <a href="#" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
+      <a href="/create" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
     </div>
   </div>
 
@@ -380,6 +385,7 @@
     </div>
   </div>
 </footer>
+
 
   <script src="{{asset("js/landing_page/index.js")}}"></script>
   <script src="{{asset("js/landing_page/layout.js")}}"></script>

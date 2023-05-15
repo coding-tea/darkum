@@ -62,6 +62,15 @@
             text-transform: uppercase;
         }
 
+        .mb-3 select{
+            width: 100%;
+            color: #6e707e;
+            background-color: #fff;
+            border: 1px solid #d1d3e2;
+            padding: 7px 20px;
+            border-radius: .35rem;
+            outline: none;
+        }
     </style>
 
     {{-- cdnjs font-awesome --}}
