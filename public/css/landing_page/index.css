@@ -184,7 +184,7 @@
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   bottom: 15px;
   text-decoration: none;
-  color: #EFE000;
+  color: #FFF;
 }
 
 .container-Type .card {
@@ -219,7 +219,7 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  background: #FF6600;
+  background: rgba(0, 0, 0, 0.5);
   mix-blend-mode: multiply;
   transform: translateX(-120%) skewX(-10deg);
   transition: transform 0.3s ease-out;
@@ -254,7 +254,7 @@
 
 
 .container-Type .card:hover .read-more {
-  color: #FF6600;
+  color: #4D77DD;
 }
 
 
@@ -274,7 +274,7 @@
   display: block;
   height: 5px;
   width: 100%;
-  background: linear-gradient(to right, #FF6600 50%, rgb(223, 233, 36) 50%);
+  background: linear-gradient(to right, #007bff 50%, rgb(223, 233, 36) 50%);
   background-size: 200%;
   background-position: 100%;
   background-repeat: no-repeat;
@@ -288,10 +288,15 @@
   background-position: 0%;
 }
 
-.container-Type {
+.container-Type{
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin-bottom: 100px;
 }
 
+.container-Type .card{
+  margin: 5px;
+}
 /* --------------------------- FIN STYLE Card -----------------------*/
