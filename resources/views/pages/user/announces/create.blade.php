@@ -12,6 +12,28 @@
         <x-form-input title='surface' name='surface' type='number' />
         <x-form-input title='city' name='city' placeholder="your city" />
 
+        @isset($typeL)
+        <div class="mb-3">
+          <label for="typel" class="form-label">Type de transaction</label>
+          <select class="form-select" id="typel" name="typeL">
+            @foreach ($typeL as $item)
+                <option value="{{ $item->typeL }}"> {{ $item->typeL }} </option>
+            @endforeach
+          </select>
+        </div>
+        @endisset
+
+        @isset($type)
+        <div class="mb-3">
+          <label for="type" class="form-label">Type de bien immobilier</label>
+          <select class="form-select" id="type" name="type">
+            @foreach ($type as $item)
+                <option value="{{ $item->type }}"> {{ $item->type }} </option>
+            @endforeach
+          </select>
+        </div>
+        @endisset
+
         <div class="mb-3">
           <label for="images" class="form-label">Images</label>
           <input type="file" class="form-control" name= "image[]" id="images" multiple = "multiple" />

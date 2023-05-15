@@ -32,7 +32,7 @@ Route::view("/privacy", "pages.landing_page.condition");
 Route::view("/contact", "pages.landing_page.contact");
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
-Route::view('/create', 'pages.user.announces.create')->name('announces.create')->middleware('auth');
+Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create')->middleware('auth');
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {

@@ -37,7 +37,10 @@ class AnnounceController extends Controller
    */
   public function create()
   {
-    return view('pages.user.announces.create');
+    $typeL = Announce::selectRaw('typeL')->distinct()->get();
+    $type = Announce::selectRaw('type')->distinct()->get();
+    // dd($typeL, $type);
+    return view('pages.user.announces.create', compact('typeL', 'type'));
   }
 
   /**
@@ -301,7 +304,7 @@ class AnnounceController extends Controller
       'region' => $region
     ];
 
-    return view("pages.landing_page.".$path, compact("announces", "pageInfo", "old_choices"));
+    return view("pages.landing_page.".strtolower($path), compact("announces", "pageInfo", "old_choices"));
     // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
   }
 }

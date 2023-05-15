@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedInteger("nbRome");
             $table->string("surface", 20);
             $table->string("city", 50);
+            $table->string("adresse", 100)->nullable();
             $table->foreignId("userId")->constraide("users");
             $table->timestamps();
         });

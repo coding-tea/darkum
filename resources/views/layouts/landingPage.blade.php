@@ -13,11 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>@yield("title")</title>
 
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
   <style>
     .announceContainer{
       width: 100%;
@@ -236,6 +237,53 @@
     .filterBody, .location-section{
       background-color: #eaeaea;
     }
+
+    .sidebarFilter{
+      background-color: #4e73de;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .btn-checkbox{
+      background-color: #fff;
+      color: #4e73de;
+      font-weight: bold;
+    }
+
+    .btn-checkbox:not(.nbChambre .btn-checkbox){
+      letter-spacing: 1px;
+    }
+
+    #budgetFilter, #surfaceFilter, #regionFilter{
+      color: #4e73de;
+      background-color: #fff;
+    }
+
+    .btnFiltrer{
+      width: 100%;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #4e73de;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .card-price{
+      background-color: #29a160;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .card-description h1{
+      color: #4e73de;
+    }
+
+    .card-description .btn{
+      border-radius: 5px;
+      background-color: #4e73de;
+      color: #fff;
+    }
     </style>
 </head>
 <body>
@@ -245,7 +293,7 @@
 <nav class="menu">
 
   <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
-  <a href="#" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+  <a href="/" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
     <img src="{{asset("img/darkum-blue.png")}}" alt="Logo" class="logoImg">
     {{-- <span>Darkum</span> --}}
   </a>
@@ -283,13 +331,7 @@
   
 </nav>
 
-
-
-  
   @yield("content")
-  
-  
-
 
 {{----------------------------- FOOTER ------------------------------------------}}
 

@@ -45,12 +45,12 @@ nav {
 
 .logoImg {
   width: 50px;
+  /* opacity: .7; */
+  transition: .4s ease;
 }
 
 .logoImg:hover {
-  width: 50px;
-  transform: rotate(-17deg) translateX(5px);
-  transition: 1s;
+  opacity: .7;
 }
 
 .forMedia {
