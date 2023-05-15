@@ -15,7 +15,8 @@
         Votre appartement idéal à portée de clic !
       </p>
   </div>    
-    <div class="filterRecherche">
+    <form class="filterRecherche" action="{{route("filterIndex")}}" method="post">
+      @csrf
       <div class="circle1">1</div>
       <div class="circle2">2</div>
       <div class="circle3">3</div>
@@ -39,7 +40,7 @@
       <span class="hr"></span>
       <div class="zone2">
         <select name="typeBien">
-          <option value="*">Tous</option>
+          <option value="all">Tous</option>
           <option value="maison">Maisons</option>
           <option value="appartement">Appartements</option>
           <option value="villa">Villas</option>
@@ -52,7 +53,7 @@
         <input type="text" name="searchVille" id="ville" placeholder="Où cherchez-vous">
         <button type="submit" class="btnRech">rechercher</button>
       </div>
-    </div>
+    </form>
 </section>
 
 <p style="text-align: center" class="mt-5">Vous cherchez un endroit à louer ? <br> Ne cherchez pas plus loin ! Notre site web est là pour vous aider.</p>
