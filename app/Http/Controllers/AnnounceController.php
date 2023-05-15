@@ -151,17 +151,8 @@ class AnnounceController extends Controller
   {
     $villes = DB::table('announces')->distinct()->pluck('city');
     $path = $req->path();
-    // if ($path == "location") {
-    //   $announces = Announce::where("typeL", 'location')->with('medias')->get();
-    //   $types = 'location';
-    // } else if ($path == "vente") {
-    //   $announces = Announce::where("typeL", 'vente')->with('medias')->get();
-    //   $types = 'vente';
-    // } else if ($path == "vacance") {
-    //   $announces = Announce::where("typeL", 'vacance')->with('medias')->get();
-    //   $types = 'vacances';
-    // }
-     $announces = Announce::where("typeL", $path)->with('medias')->get();
+
+    $announces = Announce::where("typeL", $path)->with('medias')->get();
 
     $nbAnnonces = $announces->count();
 
@@ -179,7 +170,7 @@ class AnnounceController extends Controller
 
 
 
-    return view('pages.landing_page.'.$path, compact("announces", "pageInfo"));
+    return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
   }
 
   public function filterSearch(Request $request)
@@ -260,7 +251,6 @@ class AnnounceController extends Controller
           $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=", 6);
           // rajouter la valeur au tableau pour reselectionner sur le view (si le user choisie +6)
           array_push($nbChambre, "+6");
-
         } else $announces = $announces->wherein("nbRome", $nbChambre);
       }
 
@@ -304,7 +294,54 @@ class AnnounceController extends Controller
       'region' => $region
     ];
 
-    return view("pages.landing_page.".strtolower($path), compact("announces", "pageInfo", "old_choices"));
+    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
     // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
+  }
+
+  public function filterIndex(Request $request)
+  {
+    $path = $request->filter;
+    $typeBien = $request->typeBien;
+    $ville = $request->searchVille;
+
+    $announces = Announce::where("typeL", $path);
+    if ($typeBien == "all"){
+      if(!empty($ville)){
+        $announces = $announces->where("city", $ville);
+      }
+    }
+    else
+      $announces = $announces->where("city", $ville)->where("type", $typeBien);
+
+    // calculer le nombre des annonces pour le afficher
+    $nbAnnonces = $announces->count();
+
+    // pour remplir  select de budget : 
+    $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
+
+    // pour remplir  select de surface : 
+    $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
+
+    //get les annonces avec leur photo.
+    $announces = $announces->with('medias')->get();
+
+    //get all ville to fill the region select 
+    $villes = DB::table('announces')->distinct()->pluck('city');
+
+    $path = ucfirst($path);
+    $pageInfo = [
+      'nbAnnonces' => $nbAnnonces,
+      'path' => $path,
+      'villes' => $villes,
+      'budgetMin' => $budgetMin,
+      'surfaceMin' => $surfaceMin
+    ];
+
+    $old_choices = [
+
+      'region' => $ville
+    ];
+
+    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
   }
 }
