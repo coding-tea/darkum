@@ -283,6 +283,13 @@
       border-radius: 5px;
       background-color: #4e73de;
       color: #fff;
+      transition: .4s ease;
+    }
+
+    .card-description .btn:hover{
+      background-color: #fff;
+      color: #4e73de;
+      border: 1px solid #4e73de;
     }
     </style>
 </head>
