@@ -239,8 +239,8 @@
   
 <nav class="menu">
 
-  <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
-  <a href="#" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+  <a href="/" class="nav-icon" aria-label="homepage" aria-current="page">
+  <a href="/" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
     <img src="{{asset("img/darkum-blue.png")}}" alt="Logo" class="logoImg">
     {{-- <span>Darkum</span> --}}
   </a>

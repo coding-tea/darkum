@@ -48,8 +48,8 @@ nav {
 }
 
 .logoImg:hover {
-  width: 50px;
-  transform: rotate(-17deg) translateX(5px);
+  /* width: 50px; */
+  transform: rotate(-5deg) translateX(5px);
   transition: 1s;
 }
 
@@ -403,6 +403,8 @@ ul {
   }
 
 }
+
+
 
 @media (max-width: 500px) {
   .nvAnnonce {
