@@ -5,6 +5,11 @@
 @section("links")
   @parent
   <link rel="stylesheet" href="{{asset("css/landing_page/location.css")}}">
+  <style>
+    .hidden-image {
+        display: none;
+    }
+  </style>
 @endsection
 
 @section("content")
@@ -214,17 +219,20 @@
             
 
           <div class="card-image">
-            <button class="btn btn-link" id="back" aria-label="Précédent">
+            
+            {{-- <button class="btn btn-link" id="back" aria-label="Précédent">
               <span class="fa fa-chevron-left"></span>
-            </button>          
-            @foreach ($annonce->medias as $media)
+            </button>      --}}
 
-              <img src="{{asset($media->url)}}" alt="image">
+            @foreach ($annonce->medias as  $media)
+            @if($loop->first)
+              <img class="slide" src="{{ asset($media->url) }}" alt="Slide">
+            @endif
             @endforeach
 
-            <button class="btn btn-link" id="next" aria-label="Suivant">
+            {{-- <button class="btn btn-link" id="next" aria-label="Suivant">
               <span class="fa fa-chevron-right"></span>
-            </button>
+            </button> --}}
             <div class="card-price">
               {{$annonce->price}} DH
             </div>

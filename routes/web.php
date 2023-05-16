@@ -60,7 +60,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
 });
 
 //landing Page
-Route::get("/location/", [AnnounceController::class, "allAnnonces"])->name("location");
+Route::get("/location", [AnnounceController::class, "allAnnonces"])->name("location");
 Route::get("/vente", [AnnounceController::class, "allAnnonces"])->name("vente");
 Route::get("/vacance", [AnnounceController::class, "allAnnonces"])->name("vacance");
 Route::post("/location", [AnnounceController::class, "filterSearch"])->name("filterAnnonce");
