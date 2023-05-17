@@ -64,7 +64,7 @@ class AnnounceController extends Controller
     //announceimage
     if ($request->hasFile('image')) {
       foreach ($request->file('image') as $key => $image) {
-        $ImageName = time() . '.' . $image->extension();
+        $ImageName = time() . $image->getClientOriginalName();
         $image->storeAs('images', $ImageName);
         Media::create([
           'url' => $ImageName,
@@ -270,6 +270,7 @@ class AnnounceController extends Controller
 
       //get les annonces avec leur photo.
       $announces = $announces->with('medias')->get();
+      
     }
     $path = ucfirst($path);
     $pageInfo = [

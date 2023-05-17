@@ -12,9 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>@yield("title")</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -86,6 +84,7 @@
     body{
       overflow-x: hidden;
       background-color: #eaeaea;
+      font-family: sans-serif
     }
 
     .menu{
@@ -116,8 +115,6 @@
       margin-right: 10px;
       color: #4e73de;
     }
-
-
 
     .loginBtn{
       background-color: #4e73de;
@@ -296,6 +293,34 @@
     .card-appartement{
       box-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
     }
+
+    .mainImage img{
+      width: 100%;
+      /* height: 620px; */
+    }
+
+    .allImages{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 15px;
+      flex-wrap: wrap;
+    }
+
+    .allImages img{
+      width: 25%;
+      margin-right: 10px;
+    }
+
+    .slidshow{
+      padding: 20px;
+      /* height: 520px; */
+    }
+
+    .slidshow img{
+      max-height: 600px;
+    }
     </style>
 </head>
 <body>
@@ -385,7 +410,6 @@
     </div>
   </div>
 </footer>
-
 
   <script src="{{asset("js/landing_page/index.js")}}"></script>
   <script src="{{asset("js/landing_page/layout.js")}}"></script>
