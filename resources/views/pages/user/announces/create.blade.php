@@ -17,7 +17,7 @@
         @isset($typeL)
         <div class="mb-3">
           <label for="typel" class="form-label">Type de transaction</label>
-          <select id="typel" name="typeL" width='100%' >
+          <select id="typel" name="typeL" width='100%' required>
             @foreach ($typeL as $item)
                 <option value="{{ $item->typeL }}"> {{ $item->typeL }} </option>
             @endforeach
@@ -28,7 +28,7 @@
         @isset($type)
         <div class="mb-3">
           <label for="type" class="form-label">Type de bien immobilier</label>
-          <select id="type" name="type" width='100%'>
+          <select id="type" name="type" width='100%' required>
             @foreach ($type as $item)
                 <option value="{{ $item->type }}"> {{ $item->type }} </option>
             @endforeach
@@ -36,13 +36,13 @@
         </div>
         @endisset
 
-        <x-form-input title='adresse' name='adresse' placeholder="adresse" />
+        <x-form-input title='adresse' name='adresse' placeholder="adresse" required />
         
         <br>
 
         <div class="mb-3">
           <label for="images" class="form-label">Images</label>
-          <input type="file" class="form-control" name= "image[]" id="images" multiple = "multiple" />
+          <input type="file" class="form-control" name= "image[]" id="images" multiple = "multiple" required />
         </div>
 
         <input type="hidden" name="state" value="0">
