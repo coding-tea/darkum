@@ -96,7 +96,7 @@ class FilterComponent extends Component
 
 
 
-    $this->announces = $query->with("medias")->get();
+    $this->announces = $query->medias()->get();
   }
 
   // Assign the filtered results to the $announces property

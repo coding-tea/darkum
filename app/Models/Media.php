@@ -10,8 +10,9 @@ class Media extends Model
     use HasFactory;
     protected $table = 'medias';
     protected $guarded = [];
+    
     public function announce()
-{
-    return $this->belongsTo(Announce::class, 'idAnnounce');
-}
+    {
+        return $this->belongsTo(Announce::class, 'idAnnonce');
+    }
 }

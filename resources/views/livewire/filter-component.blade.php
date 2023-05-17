@@ -170,7 +170,6 @@
       @isset($announces)
       <main class="container-appartement">
         <!-- CARD Appartement START -->
-  
         @forelse ($announces as $annonce)
         <div class="card-appartement">
   
@@ -182,7 +181,6 @@
             {{-- <button class="btn btn-link" id="back" aria-label="Précédent">
               <span class="fa fa-chevron-left"></span>
             </button>      --}}
-  
             @foreach ($annonce->medias as  $media)
             @if($loop->first)
               <img class="slide" src="{{ asset($media->url) }}" alt="Slide">

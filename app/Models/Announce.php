@@ -12,7 +12,7 @@ class Announce extends Model
 
   public function medias()
   {
-    return $this->hasMany(Media::class, 'idAnnounce', "idMedia");
+      return $this->hasMany(Media::class, 'idAnnounce');
   }
 
   public function favorits()
