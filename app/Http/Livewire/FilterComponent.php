@@ -40,7 +40,7 @@ class FilterComponent extends Component
     } 
     
     
-  }
+  
 
   public function filterAnnonce()
   {
@@ -96,7 +96,7 @@ class FilterComponent extends Component
 
 
 
-    $this->announces = $query->get();
+    $this->announces = $query->with("medias")->get();
   }
 
   // Assign the filtered results to the $announces property
