@@ -396,6 +396,5 @@
   @yield("script")
 
   @livewireScripts
-
 </body>
 </html>
