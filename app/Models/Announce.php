@@ -9,8 +9,14 @@ class Announce extends Model
 {
   use HasFactory;
   protected $guarded = [];
+
   public function medias()
   {
     return $this->hasMany(Media::class);
+  }
+
+  public function favorits()
+  {
+    return $this->belongsToMany(User::class);
   }
 }

@@ -42,7 +42,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Favorites()
+    public function favorits()
     {
         return $this->belongsToMany(Announce::class);
     }
