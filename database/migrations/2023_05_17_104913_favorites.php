@@ -13,8 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
-            $table->id("numFav");
+        Schema::table('announces_users', function (Blueprint $table) {
             $table->foreignId("userId")->constraide("users");
             $table->foreignId("AnnounceId")->constraide("announces");
             $table->timestamps();
@@ -28,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::table('announces_users', function (Blueprint $table) {
+            //
+        });
     }
 };
