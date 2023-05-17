@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -35,28 +36,28 @@ Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->na
 Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create')->middleware('auth');
 
 //dashboard
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
-    Route::get("/", [AnnounceController::class, 'index']);
+  Route::get("/", [AnnounceController::class, 'index']);
 
-    Route::group(['prefix' => 'announces'], function(){
-        Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
+  Route::group(['prefix' => 'announces'], function () {
+    Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
 
-        
-        // Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create');
-        Route::post('/', [AnnounceController::class, 'store'])->name('announces.store');
 
-        Route::get('/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
-        Route::put('/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
+    // Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create');
+    Route::post('/', [AnnounceController::class, 'store'])->name('announces.store');
 
-        Route::delete('/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
-    });
-    
-    // Route::resource('/announces', AnnounceController::class);
-    Route::resource('/profile', UserController::class);
-    Route::post('/comment', [CommentController::class, 'store'])->name('comment');
-    Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');
-    Route::post('/comments/delete/{id}', [CommentController::class, 'destroy'])->name('deleteC');
+    Route::get('/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
+    Route::put('/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
+
+    Route::delete('/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
+  });
+
+  // Route::resource('/announces', AnnounceController::class);
+  Route::resource('/profile', UserController::class);
+  Route::post('/comment', [CommentController::class, 'store'])->name('comment');
+  Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');
+  Route::post('/comments/delete/{id}', [CommentController::class, 'destroy'])->name('deleteC');
 });
 
 //landing Page

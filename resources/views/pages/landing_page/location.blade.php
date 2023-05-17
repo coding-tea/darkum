@@ -13,8 +13,11 @@
 @endsection
 
 @section("content")
-
-  <livewire:filter-component :path="'location'"/>
+  @if(isset($ville) && isset($typeBien))
+    <livewire:filter-component :path="'location'" :testVille="$ville" :testType="$typeBien"/>
+  @else 
+    <livewire:filter-component :path="'location'"/>
+  @endif
 
     
 @endsection
