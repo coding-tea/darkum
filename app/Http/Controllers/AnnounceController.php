@@ -339,7 +339,8 @@ class AnnounceController extends Controller
 
       'region' => $ville
     ];
+  
 
-    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
+    return redirect()->route(strtolower($path), compact("announces", "pageInfo", "old_choices", "ville", "typeBien"));
   }
 }
