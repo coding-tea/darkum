@@ -67,4 +67,4 @@ Route::get("/vacance", [AnnounceController::class, "allAnnonces"])->name("vacanc
 Route::post("/location", [AnnounceController::class, "filterSearch"])->name("filterAnnonce");
 Route::post("/vente", [AnnounceController::class, "filterSearch"])->name("filterAnnonceVente");
 Route::post("/vacance", [AnnounceController::class, "filterSearch"])->name("filterAnnonceVacance");
-Route::post("/index", [AnnounceController::class, "filterIndex"])->name("filterIndex");
+Route::post("/filter", [AnnounceController::class, "filterIndex"])->name("filterIndex");

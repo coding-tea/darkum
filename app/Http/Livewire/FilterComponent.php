@@ -26,7 +26,7 @@ class FilterComponent extends Component
 
     $this->path = $path;
 
-    if (basename(parse_url(url()->current(), PHP_URL_PATH)) == "index") {
+    if (basename(parse_url(url()->current(), PHP_URL_PATH)) == "filter") {
       $testType = $testType == null? "all" : $testType;
           if($testType == "all")
             $this->announces = Announce::where("typeL", $this->path)->where("city", $testVille)->get();

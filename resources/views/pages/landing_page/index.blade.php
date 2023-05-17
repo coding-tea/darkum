@@ -15,7 +15,7 @@
         Votre appartement idéal à portée de clic !
       </p>
   </div>    
-    <form class="filterRecherche" action="{{route("filterIndex")}}" method="POST">
+    <form class="filterRecherche" action="{{route("filterIndex")}}" method="post">
       @csrf
       <div class="circle1">1</div>
       <div class="circle2">2</div>
