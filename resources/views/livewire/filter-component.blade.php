@@ -1,7 +1,17 @@
+@php
+  $announces = (session()->has('announces'))?session('announces'):$announces;
+  $pageInfo = (session()->has('pageInfo'))?session('pageInfo'):$pageInfo;
+  $old_choices = (session()->has('old_choices'))?session('old_choices'):$old_choices;
+  // $ville = (session()->has('ville'))?session('ville'):$ville;
+  $typeBien = (session()->has('typeBien'))?session('typeBien'):$typeBien;
+@endphp
+
 <div>
   <div class="location-section">
     <h3 class="location-title">@isset($pageInfo["path"]){{$pageInfo["path"]}} @endisset Appartement - @if(isset($old_choices["region"]) && $old_choices["region"] != "*") Région {{$old_choices["region"]}} @else Toutes les Régions @endif <span>(@isset($pageInfo["nbAnnonces"]) {{$pageInfo["nbAnnonces"]}} @endisset résultats)</span></h3>
   </div>
+
+
   
     <section class="filterBody">
       <!-- Filter Sidebar Start -->

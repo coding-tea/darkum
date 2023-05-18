@@ -321,6 +321,60 @@
     .slidshow img{
       max-height: 600px;
     }
+
+    .announcesContainer{
+      text-align: center;
+      padding: 40px;
+    }
+
+    .announces{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .announces a{
+      text-decoration: none;
+    }
+
+    .announceOne{
+      margin-right: 15px;
+      width: 22%;
+      padding: 15px;
+      box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      min-height: 230px;
+      transition: .4s ease;
+    }
+
+    .announceOne img{
+      max-width: 100%;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .announceOne .prix{
+      color: #29a160;
+      font-weight: 500;
+      letter-spacing: 1px;
+      font-size: 13px;
+    }
+    .announceOne .title{
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      letter-spacing: 1px;
+      font-size: 12px;
+      padding: 5px 0;
+    }
+
+    .announceOne:hover{
+      transform: scale(1.1);
+    }
+
+
     </style>
 
 @livewireStyles

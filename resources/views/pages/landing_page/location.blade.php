@@ -1,5 +1,7 @@
 @extends('layouts.landingPage')
 
+
+
 @section('title', "Location Appartement")
 
 @section("links")

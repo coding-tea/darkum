@@ -99,7 +99,10 @@ class AnnounceController extends Controller
       array_push($names, $name);
     }
     $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
-    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias'));
+
+    $announces = Announce::where('typeL', $announce->typeL)->limit(4)->with('medias')->get()->toArray();
+     
+    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias', 'announces'));
   }
 
   /**
@@ -110,7 +113,9 @@ class AnnounceController extends Controller
    */
   public function edit(Announce $announce)
   {
-    return view('pages.user.announces.edit', compact('announce'));
+    $typeL = Announce::selectRaw('typeL')->distinct()->get();
+    $type = Announce::selectRaw('type')->distinct()->get();
+    return view('pages.user.announces.edit', compact('announce', 'typeL', 'type'));
   }
 
   /**
@@ -128,7 +133,10 @@ class AnnounceController extends Controller
       'price' => $request->price,
       'nbRome' => $request->nbRome,
       'surface' => $request->surface,
-      'city' => $request->city
+      'city' => $request->city,
+      'typeL' => $request->typeL,
+      'type' => $request->type,
+      'adresse' => $request->adresse
     ]);
     return redirect()->route('announces.index');
   }
@@ -341,6 +349,6 @@ class AnnounceController extends Controller
     ];
   
 
-    return view("pages.landing_page.".strtolower($path), compact("announces", "pageInfo", "old_choices", "ville", "typeBien"));
+    return redirect()->route(strtolower($path))->with(["announces"=> $announces, "pageInfo" => $pageInfo, "old_choices" => $old_choices, "ville" => $ville, "typeBien" => $typeBien]);
   }
 }
