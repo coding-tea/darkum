@@ -64,7 +64,7 @@ class AnnounceController extends Controller
     //announceimage
     if ($request->hasFile('image')) {
       foreach ($request->file('image') as $key => $image) {
-        $ImageName = time() . '.' . $image->extension();
+        $ImageName = time() . $image->getClientOriginalName();
         $image->storeAs('images', $ImageName);
         Media::create([
           'url' => $ImageName,
@@ -99,7 +99,11 @@ class AnnounceController extends Controller
       array_push($names, $name);
     }
     $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
-    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias'));
+    $author = DB::table('users')->where('id', $announce->userId)->limit(1)->get()->toArray()[0]->email;
+
+    $announces = Announce::where('typeL', $announce->typeL)->limit(4)->with('medias')->get()->toArray();
+     
+    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias', 'announces', 'author'));
   }
 
   /**
@@ -110,7 +114,9 @@ class AnnounceController extends Controller
    */
   public function edit(Announce $announce)
   {
-    return view('pages.user.announces.edit', compact('announce'));
+    $typeL = Announce::selectRaw('typeL')->distinct()->get();
+    $type = Announce::selectRaw('type')->distinct()->get();
+    return view('pages.user.announces.edit', compact('announce', 'typeL', 'type'));
   }
 
   /**
@@ -128,7 +134,10 @@ class AnnounceController extends Controller
       'price' => $request->price,
       'nbRome' => $request->nbRome,
       'surface' => $request->surface,
-      'city' => $request->city
+      'city' => $request->city,
+      'typeL' => $request->typeL,
+      'type' => $request->type,
+      'adresse' => $request->adresse
     ]);
     return redirect()->route('announces.index');
   }
