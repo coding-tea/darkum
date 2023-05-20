@@ -66,6 +66,8 @@
           {{ $announce->description }}
         </p>
 
+        <div class="map"></div>
+
         @isset($data->tel)
         <div class="ctaContainer">
             <a class="cta" href="https://wa.me/+212{{ $data->tel }}/?text=Pourriez-vous confirmer si l'appartement *_{{ strtoupper($announce->title) }}_* est toujours disponible à la {{ $announce->typeL }} ? Je souhaiterais également savoir si des visites sont actuellement possibles." target="_blanck"> <span><i class="bi bi-whatsapp"></i></span> Contacter le Vendeur</a>
