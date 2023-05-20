@@ -99,10 +99,11 @@ class AnnounceController extends Controller
       array_push($names, $name);
     }
     $medias = DB::table('medias')->where('idAnnounce', $announce_id)->get()->toArray();
+    $author = DB::table('users')->where('id', $announce->userId)->limit(1)->get()->toArray()[0]->email;
 
     $announces = Announce::where('typeL', $announce->typeL)->limit(4)->with('medias')->get()->toArray();
      
-    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias', 'announces'));
+    return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias', 'announces', 'author'));
   }
 
   /**

@@ -426,7 +426,7 @@
         <span></span>
     </button>
     <div class="navlinks-container">
-      <a href="/" aria-current="page" class="btn">Home</a>
+      {{-- <a href="/" aria-current="page" class="btn">Home</a> --}}
       <a href="{{route("vente")}}" class="btn">Vente</a>
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>

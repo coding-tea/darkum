@@ -31,7 +31,17 @@ Route::view("/", "pages.landing_page.index")->name("home");
 Route::view("/location", "pages.landing_page.location");
 Route::view("/about", "pages.landing_page.about");
 Route::view("/privacy", "pages.landing_page.condition");
-Route::view("/contact", "pages.landing_page.contact");
+
+Route::get("/contact/{typeL?}/{email?}/{message?}", function($typeL = null,$email = null, $message = null){
+  // dd($message, $typeL, $email);
+  if(isset($message) && isset($email) && isset($typeL))
+  {
+    
+    return view("pages.landing_page.contact", compact('message', 'email', 'typeL'));
+  }
+    
+  return view("pages.landing_page.contact");
+})->name('contact');
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
 Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create')->middleware('auth');
