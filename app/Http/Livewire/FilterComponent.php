@@ -27,9 +27,9 @@ class FilterComponent extends Component
     $this->path = $path;
 
     $query = Announce::where("typeL", $this->path);
-    if($this->bien != null && $this->ville != null){
+    if($this->bien != null || $this->ville != null){
         if($this->bien != "all") $query->where("type", $this->bien);
-        $query->where("city", $this->ville);
+        $query->where("city","like", "%".$this->ville."%");
     }
     // get all annonces with  type = (location or vente or vacance) 
     $this->announces = $query->get();
