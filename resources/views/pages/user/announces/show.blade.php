@@ -68,6 +68,11 @@
         </div>
         @endisset
 
+        <div class="report">
+          <h3><b>darkum</b> n’est pas responsable des produits proposés dans les annonces.</h3>
+          <a href="#" class="reportCta"><i class="fa-solid fa-circle-exclamation"></i> Signaler l'announce</a>
+        </div>
+
         @isset($announces)
         <div class="announcesContainer">
           <h1 class="heading">Autres annonces</h1>

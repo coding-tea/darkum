@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('announces_users', function (Blueprint $table) {
-            $table->foreignId("userId")->constraide("users");
-            $table->foreignId("AnnounceId")->constraide("announces");
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('user');
         });
     }
 
@@ -27,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('announces_users', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 };

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\favorit;
 use App\Http\Controllers\Inscription;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
@@ -37,23 +38,19 @@ Route::get('/create', [AnnounceController::class, 'create'])->name('announces.cr
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
-
   Route::get("/", [AnnounceController::class, 'index']);
-
   Route::group(['prefix' => 'announces'], function () {
     Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
-
-
     // Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create');
     Route::post('/', [AnnounceController::class, 'store'])->name('announces.store');
-
     Route::get('/{announce}/edit', [AnnounceController::class, 'edit'])->name('announces.edit');
     Route::put('/{announce}', [AnnounceController::class, 'update'])->name('announces.update');
-
     Route::delete('/{announce}', [AnnounceController::class, 'destroy'])->name('announces.destroy');
   });
 
-  // Route::resource('/announces', AnnounceController::class);
+  Route::get('/favorit', [favorit::class, 'index'])->name('favorit.index');
+  Route::delete('/favorit/{AnnounceId}', [favorit::class, 'remove'])->name('favorit.remove');
+
   Route::resource('/profile', UserController::class);
   Route::post('/comment', [CommentController::class, 'store'])->name('comment');
   Route::get('/comments/{id}', [CommentController::class, 'index'])->name('comments');

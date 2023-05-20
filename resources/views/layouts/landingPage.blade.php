@@ -48,6 +48,7 @@
     .ctaContainer{
       padding: 30px;
       text-align: center;
+      margin-bottom: 50px;
     }
 
     .cta{
@@ -374,7 +375,33 @@
       transform: scale(1.1);
     }
 
+    .report{
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-width: 60%;
+    }
 
+    .report h3{
+      color: rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .report .reportCta{
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      color: #d13649;
+      border: 1px solid #d13649;
+      border-radius: 100px;
+      transition: .3s ease;
+    }
+
+    .report .reportCta:hover{
+      background-color: #F9EAEA;
+    }
     </style>
 
 @livewireStyles

@@ -14,7 +14,7 @@
                     <td>{{ $item->id }}</td>
                     <td class="title"> {{ $item->title }} </td>
                     <td>
-                        <form action='{{ route('announces.destroy', $item->id) }}' class="butthons" method='post'>
+                        <form onsubmit="return confirm('do you want to delete announce {{  $item['id'] }}')" action='{{ route('announces.destroy', $item->id) }}' class="butthons" method='post'>
                             @method('DELETE')
                             @csrf
                             <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-pen-to-square"></i> </a>
@@ -32,6 +32,6 @@
             @endforelse
         @endisset
     </table>
-</div>
+    </div>
 </div>
 @endsection

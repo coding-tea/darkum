@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
-            $table->id("idMedia");
-            $table->string("url");
-            $table->foreignId("idAnnounce")->constrained("announces");
+        Schema::create('favorits', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("userId")->constrained("users");
+            $table->foreignId("AnnounceId")->constrained("announces");
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medias');
+        Schema::dropIfExists('favorits');
     }
 };

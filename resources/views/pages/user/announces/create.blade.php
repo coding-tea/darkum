@@ -41,8 +41,8 @@
         <br>
 
         <div class="mb-3">
-          <label for="images" class="form-label">Images</label>
-          <input type="file" class="form-control" name= "image[]" id="images" multiple = "multiple" required />
+          <label onmouseover='document.querySelector("#imagetitle").style="display:none;"' onmouseout='document.querySelector("#imagetitle").style="display:inline;"' for="file-upload" class="form-label custom-file-upload" ><i class="fa-solid fa-cloud-arrow-up"></i> <span id="imagetitle">Images</span></label>
+          <input type="file" class="form-control" name= "image[]" id="file-upload" multiple = "multiple" required />
         </div>
 
         <input type="hidden" name="state" value="0">
