@@ -18,10 +18,10 @@
     </p>
 
     <div class="contact">
-      <form action="" class="form-contact">
+      <form action="{{ (isset($email)? "mailto:$email": 'mailto:darkum@gmail.com') }}" class="form-contact">
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" name="nom" placeholder="Nom *">
+              <input type="text" class="form-control" name="nom" value="{{ (Auth::check())? Auth::user()->name :'' }}" placeholder="Nom *">
             </div>
             <div class="col">
               <select name="objet" class="form-control">
@@ -30,20 +30,21 @@
                 <option value="objet">Modifier|Supprimer Une annonce</option>
                 <option value="objet">Réclamation | Vous êtes un particulier</option>
                 <option value="objet">Réclamation | Vous êtes un professionnel</option>
+                <option value="objet" {{ (isset($email))?'selected':'' }}>Contacter le Vendeur</option>
                 <option value="objet">Autres</option>
               </select>
             </div>
           </div>
         <div class="row">
           <div class="col">
-            <input type="text" class="form-control mb-3" name="email" placeholder="Email *">
+            <input type="text" class="form-control mb-3" name="email" value="{{ (Auth::check())? Auth::user()->email :'' }}" placeholder="Email *">
             <input type="tel" class="form-control" name="tel" placeholder="Téléphone *">
           </div>
           <div class="col">
-            <textarea id="textarea" class="form-control" name="message" placeholder="Votre Message ... *" rows="4"></textarea>
+            <textarea id="textarea" class="form-control" name="message" placeholder="Votre Message ... *" rows="4">{{ (isset($message))?"Pourriez-vous confirmer si l'appartement $message est toujours disponible à la $typeL ? Je souhaiterais également savoir si des visites sont actuellement possibles.":'' }}</textarea>
           </div>
         </div>
-        <button class="btn btn-primary" id="btn-contact">Envoyer</button>
+        <button type="submit" class="btn btn-primary" id="btn-contact">Envoyer</button>
       </form>
     </div>
   </div>

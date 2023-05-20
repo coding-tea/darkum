@@ -6,38 +6,96 @@
     <div class="announce">
         <div class="announceInfo">
             <h1 class="heading"> {{ $announce->title }} </h1>
+            {{-- <img src="{{ asset('images/'. $medias[0]->url) }}" alt="img"> --}}
 
             @isset($medias)
-              <div class="slideshow">
-                
+            <div class="slidshow">
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  @foreach ($medias as $key => $value)
+                  <div class="carousel-item {{ ($loop->first) ? 'active' : '' }}">
+                    <img src="{{ asset('images/' . $value->url) }}" class="d-block w-100" alt="{{ $announce->title }}">
+                  </div>
+                  @endforeach
+                </div>
+                <button 
+                class="carousel-control-prev" 
+                type="button" 
+                data-bs-target="#carouselExampleControls" 
+                data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button 
+                class="carousel-control-next" 
+                type="button" 
+                data-bs-target="#carouselExampleControls" 
+                data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
+            </div>
             @endisset
 
-            <p class="announceDescription">
-                {{ $announce->description }}
-            </p>
             <table class="table">
                 <tr>
-                    <td> price </td>
+                    <td> <b>price</b> </td>
                     <td> {{ $announce->price }}DH</td>
                 </tr>
                 <tr>
-                    <td> city </td>
+                    <td> <b>city</b> </td>
                     <td> {{ $announce->city }}</td>
                 </tr>
                 <tr>
-                    <td> surface </td>
+                    <td> <b>adresse</b> </td>
+                    <td> {{ $announce->adresse }}</td>
+                </tr>
+                <tr>
+                    <td> <b>surface</b> </td>
                     <td> {{ $announce->surface }}m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td> rom number </td>
+                    <td> <b>rom number</b> </td>
                     <td> {{ $announce->nbRome }} </td>
                 </tr>
             </table>
         </div>
+
+        <p class="announceDescription">
+          {{ $announce->description }}
+        </p>
+
         @isset($data->tel)
         <div class="ctaContainer">
-            <a class="cta" href="http://wa.me/+212{{ $data->tel }}" target="_blanck"> <span><i class="bi bi-whatsapp"></i></span> Contacter le Vendeur</a>
+            <a class="cta" href="https://wa.me/+212{{ $data->tel }}/?text=Pourriez-vous confirmer si l'appartement *_{{ strtoupper($announce->title) }}_* est toujours disponible à la {{ $announce->typeL }} ? Je souhaiterais également savoir si des visites sont actuellement possibles." target="_blanck"> <span><i class="bi bi-whatsapp"></i></span> Contacter le Vendeur</a>
+            <a class="cta" style="background-color: #4e73de; margin-left:5px;" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i> via email</a>
+        </div>
+        @endisset
+
+        <div class="report">
+          <h3><b>darkum</b> n’est pas responsable des produits proposés dans les annonces.</h3>
+          <a href="#" class="reportCta"><i class="fa-solid fa-circle-exclamation"></i> Signaler l'announce</a>
+        </div>
+
+        @isset($announces)
+        <div class="announcesContainer">
+          <h1 class="heading">Autres annonces</h1>
+          <div class="announces">
+              @foreach ($announces as $item)
+                <div class="announceOne">
+                <a href="{{ route('show', $item['id']) }}">
+                  @if(isset($item['medias'][0]['url']))
+                  <img src="{{ asset('images/' . $item['medias'][0]['url']) }}" alt="{{ $item['title'] }}" class="announceImg">
+                  @else
+                  <img src="{{ asset('images/default.png') }}" alt="{{ $item['title'] }}" class="announceImg">
+                  @endif
+                  <h1 class="prix"> {{ $item['price'] }} DH </h1>
+                  <h1 class="title"> {{ $item['title'] }} DH </h1>
+                </a>
+                </div>
+              @endforeach
+          </div>
         </div>
         @endisset
 

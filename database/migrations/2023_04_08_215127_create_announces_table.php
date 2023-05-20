@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string("surface", 20);
             $table->string("city", 50);
             $table->string("adresse", 100)->nullable();
-            $table->foreignId("userId")->constraide("users");
+            $table->foreignId("userId")->constrained("users");
             $table->timestamps();
         });
     }
