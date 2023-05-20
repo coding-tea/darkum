@@ -18,12 +18,21 @@ class FilterComponent extends Component
   public $nbChambre = [];
   public $caracteristiques = [];
   public $path;
+  public $ville;
+  public $bien;
+
 
   public function mount($path)
   {
     $this->path = $path;
+
+    $query = Announce::where("typeL", $this->path);
+    if($this->bien != null && $this->ville != null){
+        if($this->bien != "all") $query->where("type", $this->bien);
+        $query->where("city", $this->ville);
+    }
     // get all annonces with  type = (location or vente or vacance) 
-    $this->announces = Announce::where("typeL", $this->path)->get();
+    $this->announces = $query->get();
   }
 
   public function filterAnnonce()
