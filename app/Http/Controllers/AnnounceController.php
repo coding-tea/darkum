@@ -179,131 +179,7 @@ class AnnounceController extends Controller
     return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
   }
 
-  public function filterSearch(Request $request)
-  {
-    // get the type of route (location | vente | vacance)
-    $request->validate([
-      'typeBien' => 'required|array|min:1',
-      'typeBien.*' => 'required|string'
-    ]);
-
-    $path = $request->path();
-
-    //get all ville to fill the region select 
-    $villes = DB::table('announces')->distinct()->pluck('city');
-
-    //type de bien selectionner par user (Appartement | Maison | Villas ...)
-    $typesBien = $request->input('typeBien');
-
-    // region rechercher  par user
-    $region = $request->regionFilter;
-
-    // le buget minimal et maximal selectionner par le user :
-    $minBudget = $request->budgetMin;
-    $maxBudget = $request->budgetMax;
-
-    if ($maxBudget < $minBudget) {
-      $swapBudget = $maxBudget;
-      $maxBudget = $minBudget;
-      $minBudget = $swapBudget;
-    }
-
-    // la surface minimal et maximal selectionner par le user :
-    $minSurface = $request->SurfaceMin;
-    $maxSurface = $request->surfaceMax;
-
-
-    // nombre de chambre choisie par user
-    $nbChambre = $request->input('nbChambre');
-
-    //get caracteristique choisie par user :
-    $caracteristiques = $request->input('caracteristique');
-
-
-    // get all annonces by type of route (location | vente | vacance)
-    $announces = Announce::where("typeL", $path);
-
-    //get  annonces filtred by type de bien (Appartement | Maison | Villas ...):
-
-    if (!empty($typesBien)) {
-      $announces = $announces->wherein("type", $typesBien);
-
-      // get les annonces filtrer by ville selectionner par user:
-      if (!empty($region)) {
-        $announces = $announces->where("city", "like", "%" . $region . "%");
-      }
-
-      // get les annonces filtrer by budget selectionner par user:
-      if (!empty($minBudget) || !empty($maxBudget)) {
-        $minBudget = $minBudget == null ? 0 : $minBudget;
-        $maxBudget = $maxBudget == null ? Announce::max("price") : $maxBudget;
-        $announces = $announces->whereBetween("price", [$minBudget, $maxBudget])->orderBy('price');
-      }
-
-      // get les annonces filtrer by surface selectionner par user:
-      if (!empty($minSurface) || !empty($maxSurface)) {
-        $minSurface = $minSurface == null ? 0 : $minSurface;
-        $maxSurface = $maxSurface == null ? Announce::max("surface") : $maxSurface;
-        $announces = $announces->whereBetween("price", [$minSurface, $maxSurface])->orderBy('surface');
-      }
-
-      // get annonce whit nbChambre 
-
-      if (!empty($nbChambre)) {
-        //pour gerer le cas de choisir +6
-        $index = array_search(6, $nbChambre);
-        if ($index !== false) {
-          unset($nbChambre[$index]);
-          $announces = $announces->wherein("nbRome", $nbChambre)->orwhere("nbRome", ">=", 6);
-          // rajouter la valeur au tableau pour reselectionner sur le view (si le user choisie +6)
-          array_push($nbChambre, "+6");
-        } else $announces = $announces->wherein("nbRome", $nbChambre);
-      }
-
-
-      if (!empty($caracteristiques)) {
-        $announces = $announces->where(function ($query) use ($caracteristiques) {
-          foreach ($caracteristiques as $caracteristique) {
-            $query->orWhere('description', 'like', '%' . $caracteristique . '%');
-          }
-        });
-      }
-      // calculer le nombre des annonces pour le afficher
-      $nbAnnonces = $announces->count();
-
-      // pour remplir  select de budget : 
-      $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
-
-      // pour remplir  select de surface : 
-      $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
-
-      //get les annonces avec leur photo.
-      $announces = $announces->with('medias')->get();
-      
-    }
-    $path = ucfirst($path);
-    $pageInfo = [
-      'nbAnnonces' => $nbAnnonces,
-      'path' => $path,
-      'villes' => $villes,
-      'budgetMin' => $budgetMin,
-      'surfaceMin' => $surfaceMin
-    ];
-
-    $old_choices = [
-      'caracteristiques' => $caracteristiques,
-      'nbChambre' => $nbChambre,
-      'minSurface' => $minSurface,
-      'maxSurface' => $maxSurface,
-      'minBudget' => $minBudget,
-      'maxBudget' => $maxBudget,
-      'typesBien' => $typesBien,
-      'region' => $region
-    ];
-
-    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
-    // return view("pages.landing_page.location", compact("announces", "nbAnnonces", 'path', "villes", "region", 'budgetMin', "surfaceMin"));
-  }
+  
 
   public function filterIndex(Request $request)
   {
@@ -314,11 +190,13 @@ class AnnounceController extends Controller
     $announces = Announce::where("typeL", $path);
     if ($typeBien == "all"){
       if(!empty($ville)){
-        $announces = $announces->where("city", $ville);
+        $announces->where("city", $ville);
       }
     }
     else
-      $announces = $announces->where("city", $ville)->where("type", $typeBien);
+      $announces->where("city", $ville)->where("type", $typeBien);
+
+
 
     // calculer le nombre des annonces pour le afficher
     $nbAnnonces = $announces->count();
@@ -345,11 +223,12 @@ class AnnounceController extends Controller
     ];
 
     $old_choices = [
-
-      'region' => $ville
+      "ville" => $ville,
+      'region' => $ville,
+      "typeB" => $typeBien,
+      "path" => strtolower($pageInfo['path'])
     ];
-  
 
-    return redirect()->route(strtolower($path))->with(["announces"=> $announces, "pageInfo" => $pageInfo, "old_choices" => $old_choices, "ville" => $ville, "typeBien" => $typeBien]);
+    return view("pages.landing_page.indexFilter", compact("announces", "pageInfo", "old_choices"));
   }
 }

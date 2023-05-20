@@ -18,29 +18,22 @@ class FilterComponent extends Component
   public $nbChambre = [];
   public $caracteristiques = [];
   public $path;
-  public $testVille;
-  public $testType;
+  public $ville;
+  public $bien;
 
-  public function mount($path, $testVille = null, $testType = null)
+
+  public function mount($path)
   {
-
     $this->path = $path;
 
-    if (basename(parse_url(url()->current(), PHP_URL_PATH)) == "filter") {
-      $testType = $testType == null? "all" : $testType;
-          if($testType == "all")
-            $this->announces = Announce::where("typeL", $this->path)->where("city", $testVille)->get();
-  
-          else 
-            $this->announces = Announce::where("typeL", $this->path)->where("type", $testType)->where("city", $testVille)->get();
-
-        } 
-        else 
-          $this->announces = Announce::where("typeL", $this->path)->get();
-    } 
-    
-    
-  
+    $query = Announce::where("typeL", $this->path);
+    if($this->bien != null || $this->ville != null){
+        if($this->bien != "all") $query->where("type", $this->bien);
+        $query->where("city","like", "%".$this->ville."%");
+    }
+    // get all annonces with  type = (location or vente or vacance) 
+    $this->announces = $query->get();
+  }
 
   public function filterAnnonce()
   {
@@ -96,7 +89,7 @@ class FilterComponent extends Component
 
 
 
-    // $this->announces = $query->medias()->get();
+    $this->announces = $query->get();
   }
 
   // Assign the filtered results to the $announces property
