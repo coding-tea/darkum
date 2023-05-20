@@ -136,7 +136,7 @@
 
                             <!-- Nav Item - favorit -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
+                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('favorit.index') }} ">
                                     <i class="fa-solid fa-star"></i>
                                     <span>favorits</span></a>
                             </li>

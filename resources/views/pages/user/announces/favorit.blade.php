@@ -16,8 +16,8 @@
                         <form onsubmit="return confirm('do you want to delete announce {{  $item['id'] }} from favorits')" action='{{ route('favorit.remove', $item['id']) }}' class="butthons" method='post'>
                             @method('DELETE')
                             @csrf
-                            <a href="{{ route('show', $item['id']) }}"> <i class="fa-solid fa-eye"></i> </a>
-                            <button type='submit'> <i class="fa-solid fa-trash"></i> </button>
+                            <a href="{{ route('show', $item['id']) }}"> <i class="fa-solid fa-eye" style="color:#29a160;"></i> </a>
+                            <button type='submit'> <i class="fa-solid fa-trash" style="color:#d13649;"></i> </button>
                             </ul>
                         </form>
                     </td>

@@ -14,13 +14,13 @@
                     <td>{{ $item->id }}</td>
                     <td class="title"> {{ $item->title }} </td>
                     <td>
-                        <form onsubmit="return confirm('do you want to delete announce {{  $item['id'] }}')" action='{{ route('announces.destroy', $item->id) }}' class="butthons" method='post'>
+                        <form onsubmit="return confirm('do you want to delete announce {{  $item->id }}')" action='{{ route('announces.destroy', $item->id) }}' class="butthons" method='post'>
                             @method('DELETE')
                             @csrf
-                            <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                            <a href="{{ route('show', $item->id) }}"> <i class="fa-solid fa-eye"></i> </a>
+                            <a href="{{ route('announces.edit', $item->id) }}"> <i class="fa-solid fa-pen-to-square" style="color:gray;"></i> </a>
+                            <a href="{{ route('show', $item->id) }}"> <i class="fa-solid fa-eye" style="color:#29a160;"></i> </a>
                             <a href="{{ route('comments', $item->id) }}"> <i class="fa-solid fa-comment"></i> </a>
-                            <button type='submit'> <i class="fa-solid fa-trash"></i> </button>
+                            <button type='submit'> <i class="fa-solid fa-trash" style="color:#d13649;"></i> </button>
                             </ul>
                         </form>
                     </td>
