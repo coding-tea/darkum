@@ -229,6 +229,6 @@ class AnnounceController extends Controller
       "path" => strtolower($pageInfo['path'])
     ];
 
-    return view("pages.landing_page." . strtolower($path), compact("announces", "pageInfo", "old_choices"));
+    return view("pages.landing_page.indexFilter", compact("announces", "pageInfo", "old_choices"));
   }
 }

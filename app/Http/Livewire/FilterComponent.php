@@ -22,9 +22,8 @@ class FilterComponent extends Component
   public $bien;
 
 
-  public function mount($path, $testVille = null, $testType = null)
+  public function mount($path)
   {
-
     $this->path = $path;
 
     $query = Announce::where("typeL", $this->path);
@@ -90,7 +89,7 @@ class FilterComponent extends Component
 
 
 
-    // $this->announces = $query->medias()->get();
+    $this->announces = $query->get();
   }
 
   // Assign the filtered results to the $announces property
