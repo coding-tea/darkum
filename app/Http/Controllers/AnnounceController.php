@@ -228,9 +228,6 @@ class AnnounceController extends Controller
       "typeB" => $typeBien,
       "path" => strtolower($pageInfo['path'])
     ];
-  
-
-    return redirect()->route(strtolower($path))->with(["announces"=> $announces, "pageInfo" => $pageInfo, "old_choices" => $old_choices, "ville" => $ville, "typeBien" => $typeBien]);
 
     return view("pages.landing_page.indexFilter", compact("announces", "pageInfo", "old_choices"));
   }
