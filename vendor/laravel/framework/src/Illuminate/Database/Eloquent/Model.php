@@ -1084,6 +1084,16 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     }
 
     /**
+     * Save the model and all of its relationships without raising any events to the parent model.
+     *
+     * @return bool
+     */
+    public function pushQuietly()
+    {
+        return static::withoutEvents(fn () => $this->push());
+    }
+
+    /**
      * Save the model to the database without raising any events.
      *
      * @param  array  $options
@@ -2308,7 +2318,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
             return $this->$method(...$parameters);
         }
 
-        if ($resolver = ($this->relationResolver(static::class, $method))) {
+        if ($resolver = $this->relationResolver(static::class, $method)) {
             return $resolver($this);
         }
 

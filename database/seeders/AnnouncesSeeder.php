@@ -27,7 +27,7 @@ class AnnouncesSeeder extends Seeder
               'nbRome' => $faker->randomDigitNotNull(),
               'surface' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 500),
               'city' => $faker->city(),
-              'userId' => $faker->numberBetween($min = 1, $max = 10),
+              'userId' => 1,
               'created_at' => now(),
               'updated_at' => now(),
           ]);

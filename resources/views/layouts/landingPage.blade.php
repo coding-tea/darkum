@@ -12,9 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,300;8..144,500;8..144,700;8..144,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>@yield("title")</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -50,6 +48,7 @@
     .ctaContainer{
       padding: 30px;
       text-align: center;
+      margin-bottom: 50px;
     }
 
     .cta{
@@ -86,6 +85,7 @@
     body{
       overflow-x: hidden;
       background-color: #eaeaea;
+      font-family: sans-serif
     }
 
     .menu{
@@ -116,8 +116,6 @@
       margin-right: 10px;
       color: #4e73de;
     }
-
-
 
     .loginBtn{
       background-color: #4e73de;
@@ -296,6 +294,114 @@
     .card-appartement{
       box-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
     }
+
+    .mainImage img{
+      width: 100%;
+      /* height: 620px; */
+    }
+
+    .allImages{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 15px;
+      flex-wrap: wrap;
+    }
+
+    .allImages img{
+      width: 25%;
+      margin-right: 10px;
+    }
+
+    .slidshow{
+      padding: 20px;
+      /* height: 520px; */
+    }
+
+    .slidshow img{
+      max-height: 600px;
+    }
+
+    .announcesContainer{
+      text-align: center;
+      padding: 40px;
+    }
+
+    .announces{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .announces a{
+      text-decoration: none;
+    }
+
+    .announceOne{
+      margin-right: 15px;
+      width: 22%;
+      padding: 15px;
+      box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      min-height: 230px;
+      transition: .4s ease;
+    }
+
+    .announceOne img{
+      max-width: 100%;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .announceOne .prix{
+      color: #29a160;
+      font-weight: 500;
+      letter-spacing: 1px;
+      font-size: 13px;
+    }
+    .announceOne .title{
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 500;
+      letter-spacing: 1px;
+      font-size: 12px;
+      padding: 5px 0;
+    }
+
+    .announceOne:hover{
+      transform: scale(1.1);
+    }
+
+    .report{
+      padding: 30px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-width: 60%;
+    }
+
+    .report h3{
+      color: rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .report .reportCta{
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      color: #d13649;
+      border: 1px solid #d13649;
+      border-radius: 100px;
+      transition: .3s ease;
+    }
+
+    .report .reportCta:hover{
+      background-color: #F9EAEA;
+    }
     </style>
 
 @livewireStyles
@@ -320,7 +426,7 @@
         <span></span>
     </button>
     <div class="navlinks-container">
-      <a href="/" aria-current="page" class="btn">Home</a>
+      {{-- <a href="/" aria-current="page" class="btn">Home</a> --}}
       <a href="{{route("vente")}}" class="btn">Vente</a>
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>
@@ -388,7 +494,6 @@
     </div>
   </div>
 </footer>
-
 
   <script src="{{asset("js/landing_page/index.js")}}"></script>
   <script src="{{asset("js/landing_page/layout.js")}}"></script>

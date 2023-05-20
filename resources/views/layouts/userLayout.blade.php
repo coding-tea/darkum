@@ -71,6 +71,29 @@
             border-radius: .35rem;
             outline: none;
         }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            width: 100%;
+            text-align: center;
+            background-color: #59698d;
+            color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 9px 30px;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .custom-file-upload:hover{
+            background-color: #fff;
+            border: 1px solid #59698d;
+            color: #59698d;
+        }
     </style>
 
     {{-- cdnjs font-awesome --}}
@@ -100,8 +123,8 @@
                             <!-- Nav Item - Dashboard -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/">
-                                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                                    <span>home</span></a>
+                                    <i class="fa-solid fa-house"></i>
+                                    <span> home</span></a>
                             </li>
 
                             <!-- Nav Item - announces -->
@@ -109,6 +132,13 @@
                                 <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
                                     <i class="fas fa-fw fa-folder"></i>
                                     <span>announces</span></a>
+                            </li>
+
+                            <!-- Nav Item - favorit -->
+                            <li class="nav-item">
+                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('favorit.index') }} ">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>favorits</span></a>
                             </li>
 
                             <!-- Nav Item - Profile -->
@@ -247,6 +277,5 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src=" {{ asset('js/demo/chart-pie-demo.js') }} "></script>
-
 </body>
 </html>
