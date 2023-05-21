@@ -209,15 +209,12 @@
               <a href="{{ route('show', $annonce->id) }}" class="btn">En savoir plus </a>
   
               
-  
-  
           </div>
   
   
   
-          <div class="favorite-button">
-            <i class="fa-sharp fa-regular fa-heart"></i>
-          </div>
+        
+          <livewire:favorites-component :announceid="$annonce->id" />
   
           
   
