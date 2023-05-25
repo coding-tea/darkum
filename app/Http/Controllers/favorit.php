@@ -24,7 +24,7 @@ class favorit extends Controller
 
     public function add(Request $request)
     {
-        ModelsFavorit::create([
+        DB::table('favorits')->insert([
             'AnnounceId' => $request->AnnounceId,
             'userId' => auth()->id()
         ]);
