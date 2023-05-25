@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Announce;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Request;
 
@@ -112,13 +113,15 @@ class FilterComponent extends Component
     if ($this->announces)
       $nbAnnonces = $this->announces->count();
 
+    $allFavoris = $announcesId = DB::table('favorits')->select('AnnounceId')->get()->toArray();
 
     $pageInfo = [
       'villes' => $villes,
       "nbAnnonces" => $nbAnnonces,
       "path" => $this->path,
       'budgetMin' => $budgetMin,
-      'surfaceMin' => $surfaceMin
+      'surfaceMin' => $surfaceMin,
+      "allFavoris" => $allFavoris
     ];
     $old_choices = [
       "region" => $this->selectedRegion,
