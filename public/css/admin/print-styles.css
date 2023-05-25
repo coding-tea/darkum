@@ -1,0 +1,7 @@
+.ml-auto,.form-row,.noprint{
+  display: none;
+}
+.card-body {
+  display: block;
+}
+
