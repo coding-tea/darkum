@@ -19,7 +19,7 @@
           <label for="typel" class="form-label">Type de transaction</label>
           <select id="typel" name="typeL" width='100%' required>
             @foreach ($typeL as $item)
-                <option value="{{ $item->typeL }}"> {{ $item->typeL }} </option>
+                <option value="{{ $item->typeL }}" {{ ($item->typeL=='location')?'selected':'' }} > {{ $item->typeL }} </option>
             @endforeach
           </select>
         </div>

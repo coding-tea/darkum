@@ -70,7 +70,8 @@
 
         @isset($data->tel)
         <div class="ctaContainer">
-            <a class="cta" href="https://wa.me/+212{{ $data->tel }}/?text=Pourriez-vous confirmer si l'appartement *_{{ strtoupper($announce->title) }}_* est toujours disponible à la {{ $announce->typeL }} ? Je souhaiterais également savoir si des visites sont actuellement possibles." target="_blanck"> <span><i class="bi bi-whatsapp"></i></span> Contacter le Vendeur</a>
+            <a class="cta" href="https://wa.me/+212{{ $data->tel }}"></i></span> Contacter le Vendeur</a>
+
             <a class="cta" style="background-color: #4e73de; margin-left:5px;" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i> via email</a>
         </div>
         @endisset

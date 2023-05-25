@@ -50,7 +50,7 @@ Route::get('/create', [AnnounceController::class, 'create'])->name('announces.cr
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
-  Route::get("/", [AnnounceController::class, 'index']);
+  Route::get("/", [AnnounceController::class, 'index'])->name('user.index');
   Route::group(['prefix' => 'announces'], function () {
     Route::get('/', [AnnounceController::class, 'index'])->name('announces.index');
     // Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create');
@@ -83,8 +83,9 @@ Route::get("/index", [AnnounceController::class, "filterIndex"])->name("filterIn
 
 
 
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 
-  Route::get('/dashboard/index', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
+  Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
   Route::resource('users',AdminUserController::class);
   Route::delete('users_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('users.mass_destroy');
 
@@ -103,3 +104,5 @@ Route::get("/index", [AnnounceController::class, "filterIndex"])->name("filterIn
   Route::post('find_rooms', [\App\Http\Controllers\Admin\FindRoomController::class, 'index']);
 
   Route::get('system_calendars', [\App\Http\Controllers\Admin\SystemCalendarController::class, 'index'])->name('system_calendars.index');
+
+});
