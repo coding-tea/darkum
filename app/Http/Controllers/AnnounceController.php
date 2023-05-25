@@ -58,6 +58,9 @@ class AnnounceController extends Controller
       'nbRome' => $request->nbRome,
       'surface' => $request->surface,
       'city' => $request->city,
+      'type' => $request->type,
+      'typeL' => $request->typeL,
+      'adresse' => $request->adresse,
       'userId' => Auth()->id()
     ]);
 
@@ -102,7 +105,7 @@ class AnnounceController extends Controller
     $author = DB::table('users')->where('id', $announce->userId)->limit(1)->get()->toArray()[0]->email;
 
     $announces = Announce::where('typeL', $announce->typeL)->limit(4)->with('medias')->get()->toArray();
-     
+
     return view('pages.user.announces.show', compact('announce', 'data', 'email', 'announce_id', 'comments', 'names', 'medias', 'announces', 'author'));
   }
 
@@ -179,7 +182,7 @@ class AnnounceController extends Controller
     return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
   }
 
-  
+
 
   public function filterIndex(Request $request)
   {
@@ -188,12 +191,11 @@ class AnnounceController extends Controller
     $ville = $request->searchVille;
 
     $announces = Announce::where("typeL", $path);
-    if ($typeBien == "all"){
-      if(!empty($ville)){
+    if ($typeBien == "all") {
+      if (!empty($ville)) {
         $announces->where("city", $ville);
       }
-    }
-    else
+    } else
       $announces->where("city", $ville)->where("type", $typeBien);
 
 
