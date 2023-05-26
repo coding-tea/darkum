@@ -133,7 +133,7 @@
 
                             <!-- Nav Item - announces -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
+                                <a class="nav-link {{(Request::is('admin/announces*'))?'active':'' }}" href=" {{ route('annonces.index') }} ">
                                     <i class="fas fa-fw fa-folder"></i>
                                     <span>announces</span></a>
                             </li>

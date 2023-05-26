@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AnnoncesController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
@@ -100,8 +101,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
   Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
   Route::delete('bookings_mass_destroy', [\App\Http\Controllers\Admin\BookingController::class, 'massDestroy'])->name('bookings.mass_destroy');
 
-  Route::get('find_rooms', [\App\Http\Controllers\Admin\FindRoomController::class, 'index'])->name('find_rooms.index');
-  Route::post('find_rooms', [\App\Http\Controllers\Admin\FindRoomController::class, 'index']);
+  Route::resource('/annonces', AnnoncesController::class);
+  // Route::post('find_rooms', [\App\Http\Controllers\Admin\FindRoomController::class, 'index']);
 
   Route::get('system_calendars', [\App\Http\Controllers\Admin\SystemCalendarController::class, 'index'])->name('system_calendars.index');
 

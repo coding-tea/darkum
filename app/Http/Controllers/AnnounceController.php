@@ -37,9 +37,8 @@ class AnnounceController extends Controller
    */
   public function create()
   {
-    $typeL = Announce::selectRaw('typeL')->distinct()->get();
-    $type = Announce::selectRaw('type')->distinct()->get();
-    // dd($typeL, $type);
+    $typeL = ['location', 'vacances', 'vente'];
+    $type = ['Appartement', 'Maison', 'Villa', 'Chambres', 'Terrains', 'Fermes'];
     return view('pages.user.announces.create', compact('typeL', 'type'));
   }
 

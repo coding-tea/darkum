@@ -19,17 +19,14 @@ class AnnouncesSeeder extends Seeder
 
       for ($i = 0; $i < 10; $i++) {
           DB::table('announces')->insert([
-              'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-              'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-              'typeL' => $faker->randomElement(['location', 'vente', 'vacance']),
-              'type' => $faker->randomElement(['Appartement', 'Maison', 'Villa', "Chambres", "Terrains", "Fermes"]),
-              'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1000, $max = 100000),
-              'nbRome' => $faker->randomDigitNotNull(),
-              'surface' => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 500),
-              'city' => $faker->city(),
-              'userId' => 1,
-              'created_at' => now(),
-              'updated_at' => now(),
+            'title' => "Annonce $i",
+            'description' => "Description de l'annonce $i",
+            'price' => rand(1000, 5000),
+            'nbRome' => rand(1, 5),
+            'surface' => rand(50, 200),
+            'city' => 'Ville',
+            'adresse' => "Adresse de l'annonce $i",
+            'userId' => 1
           ]);
       }
   }

@@ -10,8 +10,8 @@ class Datas extends Model
     use HasFactory;
     protected $guarded = [];
 
-    function user()
+    function users()
     {
-        $this->belongsTo(User::class);
+        $this->belongsTo(User::class,"userId");
     }
 }
