@@ -288,6 +288,13 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src=" {{ asset('js/demo/chart-pie-demo.js') }} "></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session()->has('msg'))
+        @php
+            echo '<script>swal({title: "Good job!",text: "'. session("msg") .'",icon: "success",button: "close!",});</script>';
+        @endphp
+    @endif
     
     @yield("script")
     @livewireScripts
