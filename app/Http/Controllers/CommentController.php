@@ -49,6 +49,8 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $comment = Comment::destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with([
+          'message' => "Comment Deleted successfully",
+        ]);
     }
 }

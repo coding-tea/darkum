@@ -47,4 +47,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Announce::class);
     }
+    public function annonces()
+    {
+        return $this->hasMany(Announce::class);
+    }
+    public function data(){
+      return $this->hasOne(Datas::class,"userId");
+    }
+
+    public function comments(){
+      return $this->hasManyThrough(Comment::class, Announce::class,"userId");
+    }
 }

@@ -405,6 +405,7 @@
     .report .reportCta:hover{
       background-color: #F9EAEA;
     }
+
     </style>
 
 @livewireStyles
@@ -448,7 +449,17 @@
       <button type="button" class="loginBtn signB"><a href="{{ route('register') }}">Sign up</a></button>
       @endguest
       @auth
-      <button type="button" class="loginBtn signB"><a href="/user">Dashboard</a></button>
+
+      <div class="d-flex justify-content-around">
+        <form action="{{ route('logout') }}" method="post" class="signA">
+          <button type="button" class="loginBtn signB"><a href="{{route('dashboard.index')}}">Dashboard</a></button>
+          @csrf
+          <button class="btn  loginBtn signB rounded" type='submit' >Logout</button>
+        </form>
+  
+      </div>
+
+    
       @endauth
     </div>
   </div>
