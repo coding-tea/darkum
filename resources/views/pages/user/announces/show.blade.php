@@ -6,7 +6,6 @@
     <div class="announce">
         <div class="announceInfo">
             <h1 class="heading"> {{ $announce->title }} </h1>
-            {{-- <img src="{{ asset('images/'. $medias[0]->url) }}" alt="img"> --}}
 
             @isset($medias)
             <div class="slidshow">
@@ -56,7 +55,7 @@
                     <td> {{ $announce->surface }}m<sup>2</sup></td>
                 </tr>
                 <tr>
-                    <td> <b>rom number</b> </td>
+                    <td> <b>Rom Number</b> </td>
                     <td> {{ $announce->nbRome }} </td>
                 </tr>
             </table>
@@ -70,14 +69,14 @@
 
         @isset($data->tel)
         <div class="ctaContainer">
-            <a class="cta" href="https://wa.me/+212{{ $data->tel }}"></i></span> Contacter le Vendeur</a>
+            <a class="cta" href="https://wa.me/+212{{ $data->tel }}"></i></span> Contact the Seller</a>
 
-            <a class="cta" style="background-color: #4e73de; margin-left:5px;" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i> via email</a>
+            <a class="cta" style="background-color: #4e73de; margin-left:5px;" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i>Email</a>
         </div>
         @endisset
 
         <div class="report">
-          <h3><b>darkum</b> n’est pas responsable des produits proposés dans les annonces.</h3>
+          <h3><b>darkum</b> Is not responsible for the products offered in the ads.</h3>
 
           <button data-bs-toggle="modal" data-bs-target="#m" class="reportCta"><i class="fa-solid fa-circle-exclamation"></i> report the announcement</button>
 
@@ -93,14 +92,18 @@
                   <button class="btn-close" data-bs-dismiss="modal" ></button>
                 </div>
 
-                <form action="" method="post">
-                <div class="modal-body">  
-                      <input type="hidden" name="announce_id" value="{{ $announce->title }}" class="form-control">
+                <form action="{{ route('report.store') }}" method="post">
+                <div class="modal-body">
+                    @csrf
+                    <input type="hidden" name="announce_id" value="{{ $announce->id }}" class="form-control">
 
                     <div class="mb-3">
-                      <label for="type" class="form-label">Type de bien immobilier</label>
-                      <select id="type" name="type" width='100%' required>
+                      <label for="type" class="form-label" style="text-align: left">Please select a problem !.</label>
+                      <select id="type" class="form-select" name="type" width='100%' required>
                         <option value="select a type" disabled>select a type</option>
+                        <option value="spam">spam</option>
+                        <option value="Unauthorized post">Unauthorized post</option>
+                        <option value="something else">something else</option>
                       </select>
                     </div>
                 </div>
@@ -120,7 +123,7 @@
 
         @isset($announces)
         <div class="announcesContainer">
-          <h1 class="heading">Autres annonces</h1>
+          <h1 class="heading">YOU MAY ALSO LIKE</h1>
           <div class="announces">
               @foreach ($announces as $item)
                 <div class="announceOne">

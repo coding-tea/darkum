@@ -77,7 +77,7 @@ class AnnounceController extends Controller
       }
     }
 
-    return redirect()->route('announces.index');
+    return redirect()->route('announces.index')->with('msg', 'announcement added successfuly');
   }
 
   /**
@@ -143,7 +143,7 @@ class AnnounceController extends Controller
       'type' => $request->type,
       'adresse' => $request->adresse
     ]);
-    return redirect()->route('announces.index');
+    return redirect()->route('announces.index')->with('msg', 'announcement updated successfuly');
   }
 
   /**
@@ -157,7 +157,7 @@ class AnnounceController extends Controller
     Media::where('idAnnounce', $announce->id)->delete();
     DB::table('favorits')->where('AnnounceId', $announce->id)->delete();
     $announce->delete();
-    return redirect()->route('announces.index');
+    return redirect()->route('announces.index')->with('msg', 'announcement deleted successfuly');
   }
 
   //Get All Annconce BY TYPE

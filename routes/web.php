@@ -5,6 +5,7 @@ use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\favorit;
 use App\Http\Controllers\Inscription;
+use App\Http\Controllers\reportController;
 use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\UserController;
@@ -47,6 +48,8 @@ Route::get("/contact/{typeL?}/{email?}/{message?}", function($typeL = null,$emai
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
 Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create')->middleware('auth');
+
+Route::post('/report', [reportController::class, 'store'])->middleware('auth')->name('report.store');
 
 //dashboard
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {

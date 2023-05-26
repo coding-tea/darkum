@@ -117,7 +117,7 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
 
-                    <div class="collapse navbar-collapse" style="z-index: 54545; background-color: #fff" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" style="z-index: 1; background-color: #fff" id="navbarSupportedContent">
                         {{-- navbar links --}}
                         <ul class="navbar-nav mr-auto">
                             <!-- Nav Item - Dashboard -->
@@ -277,5 +277,16 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src=" {{ asset('js/demo/chart-pie-demo.js') }} "></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+    @if (session()->has('msg'))
+        @php
+            echo '<script>swal({title: "Good job!",text: "'. session("msg") .'",icon: "success",button: "close!",});</script>';
+        @endphp
+    @endif
+
+
 </body>
 </html>

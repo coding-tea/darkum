@@ -405,6 +405,10 @@
     .report .reportCta:hover{
       background-color: #F9EAEA;
     }
+
+    .img-profile{
+      width: 50px;
+    }
     </style>
 
 @livewireStyles
@@ -443,12 +447,13 @@
       <img src="{{asset("img/user.svg")}}" alt="user icon" />
     </a>
     <div class="sign">
+
       @guest
       <a href="{{ route('login') }}" class="signA">Sign in</a>
       <button type="button" class="loginBtn signB"><a href="{{ route('register') }}">Sign up</a></button>
       @endguest
       @auth
-      <button type="button" class="loginBtn signB"><a href="/user">Dashboard</a></button>
+      <button type="button" class="loginBtn signB"><a href="{{ (Auth()->user()->role == 'admin') ? '/admin' : '/user' }}">Dashboard</a></button>
       @endauth
     </div>
   </div>
