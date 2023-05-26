@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateAnnounceRequest;
 use App\Models\Datas;
 use App\Models\Media;
 use App\Models\User;
+use App\Models\Favorit;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Auth;
@@ -153,6 +154,8 @@ class AnnounceController extends Controller
    */
   public function destroy(Announce $announce)
   {
+    Media::where('idAnnounce', $announce->id)->delete();
+    DB::table('favorits')->where('AnnounceId', $announce->id)->delete();
     $announce->delete();
     return redirect()->route('announces.index');
   }

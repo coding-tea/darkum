@@ -399,7 +399,7 @@
       color: #d13649;
       border: 1px solid #d13649;
       border-radius: 100px;
-      transition: .3s ease;
+      transition: .2s ease;
     }
 
     .report .reportCta:hover{

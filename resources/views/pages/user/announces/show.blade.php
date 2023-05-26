@@ -78,7 +78,44 @@
 
         <div class="report">
           <h3><b>darkum</b> n’est pas responsable des produits proposés dans les annonces.</h3>
-          <a href="#" class="reportCta"><i class="fa-solid fa-circle-exclamation"></i> Signaler l'announce</a>
+
+          <button data-bs-toggle="modal" data-bs-target="#m" class="reportCta"><i class="fa-solid fa-circle-exclamation"></i> report the announcement</button>
+
+          {{-- modal --}}
+          <div class="modal" id="m">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title">
+                    report the announcement
+                  </h5>
+                  <button class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+
+                <form action="" method="post">
+                <div class="modal-body">  
+                      <input type="hidden" name="announce_id" value="{{ $announce->title }}" class="form-control">
+
+                    <div class="mb-3">
+                      <label for="type" class="form-label">Type de bien immobilier</label>
+                      <select id="type" name="type" width='100%' required>
+                        <option value="select a type" disabled>select a type</option>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                  <button type="submit" class="btn btn-primary">
+                    report
+                  </button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+        
         </div>
 
         @isset($announces)
