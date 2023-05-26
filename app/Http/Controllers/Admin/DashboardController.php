@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announce;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +20,9 @@ class DashboardController extends Controller
 
       if ($user->role === 'admin') {
         $nbUsers = User::count();
-        return view('pages.admin.dashboard', compact("nbUsers"));
+        $nbAnnonces = Announce::count();
+        $nbCom = Comment::count();
+        return view('pages.admin.dashboard', compact("nbUsers", "nbAnnonces","nbCom"));
       } else {
         return view('pages.user.index');
 

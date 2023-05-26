@@ -52,7 +52,7 @@ class User extends Authenticatable
         return $this->hasMany(Announce::class);
     }
     public function data(){
-      return $this->hasOne(Datas::class);
+      return $this->hasOne(Datas::class,"userId");
     }
 
     public function comments(){

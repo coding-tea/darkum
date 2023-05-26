@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AnnoncesController;
 use App\Http\Controllers\admin\favorisController;
+use App\Http\Controllers\admin\profilController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
@@ -101,9 +102,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
   Route::resource('users',AdminUserController::class);
   Route::delete('users_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('users.mass_destroy');
 
-
+   //Favorits : 
   Route::get('/favoris', [favorisController::class, 'index'])->name('favoris.index');
   Route::delete('/favoris/{AnnounceId}', [favorisController::class, 'remove'])->name('favoris.remove');
+
+  //Profile :
+  Route::get('/profile', [profilController::class, 'index'])->name('profileAdmin');
+  Route::put('/profile', [profilController::class, 'update'])->name('profileUpdate');
 
 
   Route::resource('countries', \App\Http\Controllers\Admin\CountryController::class);
