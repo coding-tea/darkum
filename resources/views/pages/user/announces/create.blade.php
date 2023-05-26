@@ -19,7 +19,7 @@
           <label for="typel" class="form-label">Type de transaction</label>
           <select id="typel" name="typeL" width='100%' required>
             @foreach ($typeL as $item)
-                <option value="{{ $item->typeL }}" {{ ($item->typeL=='location')?'selected':'' }} > {{ $item->typeL }} </option>
+                <option value="{{ $item }}" {{ ($item=='location')?'selected':'' }} > {{ $item }} </option>
             @endforeach
           </select>
         </div>
@@ -30,7 +30,7 @@
           <label for="type" class="form-label">Type de bien immobilier</label>
           <select id="type" name="type" width='100%' required>
             @foreach ($type as $item)
-                <option value="{{ $item->type }}"> {{ $item->type }} </option>
+                <option value="{{ $item }}"> {{ $item }} </option>
             @endforeach
           </select>
         </div>

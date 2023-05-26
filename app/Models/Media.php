@@ -13,6 +13,6 @@ class Media extends Model
     
     public function announce()
     {
-        return $this->belongsTo(Announce::class, 'idAnnonce');
+        return $this->belongsTo(Announce::class, 'idAnnounce');
     }
 }

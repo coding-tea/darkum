@@ -12,6 +12,9 @@ class UsersComponent extends Component
   public $search = "";
   public $email = "";
   public $paginate;
+  public $amount = 10;
+
+
     public function render()
     {
       if($this->paginate != null )
@@ -20,5 +23,9 @@ class UsersComponent extends Component
       $users = User::where("email", "like" , "%".$this->email."%")->where("name", "like", '%'.$this->search.'%')->paginate(10); 
 
       return view('livewire.users-component', compact('users'));
+    }
+
+    public function load(){
+      $this->paginate += 10;
     }
 }

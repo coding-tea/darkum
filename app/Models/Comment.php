@@ -14,4 +14,11 @@ class Comment extends Model
     public $incrementing = true;
     protected $keyType = 'int';
     public $timestamps = true;
+
+    public function announce(){
+      return $this->belongsTo(Announce::class, 'AnnounceId');
+    }
+    public function user(){
+      return $this->belongsTo(User::class, 'userId');
+    }
 }

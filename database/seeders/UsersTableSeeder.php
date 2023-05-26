@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
               'name' => $faker->name,
               'email' => $faker->unique()->safeEmail,
               'email_verified_at' => now(),
-              'password' => Hash::make('password'),
+              'password' => Hash::make('test1234'),
               'remember_token' => Str::random(10),
               'created_at' => now(),
               'updated_at' => now(),

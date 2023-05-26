@@ -96,6 +96,7 @@
             border: 1px solid #59698d;
             color: #59698d;
         }
+
         </style>
         @yield("style")
 
@@ -127,36 +128,36 @@
                             <!-- Nav Item - Dashboard -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/">
-                                    <i class="fa-solid fa-house"></i>
-                                    <span> home</span></a>
+                                    <i class="fa-solid fa-house text-gray-500" style="font-size: 22px"></i>
+                                    <span class="ml-1" style="font-size: 18px"> home</span></a>
                             </li>
 
                             <!-- Nav Item - announces -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
-                                    <i class="fas fa-fw fa-folder"></i>
-                                    <span>announces</span></a>
+                                <a class="nav-link {{(Request::is('admin/annonces'))?'text-dark':'' }}" href=" {{ route('annonces.index') }} ">
+                                    <i class="fas fa-fw fa-folder fa-2x text-gray-500" style="font-size: 22px"></i>
+                                    <span class="ml-1" style="font-size: 18px">announces</span>
+                                  </a>
                             </li>
 
                             <!-- Nav Item - users -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/users*'))?'active':'' }}" href=" {{ route('users.index') }} ">
-                                  <i class="fa-solid fa-users"></i>
-                                    <span class="ml-1">users</span></a>
+                                <a class="nav-link {{(Request::is('admin/users'))?'text-dark':'' }}" href=" {{ route('users.index') }} ">
+                                  <i class="fa-solid fa-users text-gray-500" style="font-size: 22px"></i>
+                                    <span class="ml-1" style="font-size: 18px">users</span></a>
                             </li>
 
                             <!-- Nav Item - favorit -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('favorit.index') }} ">
-                                    <i class="fa-solid fa-star"></i>
-                                    <span>favorits</span></a>
+                                <a class="nav-link {{(Request::is('admin/favoris'))?'text-dark':'' }}" href=" {{ route('favoris.index') }} ">
+                                    <i class="fa-solid fa-star text-gray-500" style="font-size: 22px"></i>
+                                    <span class="ml-1" style="font-size: 18px">favorits</span></a>
                             </li>
-
                             <!-- Nav Item - Profile -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/profile*'))?'active':'' }}" href="{{ route('profile.index') }}">
-                                    <i class="fas fa-fw fa-cog"></i>
-                                    <span>Profile</span></a>
+                                <a class="nav-link {{(Request::is('admin/profile'))?'text-dark':'' }}" href="{{ route('profileAdmin') }}">
+                                    <i class="fas fa-fw fa-cog text-gray-500" style="font-size: 22px"></i>
+                                    <span class="ml-1" style="font-size: 18px">Profile</span></a>
                                 </li>
                         </ul>
 
