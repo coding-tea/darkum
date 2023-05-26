@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
   @if(session("message"))
-    <div class="{{session('alert')}}">
+    <div class="{{session('alert')}} p-3">
       {{session("message")}}
     </div>
   @endif
@@ -13,14 +13,14 @@
         <div class="card">
             <div class="card-header py-3 d-flex">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    {{ __('room') }}
+                    Announces
                 </h6>
                 <div class="ml-auto">
                     <a href="{{ route('annonces.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus"></i>
                         </span>
-                        <span class="text">{{ __('New room') }}</span>
+                        <span class="text">{{ __('New Annonces') }}</span>
                     </a>
                 </div>
             </div>
@@ -33,10 +33,10 @@
 
                                 </th>
                                 <th>No</th>
+                                <th>Name Of poster</th>
                                 <th>Title</th>
                                 <th>Type of transaction</th>
                                 <th>Type of property</th>
-                                <th>Surface</th>
                                 <th>Price</th>
                                 <th>Action</th>
                             </tr>
@@ -48,10 +48,10 @@
 
                                 </td>
                                 <td>{{ $annonce->id }}</td>
+                                <td>{{ $annonce->user->name }}</td>
                                 <td>{{ $annonce->title }}</td>
                                 <td>{{ $annonce->typeL }}</td>
                                 <td>{{ $annonce->type }}</td>
-                                <td>{{ $annonce->surface }}</td>
                                 <td>${{ $annonce->price }}</td>
                                 <td>
                                     <a href="{{ route('annonces.show', $annonce->id) }}" class="btn btn-info">
@@ -80,6 +80,8 @@
             </div>
         </div>
     <!-- Content Row -->
-
+    <div class="noprint">               
+      {{ $annonces->links() }}
+   </div>
 </div>
 @endsection

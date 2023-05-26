@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AnnoncesController;
+use App\Http\Controllers\admin\favorisController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
@@ -47,9 +48,19 @@ Route::get("/contact/{typeL?}/{email?}/{message?}", function($typeL = null,$emai
 })->name('contact');
 
 Route::get('user/announces/{announce}', [AnnounceController::class, 'show'])->name('show');
+
 Route::get('/create', [AnnounceController::class, 'create'])->name('announces.create')->middleware('auth');
 
-//dashboard
+
+// to choose dashbord admin or user
+
+Route::get('/admin', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
+
+
+//dashboard user
+
+
+
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
   Route::get("/", [AnnounceController::class, 'index'])->name('user.index');
   Route::group(['prefix' => 'announces'], function () {
@@ -82,13 +93,18 @@ Route::get("/index", [AnnounceController::class, "filterIndex"])->name("filterIn
 
 
 
-
+//dashbord admin
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 
   Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
   Route::resource('users',AdminUserController::class);
   Route::delete('users_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('users.mass_destroy');
+
+
+  Route::get('/favoris', [favorisController::class, 'index'])->name('favoris.index');
+  Route::delete('/favoris/{AnnounceId}', [favorisController::class, 'remove'])->name('favoris.remove');
+
 
   Route::resource('countries', \App\Http\Controllers\Admin\CountryController::class);
   Route::delete('countries_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('countries.mass_destroy');

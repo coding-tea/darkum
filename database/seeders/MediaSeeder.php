@@ -21,10 +21,9 @@ class MediaSeeder extends Seeder
       'img/landing_page/background/back3.jpg'
     ];
 
-    for ($i = 1; $i <= 10; $i++) {
-      $nb = rand(0,2);
+    for ($i = 4; $i <= 13; $i++) {
       DB::table('medias')->insert([
-        'url' => $imageUrls[$nb],
+        'url' => "1685115995back4.jpg",
         'idAnnounce' => $i,
         'created_at' => now(),
         'updated_at' => now(),

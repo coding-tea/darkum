@@ -448,7 +448,7 @@
       <button type="button" class="loginBtn signB"><a href="{{ route('register') }}">Sign up</a></button>
       @endguest
       @auth
-      <button type="button" class="loginBtn signB"><a href="/user">Dashboard</a></button>
+      <button type="button" class="loginBtn signB"><a href="{{route('dashboard.index')}}">Dashboard</a></button>
       @endauth
     </div>
   </div>

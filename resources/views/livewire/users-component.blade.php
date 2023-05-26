@@ -113,8 +113,12 @@
                   </tbody>
                   
                 </table>
-                <div class="noprint">               
-                   {{ $users->links() }}
+                <div class="noprint" style="margin-left: 45% ">               
+                  @if(!empty($search) || !empty($email) || !empty($paginate))
+                    <a wire:click="load" class="btn btn-lg rounded btn-primary">Load More ...</a>
+                  @else 
+                    {{ $users->links() }}
+                   @endif
                 </div>
                 @endisset
         </div>

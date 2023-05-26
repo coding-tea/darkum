@@ -1,66 +1,58 @@
-@extends('layouts.admin')
+@extends('layouts.adminLayout')
 
+@section('title', 'posts')
 @section('content')
-<div class="container-fluid">
+<div class="card shadow mb-4">
+    <x-section sectionTitle='Create Announce' />
+    <form class="p-3" method="post" action="{{ route('annonces.store') }}" accept-charset="utf-8" enctype="multipart/form-data">
+      @csrf
+        <x-form-input title='title' name='title' placeholder='Announce title ...' />
+        <x-textarea title='Description' name='description' placeholder='Announce description ...' />
+        <x-form-input title='Price' name='price' type='number' />
+        <x-form-input title='Rom Number' name='nbRome' type='number' />
+        <x-form-input title='surface' name='surface' type='number' />
+        <x-form-input title='city' name='city' placeholder="city" />
 
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <br>
+
+        @isset($typeL)
+        <div class="mb-3">
+          <label for="typel" class="form-label">Type de transaction</label>
+          <select id="typel" name="typeL" width='100%' required>
+            @foreach ($typeL as $item)
+                <option value="{{ $item }}" {{ ($item=='location')?'selected':'' }} > {{ $item }} </option>
+            @endforeach
+          </select>
         </div>
-    @endif
+        @endisset
 
-<!-- Content Row -->
-        <div class="card shadow">
-            <div class="card-header py-3 d-flex">
-            <h1 class="h3 mb-0 text-gray-800">{{ __('create room') }}</h1>
-                <div class="ml-auto">
-                    <a href="{{ route('admin.rooms.index') }}" class="btn btn-primary">
-                        <span class="text">{{ __('Go Back') }}</span>
-                    </a>
-                </div>
-            </div>
-            <div class="card-body">
-                <form action="{{ route('admin.rooms.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="room_number">{{ __('Room Number') }}</label>
-                        <input type="text" class="form-control" id="room_number" placeholder="{{ __('room number') }}" name="room_number" value="{{ old('room_number') }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="price">{{ __('Price') }}</label>
-                        <input type="number" class="form-control" id="price" placeholder="{{ __('price') }}" name="price" value="{{ old('price') }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="capacity">{{ __('Capacity') }}</label>
-                        <input type="number" class="form-control" id="capacity" placeholder="{{ __('capacity') }}" name="capacity" value="{{ old('capacity') }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="category">{{ __('Category') }}</label>
-                        <select class="form-control" name="category_id" id="category">
-                            @foreach($categories as $id => $category)
-                                <option value="{{ $id }}">{{ $category }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="floor">{{ __('Floor') }}</label>
-                        <input type="number" class="form-control" id="floor" placeholder="{{ __('floor') }}" name="floor" value="{{ old('floor') }}" />
-                    </div>
-                    <div class="form-group">
-                        <label for="description">{{ __('Description') }}</label>
-                        <textarea class="form-control" name="description" id="descriptioin" placeholder="description" cols="30" rows="10">{{ old('description') }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>
-                </form>
-            </div>
+        @isset($type)
+        <div class="mb-3">
+          <label for="type" class="form-label">Type de bien immobilier</label>
+          <select id="type" name="type" width='100%' required>
+            @foreach ($type as $item)
+                <option value="{{ $item }}"> {{ $item }} </option>
+            @endforeach
+          </select>
         </div>
-    
+        @endisset
 
-    <!-- Content Row -->
+        <x-form-input title='adresse' name='adresse' placeholder="adresse" required />
+        
+        <br>
 
+        <div class="mb-3">
+          <label onmouseover='document.querySelector("#imagetitle").style="display:none;"' onmouseout='document.querySelector("#imagetitle").style="display:inline;"' for="file-upload" class="form-label custom-file-upload" ><i class="fa-solid fa-cloud-arrow-up"></i> <span id="imagetitle">Images</span></label>
+          <input type="file" class="form-control" name= "image[]" id="file-upload" multiple = "multiple" required />
+        </div>
+
+        <input type="hidden" name="state" value="0">
+        <div class="md:flex md:items-center">
+          <div class="md:w-1" >
+            <button type="submit" class="btn btn-primary mt-3" type="button">
+              Create Announce
+            </button>
+        </div>
+    </form>
 </div>
 @endsection

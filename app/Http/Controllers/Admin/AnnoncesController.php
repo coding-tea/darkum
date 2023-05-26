@@ -31,7 +31,9 @@ class AnnoncesController extends Controller
      */
     public function create()
     {
-        //
+      $typeL = ['location', 'vacances', 'vente'];
+      $type = ['Appartement', 'Maison', 'Villa', 'Chambres', 'Terrains', 'Fermes'];
+      return view('pages.admin.annonces.create', compact('typeL', 'type'));
     }
 
     /**
@@ -42,7 +44,45 @@ class AnnoncesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'title' => 'required|string',
+        'description' => 'required',
+        'price' => 'required|numeric',
+        'nbRome' => 'required|numeric',
+        'surface' => 'required|numeric',
+        'type' => 'required|in:Appartement, Maison, Villa, Chambres, Terrains, Fermes',
+        'typeL' => 'required|in:location,vente,vacance',
+        'adresse' => 'required',
+      ]);
+      $announce = Announce::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'price' => $request->price,
+        'nbRome' => $request->nbRome,
+        'surface' => $request->surface,
+        'city' => $request->city,
+        'type' => $request->type,
+        'typeL' => $request->typeL,
+        'adresse' => $request->adresse,
+        'userId' => Auth()->id()
+      ]);
+  
+      //announceimage
+      if ($request->hasFile('image')) {
+        foreach ($request->file('image') as $key => $image) {
+          $ImageName = time() . $image->getClientOriginalName();
+          $image->storeAs('images', $ImageName);
+          Media::create([
+            'url' => $ImageName,
+            'idAnnounce' => $announce->id
+          ]);
+        }
+      }
+  
+      return redirect()->route('annonces.index')->with([
+        'message' => "Annonces Created successfully",
+        'alert' => 'alert-info'
+      ]);
     }
 
     /**
