@@ -138,11 +138,18 @@
                                     <span>announces</span></a>
                             </li>
 
-                            <!-- Nav Item - favorit -->
+                            <!-- Nav Item - users -->
                             <li class="nav-item">
                                 <a class="nav-link {{(Request::is('admin/users*'))?'active':'' }}" href=" {{ route('users.index') }} ">
                                   <i class="fa-solid fa-users"></i>
                                     <span class="ml-1">users</span></a>
+                            </li>
+
+                            <!-- Nav Item - favorit -->
+                            <li class="nav-item">
+                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('favorit.index') }} ">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>favorits</span></a>
                             </li>
 
                             <!-- Nav Item - Profile -->
