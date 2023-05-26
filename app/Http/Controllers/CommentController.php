@@ -50,7 +50,7 @@ class CommentController extends Controller
     {
         $comment = Comment::destroy($id);
         return redirect()->back()->with([
-          'message' => "Comment Deleted successfully",
+          'msg' => "Comment Deleted successfully",
         ]);
     }
 }

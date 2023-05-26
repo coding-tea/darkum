@@ -35,6 +35,6 @@ class favorit extends Controller
     public function remove($AnnounceId)
     {
         DB::table('favorits')->where('AnnounceId', $AnnounceId)->delete();
-        return redirect()->route('favorit.index');
+        return redirect()->route('favorit.index')->with('msg', 'announcement removed from favorit');
     }
 }
