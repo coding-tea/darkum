@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Datas;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,8 @@ class profilController extends Controller
       $id = Auth::user()->id;
       $user = User::find(Auth::user()->id);
       $data = $user->data;
-      $user->update([
+      if($data != null){
+        $user->update([
           "name" => $request->name,
           "email" => $request->email
       ]);
@@ -35,6 +37,20 @@ class profilController extends Controller
           "adresse" => $request->adresse,
           "tel" => $request->tel,
       ]);
+      }
+      else{
+        $user->update([
+          "name" => $request->name,
+          "email" => $request->email
+      ]);
+      Datas::updateOrInsert([
+          "userId" => $id
+      ], [
+          "fullName" => $request->fullName,
+          "adresse" => $request->adresse,
+          "tel" => $request->tel,
+      ]);
+      }
       return redirect()->route('profileAdmin')->with([
         'msg' => "update successfully"
       ]);

@@ -26,4 +26,7 @@ class Announce extends Model
   public function comments(){
     return $this->hasMany(Comment::class, "announceId");
   }
+  public function reports(){
+    return $this->hasMany(Report::class);
+  }
 }
