@@ -130,7 +130,7 @@
                       <span class="navbar-toggler-icon"></span>
                     </button>
 
-                  <div class="collapse navbar-collapse" style="z-index: 54545; background-color: #fff" id="navbarSupportedContent">
+                  <div class="collapse navbar-collapse" style="z-index: 1; background-color: #fff" id="navbarSupportedContent">
                       {{-- navbar links --}}
                       <ul class="navbar-nav mr-auto">
                           <!-- Nav Item - Dashboard -->
@@ -308,6 +308,11 @@
         @php
             echo '<script>swal({title: "Good job!",text: "'. session("msg") .'",icon: "success",button: "close!",});</script>';
         @endphp
+    @endif
+    @if (session()->has('error'))
+    @php
+        echo '<script>swal({title: "Failed!",text: "'. session("error") .'",icon: "error",button: "close!",});</script>';
+    @endphp
     @endif
     
     @yield("script")

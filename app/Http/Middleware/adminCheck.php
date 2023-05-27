@@ -20,7 +20,7 @@ class adminCheck
         {
             return $next($request);
         }else{
-            return redirect()->route('user.index')->with('msg', 'chbaghi dir a si mohammed');
+            return redirect()->route('user.index')->with('error', 'you have not the access to the Admin page');
         }
     }
 }

@@ -58,7 +58,7 @@ class UserController extends Controller
         'roles' => $request->roles,
     ]);      
         return redirect()->route('users.index')->with([
-            'message' => 'successfully created !',
+            'msg' => 'successfully created !',
             'alert' => 'alert-success'
         ]);
     }
@@ -91,7 +91,7 @@ class UserController extends Controller
         'role' => $request->roles
       ]);
       $newRole = $user->role == "admin" ? 'user' : "admin";
-      $message = 'Successfully updated the role of : <strong>' . strtoupper($user->name) . '</strong> from ' . $user->role . ' to ' . $newRole;
+      $message = 'Successfully updated the role of  :' . strtoupper($user->name) . ' from ' . $newRole . ' to ' . $user->role;
       return redirect()->route('users.index')->with([
             'msg' => $message,
             'alert' => 'alert-info'

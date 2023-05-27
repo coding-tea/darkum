@@ -188,7 +188,7 @@
               <img class="slide" src="{{ asset('images/'.$media->url) }}" alt="Slide">
             @endif
             @empty
-              <img class="slide" src="{{ asset('images/default.png') }}" alt="Slide">
+              <img class="slide" src="{{ asset('images/default.jpg') }}" alt="Slide">
             @endforelse
   
             {{-- <button class="btn btn-link" id="next" aria-label="Suivant">
