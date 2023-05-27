@@ -37,7 +37,7 @@ class UserController extends Controller
             "adresse" => $request->adresse,
             "tel" => $request->tel,
         ]);
-        return redirect()->route('profile.index')->with('msg', 'your information updated successfuly');
+        return redirect()->route('profile.index')->with('msg', 'your informations updated successfuly');
     }
 
 }
