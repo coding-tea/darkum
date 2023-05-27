@@ -36,7 +36,7 @@ class profilController extends Controller
           "tel" => $request->tel,
       ]);
       return redirect()->route('profileAdmin')->with([
-        'message' => "update successfully"
+        'msg' => "update successfully"
       ]);
   }
 }

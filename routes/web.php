@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AnnoncesController;
+use App\Http\Controllers\admin\CommentsController;
 use App\Http\Controllers\admin\favorisController;
 use App\Http\Controllers\admin\profilController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -114,13 +115,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
   Route::get('/profile', [profilController::class, 'index'])->name('profileAdmin');
   Route::put('/profile', [profilController::class, 'update'])->name('profileUpdate');
 
+  //Comment : 
 
-  Route::resource('countries', \App\Http\Controllers\Admin\CountryController::class);
-  Route::delete('countries_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('countries.mass_destroy');
-  Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
-  Route::delete('categories_mass_destroy', [\App\Http\Controllers\Admin\CategoryController::class, 'massDestroy'])->name('categories.mass_destroy');
-  Route::resource('rooms', \App\Http\Controllers\Admin\RoomController::class);
-  Route::delete('rooms_mass_destroy', [\App\Http\Controllers\Admin\RoomController::class, 'massDestroy'])->name('rooms.mass_destroy');
+  Route::get("/comment", [CommentsController::class, "index"])->name("commentAdmin");
+  Route::delete("/comment/{CommentId}", [CommentsController::class, "destroy"])->name("commentAdminD");
+
   Route::resource('customers', \App\Http\Controllers\Admin\CustomerController::class);
   Route::delete('customers_mass_destroy', [\App\Http\Controllers\Admin\CustomerController::class, 'massDestroy'])->name('customers.mass_destroy');
   Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
