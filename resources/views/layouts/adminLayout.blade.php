@@ -96,6 +96,14 @@
             border: 1px solid #59698d;
             color: #59698d;
         }
+        .dashbord-link:hover{
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          text-decoration: none;
+        }
+        .logoImg{
+      width: 150px;
+      margin-top: 5px
+    }
 
         </style>
         @yield("style")
@@ -116,50 +124,55 @@
 
             <!-- Main Content -->
             <div id="content">
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
+              <!-- Topbar -->
+              <nav class="navbar navbar-expand-lg navbar-light bg-white topbar mb-4 static-top shadow">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <div class="collapse navbar-collapse" style="z-index: 54545; background-color: #fff" id="navbarSupportedContent">
-                        {{-- navbar links --}}
-                        <ul class="navbar-nav mr-auto">
-                            <!-- Nav Item - Dashboard -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">
-                                    <i class="fa-solid fa-house text-gray-500" style="font-size: 22px"></i>
-                                    <span class="ml-1" style="font-size: 18px"> home</span></a>
-                            </li>
+                  <div class="collapse navbar-collapse" style="z-index: 54545; background-color: #fff" id="navbarSupportedContent">
+                      {{-- navbar links --}}
+                      <ul class="navbar-nav mr-auto">
+                          <!-- Nav Item - Dashboard -->
+                          <li class="nav-item mr-2">
+                              <a href="/" class="nav-icon" id="forLogo" aria-label="homepage" aria-current="page">
+                                    <img src="{{asset("img/darkum-blue.png")}}" alt="Logo" class="logoImg">
+                              </a>  
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="/admin">
+                                  <i class="fa-solid fa-house text-gray-500" style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px"> Index</span></a>
+                          </li>
 
-                            <!-- Nav Item - announces -->
-                            <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/annonces'))?'text-dark':'' }}" href=" {{ route('annonces.index') }} ">
-                                    <i class="fas fa-fw fa-folder fa-2x text-gray-500" style="font-size: 22px"></i>
-                                    <span class="ml-1" style="font-size: 18px">announces</span>
-                                  </a>
-                            </li>
+                          <!-- Nav Item - announces -->
+                          <li class="nav-item">
+                              <a class="nav-link {{(Request::is('admin/annonces'))?'text-dark':'' }}" href=" {{ route('annonces.index') }} ">
+                                  <i class="fas fa-fw fa-folder fa-2x text-gray-500" style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px">announces</span>
+                                </a>
+                          </li>
 
-                            <!-- Nav Item - users -->
-                            <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/users'))?'text-dark':'' }}" href=" {{ route('users.index') }} ">
-                                  <i class="fa-solid fa-users text-gray-500" style="font-size: 22px"></i>
-                                    <span class="ml-1" style="font-size: 18px">users</span></a>
-                            </li>
+                          <!-- Nav Item - users -->
+                          <li class="nav-item">
+                              <a class="nav-link {{(Request::is('admin/users'))?'text-dark':'' }}" href=" {{ route('users.index') }} ">
+                                <i class="fa-solid fa-users text-gray-500" style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px">users</span></a>
+                          </li>
 
-                            <!-- Nav Item - favorit -->
-                            <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/favoris'))?'text-dark':'' }}" href=" {{ route('favoris.index') }} ">
-                                    <i class="fa-solid fa-star text-gray-500" style="font-size: 22px"></i>
-                                    <span class="ml-1" style="font-size: 18px">favorits</span></a>
-                            </li>
-                            <!-- Nav Item - Profile -->
-                            <li class="nav-item">
-                                <a class="nav-link {{(Request::is('admin/profile'))?'text-dark':'' }}" href="{{ route('profileAdmin') }}">
-                                    <i class="fas fa-fw fa-cog text-gray-500" style="font-size: 22px"></i>
-                                    <span class="ml-1" style="font-size: 18px">Profile</span></a>
-                                </li>
-                        </ul>
+                          <!-- Nav Item - favorit -->
+                          <li class="nav-item">
+                              <a class="nav-link {{(Request::is('admin/favoris'))?'text-dark':'' }}" href=" {{ route('favoris.index') }} ">
+                                  <i class="fa-solid fa-star text-gray-500" style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px">favorits</span></a>
+                          </li>
+                          <!-- Nav Item - Profile -->
+                          <li class="nav-item">
+                              <a class="nav-link {{(Request::is('admin/profile'))?'text-dark':'' }}" href="{{ route('profileAdmin') }}">
+                                  <i class="fas fa-fw fa-cog text-gray-500" style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px">Profile</span></a>
+                              </li>
+                      </ul>
 
                         {{-- navbar logo --}}
                         <ul class="navbar-nav ml-auto">

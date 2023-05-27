@@ -36,7 +36,7 @@ class favorisController extends Controller
   {
       DB::table('favorits')->where('AnnounceId', $AnnounceId)->delete();
       return redirect()->route('favoris.index')->with([
-        "message" => "Deleted successfully"
+        "msg" => "Deleted successfully"
       ]);
   }
 }

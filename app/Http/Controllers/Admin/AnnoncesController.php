@@ -80,7 +80,7 @@ class AnnoncesController extends Controller
       }
   
       return redirect()->route('annonces.index')->with([
-        'message' => "Annonces Created successfully",
+        'msg' => "Annonces Created successfully",
         'alert' => 'alert-info'
       ]);
     }
@@ -141,7 +141,7 @@ class AnnoncesController extends Controller
         'adresse' => $request->adresse
       ]);
       return redirect()->route('annonces.index')->with([
-        'message' => "updated successfully",
+        'msg' => "updated successfully",
         'alert' => 'alert-success'
       ]);
     }
@@ -159,7 +159,7 @@ class AnnoncesController extends Controller
       $announce = Announce::find($id);
       $announce->delete();
       return redirect()->route('annonces.index')->with([
-        'message' => "Deleted successfully",
+        'msg' => "Deleted successfully",
         'alert' => 'alert-danger'
       ]);
     }
