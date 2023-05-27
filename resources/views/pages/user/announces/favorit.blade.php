@@ -28,6 +28,7 @@
             </tr>
             @endforelse
         @endisset
+        
     </table>
     </div>
 </div>
