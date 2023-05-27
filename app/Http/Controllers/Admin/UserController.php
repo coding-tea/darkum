@@ -93,7 +93,7 @@ class UserController extends Controller
       $newRole = $user->role == "admin" ? 'user' : "admin";
       $message = 'Successfully updated the role of : <strong>' . strtoupper($user->name) . '</strong> from ' . $user->role . ' to ' . $newRole;
       return redirect()->route('users.index')->with([
-            'message' => $message,
+            'msg' => $message,
             'alert' => 'alert-info'
         ]);
     }
@@ -109,7 +109,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')->with([
-            'message' => 'successfully deleted !',
+            'msg' => 'successfully deleted !',
             'alert' => 'alert-danger'
         ]);
     }
