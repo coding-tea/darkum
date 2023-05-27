@@ -159,80 +159,81 @@ class AnnounceController extends Controller
     return redirect()->route('announces.index')->with('msg', 'announcement deleted successfuly');
   }
 
-  //Get All Annconce BY TYPE
+    //Get All Annconce BY TYPE
 
-  public function allAnnonces(Request $req)
-  {
-    $villes = DB::table('announces')->distinct()->pluck('city');
-    $path = $req->path();
-
-    $announces = Announce::where("typeL", $path)->with('medias')->get();
-
-    $nbAnnonces = $announces->count();
-
-    $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
-    $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
-    $path = ucfirst($path);
-    $pageInfo = [
-      'nbAnnonces' => $nbAnnonces,
-      'path' => $path,
-      'villes' => $villes,
-      'budgetMin' => $budgetMin,
-      'surfaceMin' => $surfaceMin
-    ];
-
-    return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
-  }
-
-
-
-  public function filterIndex(Request $request)
-  {
-    $path = $request->filter;
-    $typeBien = $request->typeBien;
-    $ville = $request->searchVille;
-
-    $announces = Announce::where("typeL", $path);
-    if ($typeBien == "all") {
-      if (!empty($ville)) {
-        $announces->where("city", $ville);
+    public function allAnnonces(Request $req)
+    {
+      $villes = DB::table('announces')->distinct()->pluck('city');
+      $path = $req->path();
+  
+      $announces = Announce::where("typeL", $path)->with('medias')->get();
+  
+      $nbAnnonces = $announces->count();
+  
+      $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
+      $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
+      $path = ucfirst($path);
+      $pageInfo = [
+        'nbAnnonces' => $nbAnnonces,
+        'path' => $path,
+        'villes' => $villes,
+        'budgetMin' => $budgetMin,
+        'surfaceMin' => $surfaceMin
+      ];
+  
+      return view('pages.landing_page.' . $path, compact("announces", "pageInfo"));
+    }
+  
+    
+  
+    public function filterIndex(Request $request)
+    {
+      $path = $request->filter;
+      $typeBien = $request->typeBien;
+      $ville = $request->searchVille;
+  
+      $announces = Announce::where("typeL", $path);
+      if ($typeBien == "all"){
+        if(!empty($ville)){
+          $announces->where("city", $ville);
+        }
       }
-    } else
-      $announces->where("city", $ville)->where("type", $typeBien);
-
-
-
-    // calculer le nombre des annonces pour le afficher
-    $nbAnnonces = $announces->count();
-
-    // pour remplir  select de budget : 
-    $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
-
-    // pour remplir  select de surface : 
-    $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
-
-    //get les annonces avec leur photo.
-    $announces = $announces->with('medias')->get();
-
-    //get all ville to fill the region select 
-    $villes = DB::table('announces')->distinct()->pluck('city');
-
-    $path = ucfirst($path);
-    $pageInfo = [
-      'nbAnnonces' => $nbAnnonces,
-      'path' => $path,
-      'villes' => $villes,
-      'budgetMin' => $budgetMin,
-      'surfaceMin' => $surfaceMin
-    ];
-
-    $old_choices = [
-      "ville" => $ville,
-      'region' => $ville,
-      "typeB" => $typeBien,
-      "path" => strtolower($pageInfo['path'])
-    ];
-
-    return view("pages.landing_page.indexFilter", compact("announces", "pageInfo", "old_choices"));
-  }
+      else
+        $announces->where("city", $ville)->where("type", $typeBien);
+  
+  
+  
+      // calculer le nombre des annonces pour le afficher
+      $nbAnnonces = $announces->count();
+  
+      // pour remplir  select de budget : 
+      $budgetMin =  floor(intval(Announce::where("typeL", $path)->min("price") / 100)) * 100;
+  
+      // pour remplir  select de surface : 
+      $surfaceMin =  floor(intval(Announce::where("typeL", $path)->min("surface") / 100)) * 100;
+  
+      //get les annonces avec leur photo.
+      $announces = $announces->with('medias')->get();
+  
+      //get all ville to fill the region select 
+      $villes = DB::table('announces')->distinct()->pluck('city');
+  
+      $path = ucfirst($path);
+      $pageInfo = [
+        'nbAnnonces' => $nbAnnonces,
+        'path' => $path,
+        'villes' => $villes,
+        'budgetMin' => $budgetMin,
+        'surfaceMin' => $surfaceMin
+      ];
+  
+      $old_choices = [
+        "ville" => $ville,
+        'region' => $ville,
+        "typeB" => $typeBien,
+        "path" => strtolower($pageInfo['path'])
+      ];
+  
+      return view("pages.landing_page.indexFilter", compact("announces", "pageInfo", "old_choices"));
+    }
 }

@@ -3,24 +3,24 @@
 namespace App\Http\Livewire;
 
 use App\Models\Announce;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Facades\Request;
 
 class FilterComponent extends Component
 {
-  protected  $announces;
+  protected $debug = true;
+  protected  $announces = null;
   public $selectedRegion = '*';
   public $typeBien = [];
-  public $minBudget;
-  public $maxBudget;
-  public $minSurface;
-  public $maxSurface;
+  public $minBudget = null;
+  public $maxBudget = null;
+  public $minSurface = null;
+  public $maxSurface = null;
   public $nbChambre = [];
   public $caracteristiques = [];
-  public $path;
-  public $ville;
-  public $bien;
+  public $path = null;
+  public $ville = null;
+  public $bien = null;
 
 
   public function mount($path)
@@ -113,15 +113,13 @@ class FilterComponent extends Component
     if ($this->announces)
       $nbAnnonces = $this->announces->count();
 
-    $allFavoris = $announcesId = DB::table('favorits')->select('AnnounceId')->get()->toArray();
 
     $pageInfo = [
       'villes' => $villes,
       "nbAnnonces" => $nbAnnonces,
       "path" => $this->path,
       'budgetMin' => $budgetMin,
-      'surfaceMin' => $surfaceMin,
-      "allFavoris" => $allFavoris
+      'surfaceMin' => $surfaceMin
     ];
     $old_choices = [
       "region" => $this->selectedRegion,

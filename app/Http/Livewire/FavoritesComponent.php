@@ -8,9 +8,9 @@ use Livewire\Component;
 
 class FavoritesComponent extends Component
 {
-  public $favorite;
-  public $announceid;
-  public $favoris;
+  public $favorite = null;
+  public $announceid = null;
+  public $favoris = null;
 
   public function mount(){
     if(Auth::check()){
