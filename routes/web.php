@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AnnoncesController;
 use App\Http\Controllers\admin\CommentsController;
 use App\Http\Controllers\admin\favorisController;
 use App\Http\Controllers\admin\profilController;
+use App\Http\Controllers\admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AnnounceController;
 use App\Http\Controllers\CommentController;
@@ -117,8 +118,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 
   //Comment : 
 
-  Route::get("/comment", [CommentsController::class, "index"])->name("commentAdmin");
+  Route::get("/comments", [CommentsController::class, "index"])->name("commentAdmin");
   Route::delete("/comment/{CommentId}", [CommentsController::class, "destroy"])->name("commentAdminD");
+
+  //Report :
+
+  Route::resource("/reports", AdminReportController::class);
+
 
   Route::resource('customers', \App\Http\Controllers\Admin\CustomerController::class);
   Route::delete('customers_mass_destroy', [\App\Http\Controllers\Admin\CustomerController::class, 'massDestroy'])->name('customers.mass_destroy');

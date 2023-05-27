@@ -13,13 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->id();
-            $table->string('type');
-            $table->foreignId("announce_id")->constrained("announces");
-            $table->foreignId("user_id")->constrained("users");
-            $table->enum("etat", [0,1,2])->default(0);
-            $table->timestamps();
+        Schema::table('reports', function (Blueprint $table) {
         });
     }
 
@@ -30,6 +24,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::table('reports', function (Blueprint $table) {
+            //
+        });
     }
 };
