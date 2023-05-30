@@ -285,6 +285,6 @@
         @endphp
     @endif
 
-
+@yield("script")
 </body>
 </html>

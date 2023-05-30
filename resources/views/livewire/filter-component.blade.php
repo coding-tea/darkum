@@ -214,7 +214,7 @@
           </div>
   
   
-      // its very important to use :wire:key when you using more than one component 
+       {{-- its very important to use :wire:key when you using more than one component  --}}
       <livewire:favorites-component :announceid="$annonce->id" :wire:key='$annonce->id'/>
 
           
