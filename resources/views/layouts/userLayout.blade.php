@@ -19,8 +19,20 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @yield("link")
 
     <style>
+      #addLocation{
+        display: block;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 99%;
+        border-radius: 10px;
+        background-color: #59698d; 
+        color:#FFF
+
+      }
+          #map { height: 350px }
+
         .active{
             color: white;
         }
