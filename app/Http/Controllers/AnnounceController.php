@@ -118,9 +118,12 @@ class AnnounceController extends Controller
    */
   public function edit(Announce $announce)
   {
-    $typeL = Announce::selectRaw('typeL')->distinct()->get();
-    $type = Announce::selectRaw('type')->distinct()->get();
-    return view('pages.user.announces.edit', compact('announce', 'typeL', 'type'));
+    if($announce->userId == auth()->user()->id){
+      $typeL = Announce::selectRaw('typeL')->distinct()->get();
+      $type = Announce::selectRaw('type')->distinct()->get();
+      return view('pages.user.announces.edit', compact('announce', 'typeL', 'type'));
+    }
+    return redirect()->back()->with('error', "you can't update this announce");
   }
 
   /**
