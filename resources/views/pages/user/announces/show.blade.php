@@ -5,7 +5,7 @@
 <div class="announceContainer">
     <div class="announce">
         <div class="announceInfo">
-            <h1 class="heading"> {{ $announce->title }} </h1>
+            <div class="headingShow"><span>{{ $announce->title }}& </span> <span class="price">{{ $announce->price }} DH</span></div>
 
             @isset($medias)
             <div class="slidshow">
@@ -37,11 +37,7 @@
             </div>
             @endisset
 
-            <table class="table">
-                <tr>
-                    <td> <b>price</b> </td>
-                    <td> {{ $announce->price }}DH</td>
-                </tr>
+            <table class="table table-striped">
                 <tr>
                     <td> <b>city</b> </td>
                     <td> {{ $announce->city }}</td>
@@ -69,9 +65,14 @@
 
         @isset($data->tel)
         <div class="ctaContainer">
-            <a class="cta" href="https://wa.me/+212{{ $data->tel }}"></i></span> Contact the Seller</a>
 
-            <a class="cta" style="background-color: #4e73de; margin-left:5px;" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i>Email</a>
+          <a class="cta firstCta" href="{{ url("/contact/$announce->typeL/$author/$announce->title") }}" target="_blanc k"> <i class="fa-solid fa-envelope"></i> Contact the Seller</a>
+
+            <a class="cta ctaBtn" href="https://wa.me/+212{{ $data->tel }}"><i class="fa-brands fa-whatsapp"></i></a>
+
+            <a class="cta ctaBtn" style="background-color: #4e73de" href="https://wa.me/+212{{ $data->tel }}"><i class="fa-solid fa-phone"></i></a>
+
+            
         </div>
         @endisset
 

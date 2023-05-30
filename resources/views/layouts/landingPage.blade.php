@@ -32,10 +32,32 @@
       background-color: #fff;
       border-radius: 8px;
     }
-    .heading{
+
+    .price{
+      color: #29a160;
+      font-weight: bold;
+      /* padding: 20px; */
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+
+    .headingShow{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 18px;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+    .heading{
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .table{
+      padding: 20px 60px;
     }
     .announceDescription{
       background-color: #f6f3fe;
@@ -120,6 +142,7 @@
       color: #4e73de;
     }
 
+
     .loginBtn{
       background-color: #4e73de;
       color: #fff;
@@ -127,7 +150,8 @@
       border-radius: 3px;
       transition: .4s ease;
       border: none;
-      border-radius: 5ùpx;
+      border-radius: 5px;
+      /* margin-right: 5px; */
     }
 
     .nvAnnonce:hover{
@@ -405,6 +429,26 @@
     .report .reportCta:hover{
       background-color: #F9EAEA;
     }
+
+    .firstCta{
+      background-color: #fff;
+      border: 2px solid #4e73de;
+      margin-left:5px;
+      color: #4e73de;
+      font-weight: 500;
+    }
+
+    .table{
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 15px;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@100;200;300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body{
+      font-family: 'Poppins', sans-serif;
+    }
     </style>
 
 @livewireStyles
@@ -433,7 +477,7 @@
       <a href="{{route("vente")}}" class="btn">Vente</a>
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>
-      <a href="contact" class="btn">Contact</a>
+      <a href="/contact" class="btn">Contact</a>
       <a href="/create" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
     </div>
   </div>
@@ -446,16 +490,16 @@
 
       @guest
       <a href="{{ route('login') }}" class="signA">Sign in</a>
-      <button type="button" class="loginBtn signB"><a href="{{ route('register') }}">Sign up</a></button>
+      <a href="{{ route('register') }}">
+      <button type="button" class="loginBtn signB">Sign up</button>
+      </a>
       @endguest
       @auth
         <div class="d-flex justify-content-around">
-          <form action="{{ route('logout') }}" method="post" class="signA">
-            <button type="button" class="loginBtn signB"><a href="{{route('dashboard.index')}}">Dashboard</a></button>
-            @csrf
-            <button class="btn  loginBtn signB rounded" type='submit' >Logout</button>
+          <form action="{{ route('logout') }}" method="post">
+            <a title="dashboard" href="{{ (auth()->user()->role == 'admin')?route('dashboard.index'):route('user.index') }}"><button type="button" class="loginBtn signB"><i class="fa-solid fa-circle-user"></i> Dashboard</button></a>
+            <a href="#" title="logout"><button class="loginBtn signB rounded" style="background-color: #d13649" type='submit'><i class="fa-solid fa-right-to-bracket"></i></button></a>
           </form>
-    
         </div>
       @endauth
     </div>
