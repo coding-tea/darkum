@@ -10,6 +10,7 @@ use App\Models\Datas;
 use App\Models\Media;
 use App\Models\User;
 use App\Models\Favorit;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Support\Facades\Auth;
@@ -155,6 +156,7 @@ class AnnounceController extends Controller
   {
     Media::where('idAnnounce', $announce->id)->delete();
     DB::table('favorits')->where('AnnounceId', $announce->id)->delete();
+    Report::where('announce_id', $announce->id)->delete();
     $announce->delete();
     return redirect()->route('announces.index')->with('msg', 'announcement deleted successfuly');
   }

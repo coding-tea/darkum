@@ -131,7 +131,7 @@
                   @if(isset($item['medias'][0]['url']))
                   <img src="{{ asset('images/' . $item['medias'][0]['url']) }}" alt="{{ $item['title'] }}" class="announceImg">
                   @else
-                  <img src="{{ asset('images/default.png') }}" alt="{{ $item['title'] }}" class="announceImg">
+                  <img src="{{ asset('images/default.jpg') }}" alt="{{ $item['title'] }}" class="announceImg">
                   @endif
                   <h1 class="prix"> {{ $item['price'] }} DH </h1>
                   <h1 class="title"> {{ $item['title'] }} DH </h1>
