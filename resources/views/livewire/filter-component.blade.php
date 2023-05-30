@@ -183,17 +183,13 @@
               <span class="fa fa-chevron-left"></span>
             </button>      --}}
   
-            @foreach ($annonce->medias as  $media)
+            @forelse ($annonce->medias as  $media)
             @if($loop->first)
               <img class="slide" src="{{asset('images/'.$media->url)}}" alt="Slide">
             @endif
-<<<<<<< HEAD
             @empty
               <img class="slide" src="{{ asset('images/default.jpg') }}" alt="Slide">
             @endforelse
-=======
-            @endforeach
->>>>>>> 07b5804a5ae18f3bfb0b5a483a89082956d22991
   
             {{-- <button class="btn btn-link" id="next" aria-label="Suivant">
               <span class="fa fa-chevron-right"></span>
