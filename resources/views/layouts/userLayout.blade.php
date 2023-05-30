@@ -284,7 +284,11 @@
             echo '<script>swal({title: "Good job!",text: "'. session("msg") .'",icon: "success",button: "close!",});</script>';
         @endphp
     @endif
-
+    @if (session()->has('error'))
+        @php
+            echo '<script>swal({title: "Failed!",text: "'. session("error") .'",icon: "error",button: "close!",});</script>';
+        @endphp
+    @endif
 
 </body>
 </html>

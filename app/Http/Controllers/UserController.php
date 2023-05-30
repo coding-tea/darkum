@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Datas;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $id = Auth::user()->id;
-        $user->update([
+        $userUp = User::find($id);
+        $userUp->update([
             "name" => $request->name,
             "email" => $request->email
         ]);
@@ -39,5 +41,4 @@ class UserController extends Controller
         ]);
         return redirect()->route('profile.index')->with('msg', 'your informations updated successfuly');
     }
-
 }
