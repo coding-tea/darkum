@@ -22,20 +22,6 @@
     @yield("link")
 
     <style>
-      #addLocation{
-        display: block;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        width: 99%;
-        border-radius: 10px;
-        background-color: #59698d; 
-        color:#FFF
-
-      }
-          #map { height: 350px }
-
-        .active{
-            color: white;
-        }
         .butthons button{
             outline: none;
             border: none;
@@ -105,6 +91,20 @@
             background-color: #fff;
             border: 1px solid #59698d;
             color: #59698d;
+        }
+        #addLocation{
+        display: block;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 99%;
+        border-radius: 10px;
+        background-color: #59698d; 
+        color:#FFF
+
+      }
+          #map { height: 350px }
+
+        .active{
+            color: white;
         }
     </style>
 
@@ -290,13 +290,13 @@
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src=" {{ asset('js/demo/chart-pie-demo.js') }} "></script>
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if (session()->has('msg'))
-        @php
+    @php
             echo '<script>swal({title: "Good job!",text: "'. session("msg") .'",icon: "success",button: "close!",});</script>';
-        @endphp
+            @endphp
     @endif
-
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @yield("script")
 </body>
 </html>
