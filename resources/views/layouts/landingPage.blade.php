@@ -158,10 +158,7 @@
       border-radius: 20px;
     }
     .loginBtn:hover{
-      background-color: #fff;
-      border: 2px solid #4e73de;
-      color: #4e73de;
-      border-radius: 20px;
+      opacity: .8;
     }
     .signB:hover a{
       color: #4e73de;
@@ -264,20 +261,25 @@
     }
 
     .sidebarFilter{
-      background-color: #4e73de;
-      color: #fff;
+      background-color: #fff;
+      color: rgba(0, 0, 0, .7);
       padding: 20px;
       box-shadow: 2px 5px 20px rgba(0, 0, 0, .2);
     }
 
     .btn-checkbox{
-      background-color: #fff;
-      color: #4e73de;
+      background-color: #4e73de;
+      color: #fff;
       font-weight: bold;
     }
 
     .btn-checkbox:not(.nbChambre .btn-checkbox){
       letter-spacing: 1px;
+    }
+
+    .btn-checkbox:hover{
+      opacity: .8;
+      background-color: #4e73de;
     }
 
     #budgetFilter, #surfaceFilter, #regionFilter{
@@ -288,8 +290,8 @@
     .btnFiltrer{
       width: 100%;
       border-radius: 5px;
-      background-color: #fff;
-      color: #4e73de;
+      background-color: #4e73de;
+      color: #fff;
       font-weight: bold;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -449,6 +451,7 @@
     body{
       font-family: 'Poppins', sans-serif;
     }
+
     </style>
 
 @livewireStyles
@@ -497,8 +500,9 @@
       @auth
         <div class="d-flex justify-content-around">
           <form action="{{ route('logout') }}" method="post">
+            @csrf
             <a title="dashboard" href="{{ (auth()->user()->role == 'admin')?route('dashboard.index'):route('user.index') }}"><button type="button" class="loginBtn signB"><i class="fa-solid fa-circle-user"></i> Dashboard</button></a>
-            <a href="#" title="logout"><button class="loginBtn signB rounded" style="background-color: #d13649" type='submit'><i class="fa-solid fa-right-to-bracket"></i></button></a>
+            <a href="#" title="logout"><button class="loginBtn Logout rounded" style="background-color: #d13649" type='submit'><i class="fa-solid fa-right-to-bracket"></i></button></a>
           </form>
         </div>
       @endauth
@@ -550,23 +554,6 @@
   </div>
 </footer>
 
-  <script>
-    var map = L.map('map').setView([51.505, -0.09], 13);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-        .openPopup();
-
-    L.marker([51.5, -0.08]).addTo(map)
-        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-        .openPopup();
-
-      document.querySelector('.map').innerHTML = map;
-  </script>
   <script src="{{asset("js/landing_page/index.js")}}"></script>
   <script src="{{asset("js/landing_page/layout.js")}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

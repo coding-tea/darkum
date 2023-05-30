@@ -50,7 +50,9 @@
         </button>
         <div id="map"></div>
 
-        <input type="hidden" name="state" value="0">
+        <input type="hidden" name="lat" id="lat" value="null" />
+        <input type="hidden" name="lng" id="lng" value="null" />
+    
         <div class="md:flex md:items-center">
           <div class="md:w-1" >
             <button id="afterMap" type="submit" class="btn btn-primary mt-3" style="display:none" type="button">
@@ -88,13 +90,16 @@ function success(pos) {
         attribution: '© darkum'
     }).addTo(map);
 
-    const marker = L.marker([lat, lng]).addTo(map);
+    const marker = L.marker([lat, lng]).addTo(map).bindPopup('your location')
+        .openPopup();;
     const circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
 
     map.fitBounds(circle.getBounds());
-document.getElementById("afterMap").style.display = 'block'; 
-document.getElementById("beforeMap").style.display = 'none'; 
-document.getElementById("addLocation").style.display = 'none'; 
+    document.getElementById("afterMap").style.display = 'block'; 
+    document.getElementById("beforeMap").style.display = 'none'; 
+    document.getElementById("addLocation").style.display = 'none'; 
+    document.getElementById('lng').value = lng;
+    document.getElementById('lat').value = lat;
 }
 
 
