@@ -12,16 +12,12 @@
         <x-form-input title='Rom Number' name='nbRome' type='number' />
         <x-form-input title='surface' name='surface' type='number' />
         <x-form-input title='city' name='city' placeholder="city" />
-
         <br>
 
         @isset($typeL)
         <div class="mb-3">
           <label for="typel" class="form-label">Type de transaction</label>
-          <select id="typel" name="typeL" width='100%' required>
-            @foreach ($typeL as $item)
-                <option value="{{ $item }}" {{ ($item=='location')?'selected':'' }} > {{ $item }} </option>
-            @endforeach
+          <select id="typel" name="typeL" width='100%'>
           </select>
         </div>
         @endisset
@@ -29,7 +25,7 @@
         @isset($type)
         <div class="mb-3">
           <label for="type" class="form-label">Type de bien immobilier</label>
-          <select id="type" name="type" width='100%' required>
+          <select id="type" name="type" width='100%'>
             @foreach ($type as $item)
                 <option value="{{ $item }}"> {{ $item }} </option>
             @endforeach
@@ -38,7 +34,6 @@
         @endisset
 
         <x-form-input title='adresse' name='adresse' placeholder="adresse" required />
-        
         <br>
 
         <div class="mb-3">

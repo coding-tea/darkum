@@ -58,4 +58,7 @@ class User extends Authenticatable
     public function comments(){
       return $this->hasManyThrough(Comment::class, Announce::class,"userId");
     }
+    public function reports(){
+      return $this->hasMany(Report::class);
+    }
 }

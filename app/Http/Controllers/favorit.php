@@ -24,7 +24,7 @@ class favorit extends Controller
 
     public function add(Request $request)
     {
-        DB::table('favorits')->insert([
+        ModelsFavorit::create([
             'AnnounceId' => $request->AnnounceId,
             'userId' => auth()->id()
         ]);
@@ -35,6 +35,6 @@ class favorit extends Controller
     public function remove($AnnounceId)
     {
         DB::table('favorits')->where('AnnounceId', $AnnounceId)->delete();
-        return redirect()->route('favorit.index')->with('msg', 'announcement removed from favorit');
+        return redirect()->route('favorit.index');
     }
 }

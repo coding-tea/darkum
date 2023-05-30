@@ -140,9 +140,10 @@
                               </a>  
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="/admin">
-                                  <i class="fa-solid fa-house text-gray-500" style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px"> Index</span></a>
+                              <a class="nav-link {{(Request::is('admin'))? 'text-dark' : '' }}" href="/admin" >
+                                  <i class="fa-solid fa-house text-gray-500"  style="font-size: 22px"></i>
+                                  <span class="ml-1" style="font-size: 18px">Index</span>
+                              </a>
                           </li>
 
                           <!-- Nav Item - announces -->

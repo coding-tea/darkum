@@ -45,7 +45,7 @@ class AnnoncesController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'title' => 'required|string',
+        'title' => 'required',
         'description' => 'required',
         'price' => 'required|numeric',
         'nbRome' => 'required|numeric',
@@ -53,6 +53,8 @@ class AnnoncesController extends Controller
         'type' => 'required|in:Appartement, Maison, Villa, Chambres, Terrains, Fermes',
         'typeL' => 'required|in:location,vente,vacance',
         'adresse' => 'required',
+        'adresse' => 'required',
+        'image.*' => 'required|mimes:jpeg,png,gif,mp4,avi,mov'
       ]);
       $announce = Announce::create([
         'title' => $request->title,
