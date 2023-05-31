@@ -83,7 +83,6 @@ class AnnoncesController extends Controller
   
       return redirect()->route('annonces.index')->with([
         'msg' => "Annonces Created successfully",
-        'alert' => 'alert-info'
       ]);
     }
 
@@ -144,7 +143,6 @@ class AnnoncesController extends Controller
       ]);
       return redirect()->route('annonces.index')->with([
         'msg' => "updated successfully",
-        'alert' => 'alert-success'
       ]);
     }
 
@@ -162,7 +160,6 @@ class AnnoncesController extends Controller
       $announce->delete();
       return redirect()->route('annonces.index')->with([
         'msg' => "Deleted successfully",
-        'alert' => 'alert-danger'
       ]);
     }
 }

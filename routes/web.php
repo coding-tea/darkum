@@ -106,7 +106,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
 
   Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
   Route::resource('users',AdminUserController::class);
-  Route::delete('users_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('users.mass_destroy');
 
    //Favorits : 
   Route::get('/favoris', [favorisController::class, 'index'])->name('favoris.index');
@@ -126,14 +125,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
   Route::resource("/reports", AdminReportController::class);
 
 
-  Route::resource('customers', \App\Http\Controllers\Admin\CustomerController::class);
-  Route::delete('customers_mass_destroy', [\App\Http\Controllers\Admin\CustomerController::class, 'massDestroy'])->name('customers.mass_destroy');
-  Route::resource('bookings', \App\Http\Controllers\Admin\BookingController::class);
-  Route::delete('bookings_mass_destroy', [\App\Http\Controllers\Admin\BookingController::class, 'massDestroy'])->name('bookings.mass_destroy');
-
+  
   Route::resource('/annonces', AnnoncesController::class);
-  // Route::post('find_rooms', [\App\Http\Controllers\Admin\FindRoomController::class, 'index']);
 
-  Route::get('system_calendars', [\App\Http\Controllers\Admin\SystemCalendarController::class, 'index'])->name('system_calendars.index');
 
 });

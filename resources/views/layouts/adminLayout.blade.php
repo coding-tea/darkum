@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/admin/print-styles.css')}}" media="print">
+    @yield("link")
 
 
     <style>
@@ -104,6 +105,20 @@
       width: 150px;
       margin-top: 5px
     }
+    #addLocation{
+        display: block;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 99%;
+        border-radius: 10px;
+        background-color: #59698d; 
+        color:#FFF
+
+      }
+          #map { height: 350px }
+
+        .active{
+            color: white;
+        }
 
         </style>
         @yield("style")

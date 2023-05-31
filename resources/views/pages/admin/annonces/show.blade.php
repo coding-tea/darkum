@@ -11,6 +11,7 @@
 @endif
     <div class="announce">
         <div class="announceInfo">
+          <div class="headingShow"><span>{{ $annonces->title }}& </span> <span class="price">{{ $annonces->price }} DH</span></div>
             {{-- <img src="{{ asset('images/'. $medias[0]->url) }}" alt="img"> --}}
 
             @isset($medias)
@@ -42,7 +43,7 @@
               </div>
             </div>
             @endisset
-            <h1 class="heading text-center"> {{ $annonces->title }} </h1>
+            {{-- <h1 class="heading text-center"> {{ $annonces?->title }} </h1> --}}
 
             <table class="table w-75 mx-auto text-center">
                 <tr>
