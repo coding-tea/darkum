@@ -90,7 +90,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="9" class="text-center">{{ __('Data Empty') }}</td>
+                                <td colspan="10" class="text-center">{{ __('Data Empty') }}</td>
                             </tr>
                             @endforelse
                         </tbody>

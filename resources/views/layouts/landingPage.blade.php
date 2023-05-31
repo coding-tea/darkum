@@ -481,7 +481,7 @@
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>
       <a href="/contact" class="btn">Contact</a>
-      <a href="/create" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
+      <a href="{{ (auth()->user()?->role == 'admin')?route('annonces.create'):route('announces.create') }}" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
     </div>
   </div>
 
@@ -525,14 +525,14 @@
       </div>
       <div class="footer-col">
         <ul>
-          <li><a href="#">Publier Une Annonce</a></li>
-          <li><a href="#">Inscrivez-vous</a></li>
+          <li><a href="{{ (auth()->user()?->role == 'admin')?route('annonces.create'):route('announces.create') }}">Publier Une Annonce</a></li>
+          <li><a href="/register">Inscrivez-vous</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <ul>
           <li><a href="about">Qui sommes nous?</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="about">FAQ</a></li>
           <li><a href="contact">Contactez-nous</a></li>
           <li><a href="privacy">Conditions d'utilisation</a></li>
         </ul>
