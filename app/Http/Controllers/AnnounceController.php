@@ -62,6 +62,9 @@ class AnnounceController extends Controller
       'type' => $request->type,
       'typeL' => $request->typeL,
       'adresse' => $request->adresse,
+      'lng' => $request->lng,
+      'lat' => $request->lat,
+      'accuracy' => $request->accuracy,
       'userId' => Auth()->id()
     ]);
 

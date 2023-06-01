@@ -24,7 +24,7 @@
                 </tr>
             @empty
             <tr>
-                <td> there is no annonce yet! </td>
+                <td> empty! </td>
             </tr>
             @endforelse
         @endisset

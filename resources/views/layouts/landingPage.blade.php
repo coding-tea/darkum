@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{asset("css/landing_page/layout.css")}}">
   @yield("links")
+  @yield("link")
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,6 +65,10 @@
       border-radius: 10px;
       padding: 20px;
       letter-spacing: 1px;
+    }
+
+    .announceDescription b{
+      text-transform: uppercase;
     }
 
     .heading, .announceDescription,.table{
@@ -452,6 +457,10 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    #map {
+      height: 350px; margin: 30px 0;
+    }
+
     </style>
 
 @livewireStyles
@@ -492,9 +501,9 @@
     <div class="sign">
 
       @guest
-      <a href="{{ route('login') }}" class="signA">Sign in</a>
+      <a href="{{ route('login') }}" class="signA">Sign in <i class="fa-solid fa-right-to-bracket"></i></a>
       <a href="{{ route('register') }}">
-      <button type="button" class="loginBtn signB">Sign up</button>
+      <button type="button" class="loginBtn signB">Sign up  <i class="fa-regular fa-floppy-disk"></i></button>
       </a>
       @endguest
       @auth
