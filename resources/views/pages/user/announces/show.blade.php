@@ -37,31 +37,35 @@
             </div>
             @endisset
 
-            <table class="table table-striped">
-                <tr>
-                    <td> <b>city</b> </td>
-                    <td> {{ $announce->city }}</td>
-                </tr>
-                <tr>
-                    <td> <b>adresse</b> </td>
-                    <td> {{ $announce->adresse }}</td>
-                </tr>
-                <tr>
-                    <td> <b>surface</b> </td>
-                    <td> {{ $announce->surface }}m<sup>2</sup></td>
-                </tr>
-                <tr>
-                    <td> <b>Rom Number</b> </td>
-                    <td> {{ $announce->nbRome }} </td>
-                </tr>
-            </table>
+            <div class="info">
+              <div class="info_item">
+                <span class="info_icon"></span>
+                <span class="info_title">{{ $announce->city }}</span>
+              </div>
+              <div class="info_item">
+                <span class="info_icon"></span>
+                <span class="info_title">adresse <br> {{ $announce->adresse }}</span>
+              </div>
+              <div class="info_item">
+                <span class="info_icon"></span>
+                <span class="info_title">surface <br> {{ $announce->surface }}</span>
+              </div>
+              <div class="info_item">
+                <span class="info_icon"></span>
+                <span class="info_title"> city <br> {{ $announce->nbRome }}</span>
+              </div>
+            </div>
+
         </div>
 
         <p class="announceDescription">
           {{ $announce->description }}
         </p>
 
-        <div class="map"></div>
+        @if (isset($announce->lat) && isset($announce->lng))
+            <div id="map"></div>
+        @endif
+        
 
         @isset($data->tel)
         <div class="ctaContainer">
@@ -102,15 +106,18 @@
                       <label for="type" class="form-label" style="text-align: left">Please select a problem !.</label>
                       <select id="type" class="form-select" name="type" width='100%' required>
                         <option value="select a type" disabled>select a type</option>
+                        <option value="Misleading">Misleading</option>
+                        <option value="False Information">False Information</option>
                         <option value="spam">spam</option>
-                        <option value="Unauthorized post">Unauthorized post</option>
+                        <option value="Inappropriate Content">Inappropriate Content</option>
+                        <option value="Technical Issues">Technical Issues</option>
                         <option value="something else">something else</option>
                       </select>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                  <button class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                  <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">close</button>
                   <button type="submit" class="btn btn-primary">
                     report
                   </button>
@@ -143,6 +150,7 @@
         </div>
         @endisset
 
+        {{-- comments --}}
         <section style="background-color: #fff;" class="comments">
             <div class="container my-5 py-5">
               <h1 class="heading"> comments </h1>
@@ -193,4 +201,75 @@
     </div>
 </div>
 @endsection
+
+
+
+@if (isset($announce->lat) && isset($announce->lng))
+@section("script")
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script>
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+} else {
+    alert("Geolocation is not supported by this browser.");
+}
+
+function success(pos) {
+    const lat = {{ $announce->lat }};
+    const lng = {{ $announce->lng }};
+    const accuracy = {{ $announce->accuracy }};
+    const title= ` ${{{$announce->title}}} `;
+
+    const map = L.map('map');
+    map.setView([lat, lng], 15);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© darkum'
+    }).addTo(map);
+
+    const marker = L.marker([lat, lng]).addTo(map).bindPopup(title)
+        .openPopup();;
+    const circle = L.circle([lat, lng], { radius: accuracy }).addTo(map);
+
+    map.fitBounds(circle.getBounds());
+}
+
+
+function error(err) {
+    if (err.code === 1) {
+        alert("allow geolocation access");
+    } else {
+        alert("Cannot get current location");
+    }
+}
+
+
+
+  // navigator.geolocation.getCurrentPosition(success, error);
+  // const lat = {{ $announce->lat }};
+  // const lng = {{ $announce->lng }};
+
+  // const map = L.map('map');
+  // map.setView([lat, lng], 15);
+
+  // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     maxZoom: 19,
+  //     attribution: '© darkum'
+  // }).addTo(map);
+
+  // const marker = L.marker([lat, lng]).addTo(map).bindPopup({{ "'".$announce->title."'" }})
+  //     .openPopup();;
+  // const circle = L.circle([lat, lng]).addTo(map);
+
+  // map.fitBounds(circle.getBounds());
+</script>
+@endsection
+
+@section("link")
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+@endsection
+
+@endif
 @endisset

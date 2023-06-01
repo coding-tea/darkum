@@ -44,15 +44,21 @@
           <label onmouseover='document.querySelector("#imagetitle").style="display:none;"' onmouseout='document.querySelector("#imagetitle").style="display:inline;"' for="file-upload" class="form-label custom-file-upload" ><i class="fa-solid fa-cloud-arrow-up"></i> <span id="imagetitle">Images</span></label>
           <input type="file" class="form-control" name= "image[]" id="file-upload" multiple = "multiple" required />
         </div>
-        <button id="addLocation" class="btn mt-3 mx-auto" onsubmit="return false">Start Location</button>
-        <button id="beforeMap" type="submit" class="btn btn-primary mt-5" type="button">
-          Create Announce
-        </button>
-        <div id="map"></div>
+
+        <button id="addLocation" class="btn mt-3 mx-auto" type="button">Start Location</button>
+
+        
 
         <input type="hidden" name="lat" id="lat" value="null" />
         <input type="hidden" name="lng" id="lng" value="null" />
-    
+        <input type="hidden" name="accuracy" id="accuracy" value="null" />
+
+        <button id="beforeMap" type="submit" class="btn btn-primary mt-5" type="button">
+          Create Announce
+        </button>
+        
+        <div id="map"></div>
+
         <div class="md:flex md:items-center">
           <div class="md:w-1" >
             <button id="afterMap" type="submit" class="btn btn-primary mt-3" style="display:none" type="button">
@@ -100,6 +106,7 @@ function success(pos) {
     document.getElementById("addLocation").style.display = 'none'; 
     document.getElementById('lng').value = lng;
     document.getElementById('lat').value = lat;
+    document.getElementById('accuracy').value = accuracy;
 }
 
 
@@ -109,9 +116,7 @@ function error(err) {
     } else {
         alert("Cannot get current location");
     }
-     
 }
-
 
 });
 </script>
