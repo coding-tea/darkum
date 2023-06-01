@@ -39,20 +39,24 @@
 
             <div class="info">
               <div class="info_item">
-                <span class="info_icon"></span>
-                <span class="info_title">{{ $announce->city }}</span>
+                <span class="info_icon"><i class="fa-sharp fa-solid fa-city"></i></span>
+                <br>
+                <span class="info_title">city <br> {{ $announce->city }}</span>
               </div>
               <div class="info_item">
-                <span class="info_icon"></span>
+                <span class="info_icon"><i class="fa-solid fa-location-dot"></i></span>
+                <br>
                 <span class="info_title">adresse <br> {{ $announce->adresse }}</span>
               </div>
               <div class="info_item">
-                <span class="info_icon"></span>
-                <span class="info_title">surface <br> {{ $announce->surface }}</span>
+                <span class="info_icon"><i class="fa-solid fa-house"></i></span>
+                <br>
+                <span class="info_title">surface <br> {{ $announce->surface }} m<sup>2</sup></span>
               </div>
               <div class="info_item">
-                <span class="info_icon"></span>
-                <span class="info_title"> city <br> {{ $announce->nbRome }}</span>
+                <span class="info_icon"><i class="fa-solid fa-arrow-down-1-9"></i></span>
+                <br>
+                <span class="info_title"> rom number <br> {{ $announce->nbRome }}</span>
               </div>
             </div>
 

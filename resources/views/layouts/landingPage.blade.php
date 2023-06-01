@@ -22,6 +22,10 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   
   <style>
+
+    *{
+      box-sizing: border-box;
+    }
     .announceContainer{
       width: 100%;
       padding: 40px 200px;
@@ -461,6 +465,37 @@
       height: 350px; margin: 30px 0;
     }
 
+    .info{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 100px;
+      flex-wrap: wrap;
+      padding: 30px 0;
+    }
+
+    .info_item{
+      width: 20%;
+      margin-left: 10px;
+      padding: 20px;
+      border-radius: 5px;
+      height: 100px;
+      background-color: rgba(78, 115, 222, .1);
+      text-align: center;
+      /* box-shadow: 1px 2px 8px rgba(0, 0, 0, .1); */
+    }
+
+    .info_icon{
+      color: #4e73de;
+    }
+
+    .info_title{
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 15px 0 0 0;
+    }
     </style>
 
 @livewireStyles
