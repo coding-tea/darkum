@@ -59,7 +59,6 @@
                 <span class="info_title"> rom number <br> {{ $announce->nbRome }}</span>
               </div>
             </div>
-
         </div>
 
         <p class="announceDescription">
@@ -69,7 +68,6 @@
         @if (isset($announce->lat) && isset($announce->lng))
             <div id="map"></div>
         @endif
-        
 
         @isset($data->tel)
         <div class="ctaContainer">
