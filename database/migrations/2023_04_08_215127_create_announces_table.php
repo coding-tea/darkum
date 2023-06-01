@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string("surface", 20);
             $table->string("city", 50);
             $table->string("adresse", 100)->nullable();
-            $table->bigInteger("lat")->nullable();
-            $table->bigInteger("lng")->nullable();
-            $table->bigInteger("accuracy")->nullable();
+            $table->float("lat")->nullable();
+            $table->float("lng")->nullable();
+            $table->float("accuracy")->nullable();
             $table->foreignId("userId")->constrained("users");
             $table->timestamps();
         });
