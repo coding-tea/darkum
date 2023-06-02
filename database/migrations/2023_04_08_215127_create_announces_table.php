@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string("adresse", 100)->nullable();
             $table->float("lat")->nullable();
             $table->float("lng")->nullable();
-            $table->bigInteger("accuracy")->nullable();
+            $table->float("accuracy")->nullable();
             $table->foreignId("userId")->constrained("users");
             $table->timestamps();
         });
