@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text("description");
             $table->enum('typeL', ['location', 'vente', 'vacance'])->default('location');
             $table->enum('type', ['Appartement', 'Maison', 'Villa', "Chambres", "Terrains", "Fermes"])->default('Appartement');
-            $table->unsignedFloat("price");
+            $table->float("price");
             $table->unsignedInteger("nbRome");
             $table->string("surface", 20);
             $table->string("city", 50);

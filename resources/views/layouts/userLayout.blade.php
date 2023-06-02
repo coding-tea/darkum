@@ -141,21 +141,21 @@
 
                             <!-- Nav Item - announces -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('announces.index') }} ">
+                                <a class="nav-link {{(Request::is('user/announces*'))? 'text-dark' : '' }}" href=" {{ route('announces.index') }} ">
                                     <i class="fas fa-fw fa-folder"></i>
                                     <span>announces</span></a>
                             </li>
 
                             <!-- Nav Item - favorit -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('user/announces*'))?'active':'' }}" href=" {{ route('favorit.index') }} ">
+                                <a class="nav-link {{(Request::is('user/favorit*'))?'text-dark':'' }}" href=" {{ route('favorit.index') }} ">
                                     <i class="fa-solid fa-star"></i>
                                     <span>favorits</span></a>
                             </li>
 
                             <!-- Nav Item - Profile -->
                             <li class="nav-item">
-                                <a class="nav-link {{(Request::is('user/profile*'))?'active':'' }}" href="{{ route('profile.index') }}">
+                                <a class="nav-link {{(Request::is('user/profile*'))?'text-dark':'' }}" href="{{ route('profile.index') }}">
                                     <i class="fas fa-fw fa-cog"></i>
                                     <span>Profile</span></a>
                                 </li>

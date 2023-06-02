@@ -25,7 +25,7 @@
 
     <style>
         .active{
-            color: white;
+            color: #2e59d9;
         }
         .butthons button{
             outline: none;
@@ -116,9 +116,9 @@
       }
           #map { height: 350px }
 
-        .active{
+        /* .active{
             color: white;
-        }
+        } */
 
         </style>
         @yield("style")
@@ -156,37 +156,37 @@
                           </li>
                           <li class="nav-item">
                               <a class="nav-link {{(Request::is('admin'))? 'text-dark' : '' }}" href="/admin" >
-                                  <i class="fa-solid fa-house text-gray-500"  style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px">Index</span>
+                                  <i class="fa-solid fa-house text-gray-500"  style="font-size: 15px"></i>
+                                  <span class="ml-1">Dashboard</span>
                               </a>
                           </li>
 
                           <!-- Nav Item - announces -->
                           <li class="nav-item">
                               <a class="nav-link {{(Request::is('admin/annonces'))?'text-dark':'' }}" href=" {{ route('annonces.index') }} ">
-                                  <i class="fas fa-fw fa-folder fa-2x text-gray-500" style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px">announces</span>
+                                  <i class="fas fa-fw fa-folder fa-2x text-gray-500" style="font-size: 15px"></i>
+                                  <span classs="ml-1">announces</span>
                                 </a>
                           </li>
 
                           <!-- Nav Item - users -->
                           <li class="nav-item">
                               <a class="nav-link {{(Request::is('admin/users'))?'text-dark':'' }}" href=" {{ route('users.index') }} ">
-                                <i class="fa-solid fa-users text-gray-500" style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px">users</span></a>
+                                <i class="fa-solid fa-users text-gray-500" style="font-size: 15px"></i>
+                                  <span class="ml-1">users</span></a>
                           </li>
 
                           <!-- Nav Item - favorit -->
                           <li class="nav-item">
                               <a class="nav-link {{(Request::is('admin/favoris'))?'text-dark':'' }}" href=" {{ route('favoris.index') }} ">
-                                  <i class="fa-solid fa-star text-gray-500" style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px">favorits</span></a>
+                                  <i class="fa-solid fa-star text-gray-500" style="font-size: 15px"></i>
+                                  <span class="ml-1">favorits</span></a>
                           </li>
                           <!-- Nav Item - Profile -->
                           <li class="nav-item">
                               <a class="nav-link {{(Request::is('admin/profile'))?'text-dark':'' }}" href="{{ route('profileAdmin') }}">
-                                  <i class="fas fa-fw fa-cog text-gray-500" style="font-size: 22px"></i>
-                                  <span class="ml-1" style="font-size: 18px">Profile</span></a>
+                                  <i class="fas fa-fw fa-cog text-gray-500" style="font-size: 15px"></i>
+                                  <span class="ml-1">Profile</span></a>
                               </li>
                       </ul>
 

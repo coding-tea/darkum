@@ -15,6 +15,7 @@ use App\Http\Controllers\TretmentControllers;
 use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\AdminUsersComponent;
+use App\Models\Announce;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -35,7 +36,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //static
-Route::view("/", "pages.landing_page.index")->name("home");
+// Route::view("/", "pages.landing_page.index")->name("home");
+Route::get('/', function(){
+  $myarray = Announce::selectRaw('lat, lng, accuracy, title')->get();
+  $array = '';
+  foreach($myarray as $key => $arr)
+  {
+    $array .= $arr->lat. '*' .$arr->lng. '*' .$arr->accuracy. '*' .$arr->title. '/';
+  }
+
+  return view("pages.landing_page.index")->with('array', $array);
+});
 Route::view("/location", "pages.landing_page.location");
 Route::view("/about", "pages.landing_page.about");
 Route::view("/privacy", "pages.landing_page.condition");
