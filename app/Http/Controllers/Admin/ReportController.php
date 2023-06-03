@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
 
+use function PHPUnit\Framework\returnSelf;
+
 class ReportController extends Controller
 {
     /**
@@ -86,13 +88,16 @@ class ReportController extends Controller
      */
     public function update($id)
     {
-      $report = Report::where("announce_id", $id);
-      $report->update([
-        'etat' => 2
+      $report = DB::table('reports')->where("announce_id", $id)->update([
+        "etat" => '2'
       ]);
-      return redirect()->route("reports.index")->with([
-        "msg" => "Report Validate"
-      ]);
+      // $report_id = Report::where("announce_id", $id)->get()->toArray()[0]['id'];
+      // $report = Report::find($report_id);
+      // $report->update([]);
+      return redirect()->route("reports.index")->with(["msg" => "Report Validate"]);
+        // return redirect()->route("reports.index")->with([
+        //   "error" => "Report blocked"
+        // ]);
     }
 
     /**
