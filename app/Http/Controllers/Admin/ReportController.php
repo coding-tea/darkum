@@ -91,13 +91,10 @@ class ReportController extends Controller
       $report = DB::table('reports')->where("announce_id", $id)->update([
         "etat" => '2'
       ]);
-      // $report_id = Report::where("announce_id", $id)->get()->toArray()[0]['id'];
-      // $report = Report::find($report_id);
-      // $report->update([]);
-      return redirect()->route("reports.index")->with(["msg" => "Report Validate"]);
-        // return redirect()->route("reports.index")->with([
-        //   "error" => "Report blocked"
-        // ]);
+      if($report)
+        return redirect()->route("reports.index")->with(["msg" => "Report Validate"]);
+      else
+        return redirect()->route("reports.index")->with(["error" => "Report blocked"]);
     }
 
     /**
@@ -108,8 +105,6 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-      
-
         Media::where('idAnnounce', $id)->delete();
         DB::table('favorits')->where('AnnounceId', $id)->delete();
         Report::where('announce_id', $id)->delete();
