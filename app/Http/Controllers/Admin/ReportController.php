@@ -105,8 +105,6 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-      
-
         Media::where('idAnnounce', $id)->delete();
         DB::table('favorits')->where('AnnounceId', $id)->delete();
         Report::where('announce_id', $id)->delete();
