@@ -1,12 +1,12 @@
 website for apartment rentals designed to solve the problems of apartment search and rental.
 
 ## /- Website captures:
-<img src='./images/1.PNG' />
-<img src='./images/11.PNG' />
-<img src='./images/13.PNG' />
-<img src='./images/18.PNG' />
-<img src='./images/4.PNG' />
-<img src='./images/5.PNG' />
+<img src='./images/1.PNG' width='100%' />
+<img src='./images/11.PNG' width='100%' />
+<img src='./images/13.PNG' width='100%' />
+<img src='./images/18.PNG' width='100%' />
+<img src='./images/4.PNG' width='100%' />
+<img src='./images/5.PNG' width='100%' />
 
 ## /- Tools I use:
     Programming languages:
