@@ -12,7 +12,7 @@ This Laravel website for apartment rentals is a solution designed to address the
 <img src='./images/18.PNG' width='100%' />
 
 ## /- Tools I use:
-- /- Programming languages:
+/- Programming languages:
 <ul>
     <li>html</li>
     <li>css</li>
@@ -20,7 +20,7 @@ This Laravel website for apartment rentals is a solution designed to address the
     <li>javaScript</li>
 </ul>
 
-- /-Technologies & Frameworks:
+/-Technologies & Frameworks:
 <ul>
     <li>laravel</li>
     <li>bootstrap</li>
