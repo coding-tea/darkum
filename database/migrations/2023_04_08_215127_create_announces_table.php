@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('announces', function (Blueprint $table) {
             $table->id();
+            
             $table->string("title", 100);
             $table->text("description");
             $table->enum('typeL', ['location', 'vente', 'vacance'])->default('location');
