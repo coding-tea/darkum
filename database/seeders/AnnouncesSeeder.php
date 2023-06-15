@@ -20,7 +20,7 @@ class AnnouncesSeeder extends Seeder
       // Générer 10 utilisateurs aléatoires
       $faker = \Faker\Factory::create();
 
-      for ($i = 0; $i < 40; $i++) {
+      for ($i = 1; $i <= 25; $i++) {
           DB::table('announces')->insert([
               'title' => $faker->sentence(4),
               'description' => $faker->paragraph,

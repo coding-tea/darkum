@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Role;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Announce;
+use App\Models\Favorit;
+use App\Models\Report;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -106,7 +110,18 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+      $announce = DB::table("announces")->where("userId",$user->id)->get();
+      $Report = Report::where("user_id",$user->id);
+      $Report->delete();
+      $favorits = Favorit::where("userId",$user->id);
+      $favorits->delete();
+      foreach($announce as $a){
+        DB::table("medias")->where("idAnnounce",$a->id)->delete();
+        DB::table("announces")->where("id",$a->id)->delete();
+
+      }
+      
+      $user->delete();
 
         return redirect()->route('users.index')->with([
             'msg' => 'successfully deleted !',
@@ -119,10 +134,5 @@ class UserController extends Controller
      *
      * @param Request $request
      */
-    public function massDestroy(Request $request)
-    {
-        User::whereIn('id', request('ids'))->delete();
-
-        return response()->noContent();
-    }
+  
 }

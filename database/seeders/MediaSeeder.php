@@ -20,8 +20,9 @@ class MediaSeeder extends Seeder
       '1685630298back1.jpg',
       '1685630298back2.jpg'
     ];
+    
 
-    for ($i = 1; $i <= 40; $i++) {
+    for ($i = 1; $i <= 25; $i++) {
       DB::table('medias')->insert([
         'url' => $imageUrls[array_rand($imageUrls)],
         'idAnnounce' => $i,
