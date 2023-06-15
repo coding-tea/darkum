@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Announce;
 use App\Models\Favorit;
 use App\Models\Report;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -110,6 +111,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+      $data = DB::table("datas")->where("userId",$user->id);
+      $data->delete();
       $announce = DB::table("announces")->where("userId",$user->id)->get();
       $Report = Report::where("user_id",$user->id);
       $Report->delete();
