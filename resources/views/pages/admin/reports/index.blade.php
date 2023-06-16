@@ -31,8 +31,8 @@
                                 <th>Annonce Title</th>
                                 <th>Announce Owner</th>
                                 <th>Owner ID</th>
-                                <th>Types of reports</th>
-                                <th>Number of reports</th>
+                                <th>Types reports</th>
+                                <th>Number reports</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -59,7 +59,7 @@
                                   @endforeach 
                                 </td>
                                 <td>{{ $report->nbAnnonces }}</td>
-                                <td>
+                                <td style="display: flex; flex-wrap: nowrap; justify-content: space-around">
                                   @if($arrays[$key][count($arrays[$key]) - 1]->etat == 1 || $arrays[$key][count($arrays[$key]) - 1]->etat == 0)
                                     <a title="show" href="{{ route('annonces.show', $report->announce_id) }}" class="btn btn-info">
                                       <i class="fa fa-eye"></i>

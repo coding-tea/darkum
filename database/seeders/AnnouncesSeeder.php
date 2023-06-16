@@ -30,7 +30,7 @@ class AnnouncesSeeder extends Seeder
               'nbRome' => $faker->numberBetween(1, 5),
               'surface' => $faker->randomNumber(2),
               'city' => $faker->city,
-              'adresse' => $faker->address,
+              'adresse' => $faker->sentence(1),
               'userId' => $faker->randomElement([1, 2, 3, 4, 5]), // Remplacez [1, 2, 3, 4, 5] par les IDs des utilisateurs existants dans votre base de données
               'created_at' => now(),
               'updated_at' => now(),

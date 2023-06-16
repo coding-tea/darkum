@@ -289,11 +289,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow-y: auto;
   color: #FF6803;
   font-size: 18px;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-weight: 700;
-  overflow-y: auto;
 }
 
 .card-description  span{

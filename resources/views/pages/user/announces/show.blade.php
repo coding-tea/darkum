@@ -46,7 +46,10 @@
               <div class="info_item">
                 <span class="info_icon"><i class="fa-solid fa-location-dot"></i></span>
                 <br>
-                <span class="info_title">adresse <br> {{ $announce->adresse }}</span>
+                <span class="info_title" style="overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow-y: auto;">adresse <br> {{ $announce->adresse }}</span>
               </div>
               <div class="info_item">
                 <span class="info_icon"><i class="fa-solid fa-house"></i></span>
