@@ -40,6 +40,7 @@ This Laravel website for apartment rentals is a solution designed to address the
     <li>git clone https://github.com/coding-tea/darkum.git</li>
     <li>composer install</li>
     <li>cp .env.example .env</li>
+    <li>php artisan key:generate</li>
     <li>php artisan migrate:fresh --seed</li>
     <li>npm i</li>
     <li>npm run build</li>
