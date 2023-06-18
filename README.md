@@ -27,9 +27,6 @@ This Laravel website for apartment rentals is a solution designed to address the
     <li>liveware</li>
     <li>leaflet js</li>
     <li>jira</li>
-    <li>vs code</li>
-    <li>github</li>
-    <li>discord</li>
 </ul>
 
 
