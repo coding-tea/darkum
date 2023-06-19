@@ -279,15 +279,24 @@ ul {
 
 
 
-@media (min-width: 500px) and (max-width: 1042px) {
-  .nvAnnonce {
+@media (min-width: 500px) and (max-width: 1390px) {
+  /* .nvAnnonce {
+    display: none;
+  } */
+  .btn-contact {
     display: none;
   }
 }
 
+
+
+
 @media (max-width: 900px) {
   .nvAnnonce {
     display: block;
+  }
+  .header-section{
+    height: 60cvh;
   }
 
   nav {
@@ -364,7 +373,8 @@ ul {
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    background: #007bff;
+    background: #f3f3f4;
+    z-index: 2;
     top: 100%;
     left: 0;
     transform: translate(-100%);
@@ -373,9 +383,12 @@ ul {
     border-right: 1px solid #c5c5c6;
   }
 
+
   .open {
     transform: translate(0%);
   }
+
+  
 
   .navlinks-container a {
     font-size: 18px;

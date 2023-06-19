@@ -31,9 +31,6 @@ This Laravel website for apartment rentals is a solution designed to address the
     <li>liveware</li>
     <li>leaflet js</li>
     <li>jira</li>
-    <li>vs code</li>
-    <li>github</li>
-    <li>discord</li>
 </ul>
 
 ## /- How to install it:
@@ -48,7 +45,6 @@ This Laravel website for apartment rentals is a solution designed to address the
 ```<li>npm run build</li>```bach
 ```<li>npm run dev</li>```bach
 ```<li>php artisan ser</li>```bach
-
 </ul>
 
 ## /- How to tweak this project for own uses:

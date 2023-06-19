@@ -32,6 +32,7 @@
 .pubParagraphe {
   color: #fff;
   font-size: 13px;
+  text-align: center;
 }
 
 .filterRecherche {
@@ -47,6 +48,51 @@
   border-radius: 20px;
   position: relative;
 }
+
+@media(max-width: 1357px) {
+  .filterRecherche{
+    /* flex-direction: column; */
+    width: 800px;
+    background-color: transparent;
+  }
+  #ville{
+    display: none;
+  }
+  .zone1{
+    display: flex;
+    flex-direction: row;
+  }
+  .circle1,.circle2,.circle3{
+    display: none;
+  }
+  .pubTitre{
+    text-align: center;
+  }
+}
+@media(max-width: 1357px) {
+  .filterRecherche{
+    /* flex-direction: column; */
+    width: 800px;
+    background-color: transparent;
+  }
+}
+@media(max-width: 1200px) {
+  .pubTitre{
+    display: none;
+  }
+  .header-section{
+    height: 350px;
+  }
+
+}
+
+@media(max-width: 600px) {
+  .zone2{
+    display : none;
+  }
+
+}
+
 
 .circle1,
 .circle2,

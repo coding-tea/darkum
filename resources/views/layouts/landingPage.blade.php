@@ -129,6 +129,29 @@
       box-shadow: 5px 10px 12px rgba(0, 0, 0, 0.1);
     }
 
+    @media(min-width:1165px) and (max-width: 1290px) {
+  .menu{
+    padding: 7px 100px;
+  }
+}
+    @media(max-width: 1165px) {
+  .menu{
+    padding: 7px 20px;
+  }
+}
+    @media(max-width: 1046px) {
+  .menu{
+    padding: 7px 100px;
+  }
+  .signB{
+    display: none;
+  }
+  .nvAnnonce{
+    display: none;
+  }
+  
+}
+
     .menu a, .main-navlinks .navlinks-container a{
       color: rgba(0, 0, 0, 0.5);
       font-size: 18px;
@@ -174,6 +197,7 @@
     }
     .header-section{
       background: linear-gradient(#4e73de, #36b9cc);
+      z-index: 1;
       color: white;
       height: 100vh;
       background-attachment: fixed;
@@ -184,6 +208,8 @@
       flex-direction: column;
       clip-path: polygon(100% 0, 100% 100%, 74% 93%, 44% 100%, 22% 93%, 0 100%, 0 0);
     }
+
+
     .publiciter{
       margin-bottom: 50px;
     }
@@ -514,23 +540,23 @@
   </a>
 
   <div class="main-navlinks">
-    <button type="button" class="forMedia"  aria-label="Toggle Navigation" aria-expanded="false">
+    <a type="button" class="forMedia"  aria-label="Toggle Navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-    </button>
+    </a>
     <div class="navlinks-container">
       {{-- <a href="/" aria-current="page" class="btn">Home</a> --}}
       <a href="{{route("vente")}}" class="btn">Vente</a>
       <a href="{{route("location")}}" class="btn">Location</a>
       <a href="{{route("vacance")}}" class="btn">vacances</a>
-      <a href="/contact" class="btn">Contact</a>
+      <a href="/contact" class="btn-contact">Contact</a>
       <a href="{{ (auth()->user()?->role == 'admin')?route('annonces.create'):route('announces.create') }}" class="nvAnnonce" style="color: #4e73de;font-size: 15px;">Publier Une Annonce</a>
     </div>
   </div>
 
   <div class="nav-authentication">
-    <a href="#" class="user-toggler" aria-label="Sign in page">
+    <a href="login" class="user-toggler" aria-label="Sign in page">
       <img src="{{asset("img/user.svg")}}" alt="user icon" />
     </a>
     <div class="sign">
