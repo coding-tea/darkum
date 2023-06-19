@@ -1,4 +1,5 @@
 # The Laravel Apartment Rental Site
+
 ## Laravel website for apartment rentals designed to solve the problems of apartment search and rental.
 
 ## /- About the project:
@@ -12,7 +13,9 @@ This Laravel website for apartment rentals is a solution designed to address the
 <img src='./images/18.PNG' width='100%' />
 
 ## /- Tools I use:
+
 /- Programming languages:
+
 <ul>
     <li>html</li>
     <li>css</li>
@@ -21,6 +24,7 @@ This Laravel website for apartment rentals is a solution designed to address the
 </ul>
 
 /-Technologies & Frameworks:
+
 <ul>
     <li>laravel</li>
     <li>bootstrap</li>
@@ -29,20 +33,18 @@ This Laravel website for apartment rentals is a solution designed to address the
     <li>jira</li>
 </ul>
 
-
-
 ## /- How to install it:
 
 <ul>
-    <li>git clone https://github.com/coding-tea/darkum.git</li>
-    <li>composer install</li>
-    <li>cp .env.example .env</li>
-    <li>php artisan key:generate</li>
-    <li>php artisan migrate:fresh --seed</li>
-    <li>npm i</li>
-    <li>npm run build</li>
-    <li>npm run dev</li>
-    <li>php artisan ser</li>
+```<li>git clone https://github.com/coding-tea/darkum.git</li>```bach
+```<li>composer install</li>```bach
+```<li>php artisan key:generate</li>```bach
+```<li>cp .env.example .env</li>```bach
+```<li>php artisan migrate:fresh --seed</li>```bach
+```<li>npm i</li>```bach
+```<li>npm run build</li>```bach
+```<li>npm run dev</li>```bach
+```<li>php artisan ser</li>```bach
 </ul>
 
 ## /- How to tweak this project for own uses:
