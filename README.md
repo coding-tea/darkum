@@ -35,15 +35,17 @@ This Laravel website for apartment rentals is a solution designed to address the
 
 ## /- How to install it:
 
-```Bash git clone https://github.com/coding-tea/darkum.git```
-```Bash composer install```
-```Bash php artisan key:generate```
-```Bash cp .env.example .env```
-```Bash php artisan migrate:fresh --seed```
-```Bash npm i```
-```Bash npm run build```
-```Bash npm run dev```
-```Bash php artisan ser```
+```Bash
+git clone https://github.com/coding-tea/darkum.git
+composer install
+php artisan key:generate
+cp .env.example .env
+php artisan migrate:fresh --seed
+npm i
+npm run build
+npm run dev
+php artisan ser
+```
 
 ## /- How to tweak this project for own uses:
 
