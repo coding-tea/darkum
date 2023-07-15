@@ -38,8 +38,8 @@ This Laravel website for apartment rentals is a solution designed to address the
 ```Bash
 git clone https://github.com/coding-tea/darkum.git
 composer install
-php artisan key:generate
 cp .env.example .env
+php artisan key:generate
 php artisan migrate:fresh --seed
 npm i
 npm run build
