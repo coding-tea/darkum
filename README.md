@@ -1,6 +1,6 @@
 # The Laravel Apartment Rental Site
 
-## Laravel website for apartment rentals designed to solve the problems of apartment search and rental.
+## Laravel website for apartment rentals designed to solve the problems of apartment search and rental. 
 
 ## /- About the project:
 
