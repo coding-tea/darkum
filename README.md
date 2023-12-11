@@ -2,7 +2,7 @@
 
 ## Laravel website for apartment rentals designed to solve the problems of apartment search and rental. 
 
-## /- About the project: 
+## /- About the project:
 
 This Laravel website for apartment rentals is a solution designed to address the challenges faced during the process of searching for and renting apartments. It aims to simplify and streamline the entire experience. The website provides a user-friendly platform where individuals can effortlessly search for available apartments based on their specific requirements, such as location, size, amenities, and price range. By leveraging the power of Laravel, the website offers a robust and efficient system for landlords and property owners to list their apartments, manage bookings, and communicate with potential tenants. 
 
